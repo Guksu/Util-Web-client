@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { isLogginAtom, isTempAtom } from "../atom";
+import { isLoginAtom, isTempAtom } from "../atom";
+import ProfileNav from "./ProfileComponents/ProfileNav";
 
 function Header() {
   const history = useHistory();
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
+  const [profileMenuTogle, setProfileMenuTogle] = useState(false);
   const [temp, setTemp] = useRecoilState(isTempAtom);
-  const isLogin = useRecoilValue(isLogginAtom);
+  const isLogin = useRecoilValue(isLoginAtom);
   const API_KEY = process.env.REACT_APP_WEATHER_KEY;
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
 
@@ -28,13 +30,35 @@ function Header() {
 
   return (
     <>
+      <div
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        메인이동
+      </div>
       <div>다크모드</div>
       <div>
         온도: {temp} /위도 : {lat}/ 경도 : {lon}
       </div>
       <div>메뉴</div>
       {isLogin ? (
-        <div onClick={() => history.push("/user")}>프로필</div>
+        <>
+          <div
+            onClick={() => {
+              setProfileMenuTogle(!profileMenuTogle);
+            }}
+          >
+            프로필사진
+          </div>
+          <div
+            onMouseLeave={() => {
+              setProfileMenuTogle(!profileMenuTogle);
+            }}
+          >
+            {profileMenuTogle ? <ProfileNav /> : <></>}
+          </div>
+        </>
       ) : (
         <div onClick={() => history.push("/login")}>로그인</div>
       )}

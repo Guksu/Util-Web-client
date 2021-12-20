@@ -7,7 +7,7 @@ interface CreateUserOutput {
   error?: string;
 }
 
-interface CreateUserMutation {
+interface CreateUserIF {
   createUser: CreateUserOutput;
 }
 
@@ -26,7 +26,7 @@ function CreateUser() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  const [createUser] = useMutation<CreateUserMutation>(CREATE_USER, {
+  const [createUser] = useMutation<CreateUserIF>(CREATE_USER, {
     variables: {
       createUserInput: {
         id,
