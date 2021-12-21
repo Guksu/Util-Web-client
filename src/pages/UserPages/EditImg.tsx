@@ -1,7 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import LoginCheck from "../components/LoginCheck";
+import LoginCheck from "../../components/LoginCheck";
 
 interface ChangeUserImgOutput {
   ok: string;

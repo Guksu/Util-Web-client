@@ -1,8 +1,8 @@
-import LoginCheck from "../components/LoginCheck";
-import ProfileImg from "../components/ProfileComponents/ProfileImg";
-import ProfileInfo from "../components/ProfileComponents/ProfileInfo";
-import DeleteUser from "../components/ProfileComponents/DeleteUser";
 import { gql } from "@apollo/client";
+import LoginCheck from "../../components/LoginCheck";
+import DeleteUser from "../../components/ProfileComponents/DeleteUser";
+import ProfileImg from "../../components/ProfileComponents/ProfileImg";
+import ProfileInfo from "../../components/ProfileComponents/ProfileInfo";
 
 export interface ProfileInfoOutput {
   ok: string;

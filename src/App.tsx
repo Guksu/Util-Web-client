@@ -1,12 +1,13 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
-import CreateUser from "./pages/CreateUser";
-import EditImg from "./pages/EditImg";
-import EditPw from "./pages/EditPw";
+import CreateUser from "./pages/UserPages/CreateUser";
+
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
+import Login from "./pages/UserPages/Login";
+import Profile from "./pages/UserPages/Profile";
+import EditPw from "./pages/UserPages/EditPw";
+import EditImg from "./pages/UserPages/EditImg";
 
 function App() {
   return (

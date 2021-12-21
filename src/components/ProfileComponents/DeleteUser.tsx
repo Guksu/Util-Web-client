@@ -5,7 +5,7 @@ import { useSetRecoilState } from "recoil";
 import { client } from "../../apollo";
 import { isLoginAtom } from "../../atom";
 import LoginCheck from "../LoginCheck";
-import ProfileDiv from "./ProfileDiv";
+import ProfileLayOut from "./ProfileLayOut";
 
 interface DeleteUserOutput {
   ok: string;
@@ -62,7 +62,7 @@ function DeleteUser() {
   return (
     <>
       <LoginCheck />
-      <ProfileDiv
+      <ProfileLayOut
         divName="회원탈퇴"
         divContent={divContent}
         btnName="탈퇴하기"

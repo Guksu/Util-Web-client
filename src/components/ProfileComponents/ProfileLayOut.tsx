@@ -5,7 +5,7 @@ interface Props {
   btnOnclick: any;
 }
 
-function ProfileDiv({ divName, btnName, divContent, btnOnclick }: Props) {
+function ProfileLayOut({ divName, btnName, divContent, btnOnclick }: Props) {
   return (
     <>
       <h1>{divName}</h1>
@@ -17,4 +17,4 @@ function ProfileDiv({ divName, btnName, divContent, btnOnclick }: Props) {
   );
 }
 
-export default ProfileDiv;
+export default ProfileLayOut;

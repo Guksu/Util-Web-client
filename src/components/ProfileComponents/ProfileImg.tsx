@@ -1,8 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { useHistory } from "react-router-dom";
-import { ProfileInfoIF } from "../../pages/Profile";
+import { ProfileInfoIF } from "../../pages/UserPages/Profile";
 import LoginCheck from "../LoginCheck";
-import ProfileDiv from "./ProfileDiv";
+import ProfileLayOut from "./ProfileLayOut";
 
 interface Props {
   PROFILE_IMG: any;
@@ -17,7 +17,7 @@ function ProfileImg({ PROFILE_IMG }: Props) {
   return (
     <>
       <LoginCheck />
-      <ProfileDiv
+      <ProfileLayOut
         divName="프로필 이미지"
         divContent={divContent}
         btnName="변경하기"

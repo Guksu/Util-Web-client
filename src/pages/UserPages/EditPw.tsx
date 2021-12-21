@@ -2,9 +2,9 @@ import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { client } from "../apollo";
-import { isLoginAtom } from "../atom";
-import LoginCheck from "../components/LoginCheck";
+import { client } from "../../apollo";
+import { isLoginAtom } from "../../atom";
+import LoginCheck from "../../components/LoginCheck";
 
 interface ChangePwOutput {
   ok: string;

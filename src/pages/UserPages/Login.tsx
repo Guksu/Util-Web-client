@@ -2,7 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { isLoginAtom } from "../atom";
+import { isLoginAtom } from "../../atom";
 
 interface LoginOutput {
   ok: boolean;
