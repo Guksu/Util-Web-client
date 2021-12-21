@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { client } from "../../apollo";
 import { isLoginAtom } from "../../atom";
-import LoginCheck from "../LoginCheck";
 import ProfileLayOut from "./ProfileLayOut";
 
 interface DeleteUserOutput {
@@ -61,7 +60,6 @@ function DeleteUser() {
 
   return (
     <>
-      <LoginCheck />
       <ProfileLayOut
         divName="회원탈퇴"
         divContent={divContent}

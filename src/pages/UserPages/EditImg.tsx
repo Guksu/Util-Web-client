@@ -1,7 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import LoginCheck from "../../components/LoginCheck";
 
 interface ChangeUserImgOutput {
   ok: string;
@@ -49,7 +48,6 @@ function EditImg() {
 
   return (
     <>
-      <LoginCheck />
       <form onSubmit={onSubmit}>
         <input
           type={"file"}

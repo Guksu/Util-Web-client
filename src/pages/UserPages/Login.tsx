@@ -2,7 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { isLoginAtom } from "../../atom";
+import { isAuthTokenAtom, isLoginAtom } from "../../atom";
 
 interface LoginOutput {
   ok: boolean;
@@ -28,6 +28,7 @@ function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const isLogin = useSetRecoilState(isLoginAtom);
+  const isAuthToken = useSetRecoilState(isAuthTokenAtom);
   const history = useHistory();
   const [login] = useMutation<LoginIF>(LOGIN, {
     variables: {
@@ -44,6 +45,7 @@ function Login() {
       const { data } = await login();
       if (data?.login.ok && data.login.token) {
         localStorage.setItem("token", data.login.token);
+        isAuthToken(data.login.token);
         isLogin(true);
         history.push("/");
       } else {

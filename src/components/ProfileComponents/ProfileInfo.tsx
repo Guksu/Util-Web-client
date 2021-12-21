@@ -1,7 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 import { ProfileInfoIF } from "../../pages/UserPages/Profile";
-import LoginCheck from "../LoginCheck";
 import ProfileLayOut from "./ProfileLayOut";
 
 interface Props {
@@ -21,7 +20,6 @@ function ProfileInfo({ PROFILE_INFO }: Props) {
 
   return (
     <>
-      <LoginCheck />
       <ProfileLayOut
         divName="회원정보"
         btnName="비밀번호 변경하기"

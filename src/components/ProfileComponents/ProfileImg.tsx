@@ -1,7 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 import { ProfileInfoIF } from "../../pages/UserPages/Profile";
-import LoginCheck from "../LoginCheck";
 import ProfileLayOut from "./ProfileLayOut";
 
 interface Props {
@@ -16,7 +15,6 @@ function ProfileImg({ PROFILE_IMG }: Props) {
 
   return (
     <>
-      <LoginCheck />
       <ProfileLayOut
         divName="프로필 이미지"
         divContent={divContent}

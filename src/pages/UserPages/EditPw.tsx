@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { client } from "../../apollo";
 import { isLoginAtom } from "../../atom";
-import LoginCheck from "../../components/LoginCheck";
 
 interface ChangePwOutput {
   ok: string;
@@ -55,7 +54,6 @@ function EditPw() {
   };
   return (
     <>
-      <LoginCheck />
       <form onSubmit={onSubmit}>
         <input
           placeholder="바꾸실 비빌번호를 입력하세요"
