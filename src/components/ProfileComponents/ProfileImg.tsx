@@ -10,7 +10,9 @@ interface Props {
 function ProfileImg({ PROFILE_IMG }: Props) {
   const { data } = useQuery<ProfileInfoIF>(PROFILE_IMG);
   const userImg = data?.profileInfo.userImgUrl;
-  const divContent = <h1>{userImg}</h1>;
+  const divContent = (
+    <img src={userImg} alt="프로필사진" height={300} width={200} />
+  );
   const history = useHistory();
 
   return (
