@@ -1,8 +1,20 @@
+import { gql, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isLoginAtom, isTempAtom } from "../atom";
+import { ProfileInfoIF } from "../pages/UserPages/Profile";
 import ProfileNav from "./ProfileComponents/ProfileNav";
+
+const PROFILE_INFO = gql`
+  query profileInfo {
+    profileInfo {
+      ok
+      error
+      userImgUrl
+    }
+  }
+`;
 
 function Header() {
   const history = useHistory();
@@ -11,6 +23,7 @@ function Header() {
   const [profileMenuTogle, setProfileMenuTogle] = useState(false);
   const [temp, setTemp] = useRecoilState(isTempAtom);
   const isLogin = useRecoilValue(isLoginAtom);
+  const { data } = useQuery<ProfileInfoIF>(PROFILE_INFO);
   const API_KEY = process.env.REACT_APP_WEATHER_KEY;
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
 
@@ -44,13 +57,15 @@ function Header() {
       <div>메뉴</div>
       {isLogin ? (
         <>
-          <div
+          <img
+            src={data?.profileInfo.userImgUrl}
+            alt="프로필사진"
             onClick={() => {
               setProfileMenuTogle(!profileMenuTogle);
             }}
-          >
-            프로필사진
-          </div>
+            height={100}
+            width={100}
+          />
           <div
             onMouseLeave={() => {
               setProfileMenuTogle(!profileMenuTogle);
