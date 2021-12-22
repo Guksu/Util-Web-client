@@ -47,7 +47,7 @@ function EditImg() {
 
         if (data?.changeUserImg.ok) {
           alert("이미지가 변경되었습니다.");
-          window.location.replace("/account/detail");
+          window.location.replace("/user");
         } else {
           alert(data?.changeUserImg.error);
         }
