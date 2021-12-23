@@ -13,6 +13,7 @@ import LoginCheck from "./components/LoginCheck";
 import Fassion from "./pages/Fassion/Fassion";
 import MyStyle from "./pages/Fassion/MyStyle";
 import Uploads from "./pages/Fassion/Uploads";
+import OthersStyle from "./pages/Fassion/OthersStyle";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
         <Route exact path={"/account"} component={Account} />
         <Route exact path={"/account/detail"} component={AccountDetail} />
         <Route exact path={"/fassion"} component={Fassion} />
-        <Route exact path={"/fassion/mystyle"} component={MyStyle} />
+        <Route exact path={"/fassion/my"} component={MyStyle} />
+        <Route exact path={"/fassion/others"} component={OthersStyle} />
         <Route exact path={"/fassion/uploads"} component={Uploads} />
       </Switch>
     </BrowserRouter>

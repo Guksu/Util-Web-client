@@ -27,9 +27,11 @@ function Fassion() {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getImg();
   }, [gender]);
+
   return (
     <>
       <button
@@ -64,7 +66,7 @@ function Fassion() {
         />
         <div
           onClick={() => {
-            imgNum < imgList.length && setImgNum(imgNum + 1);
+            imgNum < imgList.length - 1 && setImgNum(imgNum + 1);
           }}
         >
           ▶
@@ -72,12 +74,18 @@ function Fassion() {
       </div>
       <div
         onClick={() => {
-          history.push("/fassion/mystyle");
+          history.push("/fassion/my");
         }}
       >
         My Daily
       </div>
-      <div>Other's Daily</div>
+      <div
+        onClick={() => {
+          history.push("/fassion/others");
+        }}
+      >
+        Other's Daily
+      </div>
     </>
   );
 }

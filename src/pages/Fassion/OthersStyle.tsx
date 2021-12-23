@@ -1,27 +1,15 @@
 import { gql, useQuery } from "@apollo/client";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import FassionLayOut from "../../components/FassionComponents/FassionLayOut";
+import { GetMyFassionListOutput } from "./MyStyle";
 
-export interface Fassion {
-  fassionNo: number;
-  date: string;
-  imgUrl: string;
+interface GetAllFassionListIF {
+  getAllFassionList: GetMyFassionListOutput;
 }
 
-export interface GetMyFassionListOutput {
-  ok: string;
-  error?: string;
-  fassion?: Fassion[];
-}
-
-interface GetMyFassionListIF {
-  getMyFassionList: GetMyFassionListOutput;
-}
-
-const GET_MY_FASSION_LIST = gql`
-  query getMyFassionList {
-    getMyFassionList {
+const GET_ALL_FASSION_LIST = gql`
+  query getAllFassionList {
+    getAllFassionList {
       ok
       error
       fassion {
@@ -33,18 +21,19 @@ const GET_MY_FASSION_LIST = gql`
   }
 `;
 
-function MyStyle() {
-  const history = useHistory();
+function OthersStyle() {
   const { data: fassionList } =
-    useQuery<GetMyFassionListIF>(GET_MY_FASSION_LIST);
+    useQuery<GetAllFassionListIF>(GET_ALL_FASSION_LIST);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [imgPerPage] = useState(9);
   const paginate: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     setCurrentPage(parseInt(e.currentTarget.value));
   };
+
   const lastIndex = currentPage * imgPerPage;
   const firstIndex = lastIndex - imgPerPage;
-  const currentImg = fassionList?.getMyFassionList.fassion?.slice(
+  const currentImg = fassionList?.getAllFassionList.fassion?.slice(
     firstIndex,
     lastIndex
   );
@@ -61,25 +50,16 @@ function MyStyle() {
       </ul>
     );
   });
-
   return (
     <>
       <FassionLayOut
         content={content}
         perPage={imgPerPage}
-        totalPage={fassionList?.getMyFassionList.fassion?.length}
+        totalPage={fassionList?.getAllFassionList.fassion?.length}
         onClick={paginate}
       />
-
-      <button
-        onClick={() => {
-          history.push("/fassion/uploads");
-        }}
-      >
-        업로드
-      </button>
     </>
   );
 }
 
-export default MyStyle;
+export default OthersStyle;
