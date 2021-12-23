@@ -10,6 +10,7 @@ import EditImg from "./pages/UserPages/EditImg";
 import Account from "./pages/AccountPages/Account";
 import AccountDetail from "./pages/AccountPages/AccountDetail";
 import LoginCheck from "./components/LoginCheck";
+import Fassion from "./pages/Fassion/Fassion";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route exact path={"/user/edit/img"} component={EditImg} />
         <Route exact path={"/account"} component={Account} />
         <Route exact path={"/account/detail"} component={AccountDetail} />
+        <Route exact path={"/fassion"} component={Fassion} />
       </Switch>
     </BrowserRouter>
   );

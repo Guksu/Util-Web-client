@@ -10,13 +10,22 @@ function Home() {
     <>
       <h1>Util Web</h1>
       {isLogin ? (
-        <div
-          onClick={() => {
-            history.push("/account");
-          }}
-        >
-          가계부
-        </div>
+        <>
+          <div
+            onClick={() => {
+              history.push("/account");
+            }}
+          >
+            가계부
+          </div>
+          <div
+            onClick={() => {
+              history.push("/fassion");
+            }}
+          >
+            스타일
+          </div>
+        </>
       ) : (
         <></>
       )}
