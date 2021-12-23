@@ -47,7 +47,7 @@ function Login() {
         localStorage.setItem("token", data.login.token);
         isAuthToken(data.login.token);
         isLogin(true);
-        history.push("/");
+        window.location.replace("/");
       } else {
         alert(data?.login.error);
       }

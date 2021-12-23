@@ -11,6 +11,7 @@ interface ImgIF {
 function Fassion() {
   const isTemp = useRecoilValue(isTempAtom);
   const [gender, setGender] = useState("남자");
+  const [imgNum, setImgNum] = useState(0);
   const history = useHistory();
   const [imgList, setImgList] = useState<ImgIF[]>([]);
 
@@ -47,15 +48,35 @@ function Fassion() {
       >
         여성
       </button>
+      <div
+        onClick={() => {
+          imgNum !== 0 && setImgNum(imgNum - 1);
+        }}
+      >
+        ◀
+      </div>
       <div>
         <img
-          src={`${imgList[0]?.link}`}
+          src={`${imgList[imgNum]?.link}`}
           alt="이미지 리스트"
           height={300}
           width={300}
         />
+        <div
+          onClick={() => {
+            imgNum < imgList.length && setImgNum(imgNum + 1);
+          }}
+        >
+          ▶
+        </div>
       </div>
-      <div>My Daily</div>
+      <div
+        onClick={() => {
+          history.push("/fassion/mystyle");
+        }}
+      >
+        My Daily
+      </div>
       <div>Other's Daily</div>
     </>
   );
