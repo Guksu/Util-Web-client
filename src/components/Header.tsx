@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { isLoginAtom, isTempAtom } from "../atom";
+import { isLatAtom, isLoginAtom, isLonAtom, isTempAtom } from "../atom";
 import { ProfileInfoIF } from "../pages/UserPages/Profile";
 import ProfileNav from "./ProfileComponents/ProfileNav";
 
@@ -18,8 +18,8 @@ const PROFILE_INFO = gql`
 
 function Header() {
   const history = useHistory();
-  const [lat, setLat] = useState(0);
-  const [lon, setLon] = useState(0);
+  const [lat, setLat] = useRecoilState(isLatAtom);
+  const [lon, setLon] = useRecoilState(isLonAtom);
   const [profileMenuTogle, setProfileMenuTogle] = useState(false);
   const [temp, setTemp] = useRecoilState(isTempAtom);
   const isLogin = useRecoilValue(isLoginAtom);

@@ -14,3 +14,13 @@ export const isAuthTokenAtom = atom({
   key: "isAuthToken",
   default: localStorage.getItem("token"),
 });
+
+export const isLatAtom = atom({
+  key: "isLat",
+  default: 0,
+});
+
+export const isLonAtom = atom({
+  key: "isLon",
+  default: 0,
+});
