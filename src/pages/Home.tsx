@@ -25,6 +25,13 @@ function Home() {
           >
             스타일
           </div>
+          <div
+            onClick={() => {
+              history.push("/food");
+            }}
+          >
+            맛집
+          </div>
         </>
       ) : (
         <></>

@@ -14,6 +14,7 @@ import Fassion from "./pages/Fassion/Fassion";
 import MyStyle from "./pages/Fassion/MyStyle";
 import Uploads from "./pages/Fassion/Uploads";
 import OthersStyle from "./pages/Fassion/OthersStyle";
+import Food from "./pages/Food/Food";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route exact path={"/fassion/my"} component={MyStyle} />
         <Route exact path={"/fassion/others"} component={OthersStyle} />
         <Route exact path={"/fassion/uploads"} component={Uploads} />
+        <Route exact path={"/food"} component={Food} />
       </Switch>
     </BrowserRouter>
   );
