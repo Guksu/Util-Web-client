@@ -45,7 +45,6 @@ function Food() {
       const menuEl: any = document.getElementById("menu_wrap");
       const fragment = document.createDocumentFragment();
       const bounds = new kakao.maps.LatLngBounds();
-      let listStr = "";
 
       // 검색 결과 목록에 추가된 항목들을 제거
       removeAllChildNods(listEl);
