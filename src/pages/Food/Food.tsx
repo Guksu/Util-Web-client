@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { isLatAtom, isLonAtom } from "../../atom";
+import axios from "axios";
 
 function Food() {
   const kakao = (window as any).kakao;
@@ -24,7 +25,10 @@ function Food() {
 
     function searchPlaces() {
       // 장소검색 객체를 통해 키워드로 장소검색을 요청
-      ps.keywordSearch(keyword, placesSearchCB);
+      const options = {
+        size: 9,
+      };
+      ps.keywordSearch(keyword, placesSearchCB, options);
     }
     // 장소검색이 완료됐을 때 호출되는 콜백함수
     function placesSearchCB(data: any, status: any, pagination: any) {
@@ -42,7 +46,6 @@ function Food() {
     // 검색 결과 목록과 마커를 표출하는 함수
     function displayPlaces(places: any) {
       const listEl: any = document.getElementById("placesList");
-      const menuEl: any = document.getElementById("menu_wrap");
       const fragment = document.createDocumentFragment();
       const bounds = new kakao.maps.LatLngBounds();
 
@@ -88,7 +91,6 @@ function Food() {
 
       // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
       listEl.appendChild(fragment);
-      menuEl.scrollTop = 0;
 
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
       map.setBounds(bounds);
@@ -97,32 +99,24 @@ function Food() {
     // 검색결과 항목을 Element로 반환하는 함수
     function getListItem(index: any, places: any) {
       const el = document.createElement("li");
-      let itemStr =
-        "<span " +
-        (index + 1) +
-        '"></span>' +
-        "<div >" +
-        "   <h5>" +
-        places.place_name +
-        "</h5>";
+      const place = places.place_name;
+      const getName = async () => {
+        try {
+          const {
+            data: { items },
+          } = await axios.get("http://localhost:4000/foodInfo/", {
+            params: { place },
+          });
+          window.open(items[0].link);
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
-      if (places.road_address_name) {
-        itemStr +=
-          "    <span>" +
-          places.road_address_name +
-          "</span>" +
-          "   <span >" +
-          places.address_name +
-          "</span>";
-      } else {
-        itemStr += "    <span>" + places.address_name + "</span>";
-      }
-
-      itemStr += "  <span >" + places.phone + "</span>" + "</div>";
+      let itemStr = "<h5>" + places.place_name + "</h5>";
 
       el.innerHTML = itemStr;
-      el.className = "item";
-
+      el.onclick = getName;
       return el;
     }
 
@@ -223,7 +217,12 @@ function Food() {
         />
         <button>검색하기</button>
       </form>
-      <div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+        }}
+      >
         <div
           id="map"
           style={{
@@ -233,11 +232,16 @@ function Food() {
             overflow: "hidden",
           }}
         />
-        <div id="menu_wrap">
-          <ul id="placesList"></ul>
-          <div id="pagination"></div>
-        </div>
+        <ul
+          id="placesList"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gridTemplateRows: "1fr 1fr",
+          }}
+        ></ul>
       </div>
+      <div id="pagination"></div>
       <button>후기 게시판 이동</button>
     </>
   );
