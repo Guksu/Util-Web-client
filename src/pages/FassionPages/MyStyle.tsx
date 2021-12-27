@@ -2,6 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import FassionLayOut from "../../components/FassionComponents/FassionLayOut";
+import Pagination from "../../components/Pagination";
 
 export interface Fassion {
   fassionNo: number;
@@ -64,8 +65,8 @@ function MyStyle() {
 
   return (
     <>
-      <FassionLayOut
-        content={content}
+      <FassionLayOut content={content} />
+      <Pagination
         perPage={imgPerPage}
         totalPage={fassionList?.getMyFassionList.fassion?.length}
         onClick={paginate}

@@ -55,6 +55,7 @@ function Header() {
       <div>다크모드</div>
       <img
         src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
+        alt="기상 이미지"
         height={60}
         width={60}
       />

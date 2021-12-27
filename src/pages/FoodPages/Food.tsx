@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { isLatAtom, isLonAtom } from "../../atom";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Food() {
   const kakao = (window as any).kakao;
   const isLat = useRecoilValue(isLatAtom);
   const isLon = useRecoilValue(isLonAtom);
   const [keyword, setKeyword] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     let markers: any = [];
@@ -242,7 +244,13 @@ function Food() {
         ></ul>
       </div>
       <div id="pagination"></div>
-      <button>후기 게시판 이동</button>
+      <button
+        onClick={() => {
+          history.push("/food/review");
+        }}
+      >
+        후기 게시판
+      </button>
     </>
   );
 }

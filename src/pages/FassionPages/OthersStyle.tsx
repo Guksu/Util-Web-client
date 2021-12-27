@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { useState } from "react";
 import FassionLayOut from "../../components/FassionComponents/FassionLayOut";
+import Pagination from "../../components/Pagination";
 import { GetMyFassionListOutput } from "./MyStyle";
 
 interface GetAllFassionListIF {
@@ -52,8 +53,8 @@ function OthersStyle() {
   });
   return (
     <>
-      <FassionLayOut
-        content={content}
+      <FassionLayOut content={content} />
+      <Pagination
         perPage={imgPerPage}
         totalPage={fassionList?.getAllFassionList.fassion?.length}
         onClick={paginate}

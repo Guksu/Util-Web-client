@@ -15,6 +15,8 @@ import MyStyle from "./pages/FassionPages/MyStyle";
 import Uploads from "./pages/FassionPages/Uploads";
 import OthersStyle from "./pages/FassionPages/OthersStyle";
 import Food from "./pages/FoodPages/Food";
+import FoodReviewBoard from "./pages/FoodPages/FoodReviewBoard";
+import FoodReviewCreate from "./pages/FoodPages/FoodReviewCreate";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route exact path={"/fassion/others"} component={OthersStyle} />
         <Route exact path={"/fassion/uploads"} component={Uploads} />
         <Route exact path={"/food"} component={Food} />
+        <Route exact path={"/food/review"} component={FoodReviewBoard} />
+        <Route exact path={"/food/create"} component={FoodReviewCreate} />
       </Switch>
     </BrowserRouter>
   );
