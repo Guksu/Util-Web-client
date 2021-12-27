@@ -10,11 +10,11 @@ import EditImg from "./pages/UserPages/EditImg";
 import Account from "./pages/AccountPages/Account";
 import AccountDetail from "./pages/AccountPages/AccountDetail";
 import LoginCheck from "./components/LoginCheck";
-import Fassion from "./pages/Fassion/Fassion";
-import MyStyle from "./pages/Fassion/MyStyle";
-import Uploads from "./pages/Fassion/Uploads";
-import OthersStyle from "./pages/Fassion/OthersStyle";
-import Food from "./pages/Food/Food";
+import Fassion from "./pages/FassionPages/Fassion";
+import MyStyle from "./pages/FassionPages/MyStyle";
+import Uploads from "./pages/FassionPages/Uploads";
+import OthersStyle from "./pages/FassionPages/OthersStyle";
+import Food from "./pages/FoodPages/Food";
 
 function App() {
   return (
