@@ -22,6 +22,7 @@ function Header() {
   const [lon, setLon] = useRecoilState(isLonAtom);
   const [profileMenuTogle, setProfileMenuTogle] = useState(false);
   const [temp, setTemp] = useRecoilState(isTempAtom);
+  const [weatherIcon, setWeatherIcon] = useState("");
   const isLogin = useRecoilValue(isLoginAtom);
   const { data } = useQuery<ProfileInfoIF>(PROFILE_INFO);
   const API_KEY = process.env.REACT_APP_WEATHER_KEY;
@@ -38,6 +39,7 @@ function Header() {
       .then((res) => res.json())
       .then((data) => {
         setTemp(Math.ceil(data.main.temp));
+        setWeatherIcon(data.weather[0].icon);
       });
   });
 
@@ -51,9 +53,12 @@ function Header() {
         메인이동
       </div>
       <div>다크모드</div>
-      <div>
-        온도: {temp} /위도 : {lat}/ 경도 : {lon}
-      </div>
+      <img
+        src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
+        height={60}
+        width={60}
+      />
+      <div>온도: {temp}</div>
       <div>메뉴</div>
       {isLogin ? (
         <>
