@@ -24,3 +24,8 @@ export const isLonAtom = atom({
   key: "isLon",
   default: 0,
 });
+
+export const isFoodNoAtom = atom({
+  key: "isFoodNo",
+  default: 0,
+});

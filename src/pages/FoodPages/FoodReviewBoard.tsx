@@ -1,6 +1,8 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { isFoodNoAtom } from "../../atom";
 import FoodBoardLayOut from "../../components/FoodComponents/FoodBoardLayOut";
 import Pagination from "../../components/Pagination";
 
@@ -40,10 +42,30 @@ const GET_FOOD_REVIEW_LIST = gql`
   }
 `;
 
+interface ViewUpdateOutput {
+  ok: string;
+  error?: string;
+}
+
+interface ViewUpdateIF {
+  viewUpdate: ViewUpdateOutput;
+}
+
+const VIEW_UPDATE = gql`
+  mutation viewUpdate($viewUpdateInput: ViewUpadateInput!) {
+    viewUpdate(input: $viewUpdateInput) {
+      ok
+      error
+    }
+  }
+`;
+
 function FoodReviewBoard() {
   const [category, setCategory] = useState("");
-  const [search, setSearch] = useState("");
   const history = useHistory();
+  const isFoodNo = useSetRecoilState(isFoodNoAtom);
+
+  //getFoodReviewList
   const { data: reviewList } =
     useQuery<GetFoodReviewListIF>(GET_FOOD_REVIEW_LIST);
   const allList = reviewList?.getFoodReviewList.review?.filter(
@@ -52,7 +74,11 @@ function FoodReviewBoard() {
   const selectList = reviewList?.getFoodReviewList.review?.filter(
     (item) => item.category === category
   );
-  const [list, setList] = useState(allList);
+  const [list, setList] = useState<Foodboard[] | undefined>(allList);
+
+  //viewUpdate
+  const [viewUpdate] = useMutation<ViewUpdateIF>(VIEW_UPDATE);
+
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [listPerPage] = useState(9);
@@ -67,7 +93,27 @@ function FoodReviewBoard() {
     return (
       <div key={item.FoodBoardNo}>
         <span>{item.category}</span>
-        <span>{item.title}</span>
+        <span
+          onClick={async () => {
+            try {
+              const { data: viewUpdateCheck } = await viewUpdate({
+                variables: {
+                  viewUpdateInput: { FoodBoardNo: item.FoodBoardNo },
+                },
+              });
+              if (viewUpdateCheck?.viewUpdate.ok) {
+                isFoodNo(item.FoodBoardNo);
+                history.push("/food/review");
+              } else {
+                alert(viewUpdateCheck?.viewUpdate.error);
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          }}
+        >
+          {item.title}
+        </span>
         <span>{item.userName}</span>
         <span>{item.date}</span>
         <span>{item.view}</span>
@@ -78,6 +124,10 @@ function FoodReviewBoard() {
   useEffect(() => {
     setList(selectList);
   }, [category]);
+
+  useEffect(() => {
+    setList(allList);
+  }, [reviewList]);
 
   return (
     <>
@@ -115,12 +165,6 @@ function FoodReviewBoard() {
           }}
         >{`기타`}</span>
         <div>
-          <input
-            type={"text"}
-            onChange={(e) => {
-              setSearch(e.currentTarget.value);
-            }}
-          />
           <button
             onClick={() => {
               history.push("/food/create");

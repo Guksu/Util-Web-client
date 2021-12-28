@@ -69,7 +69,7 @@ function Login() {
           }}
         />
         <input
-          type={"text"}
+          type={"password"}
           name="passwrod"
           placeholder="Passwrod를 입력하세요"
           required

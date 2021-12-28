@@ -246,7 +246,7 @@ function Food() {
       <div id="pagination"></div>
       <button
         onClick={() => {
-          history.push("/food/review");
+          history.push("/food/reviewList");
         }}
       >
         후기 게시판
