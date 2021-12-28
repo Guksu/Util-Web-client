@@ -45,6 +45,7 @@ function Login() {
       const { data } = await login();
       if (data?.login.ok && data.login.token) {
         localStorage.setItem("token", data.login.token);
+        localStorage.setItem("id", id);
         isAuthToken(data.login.token);
         isLogin(true);
         window.location.replace("/");

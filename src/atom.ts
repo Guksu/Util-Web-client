@@ -29,3 +29,13 @@ export const isFoodNoAtom = atom({
   key: "isFoodNo",
   default: 0,
 });
+
+export const isFoodTitleAtom = atom({
+  key: "isFoodTitle",
+  default: "",
+});
+
+export const isFoodContentAtom = atom({
+  key: "isFoodContent",
+  default: "",
+});

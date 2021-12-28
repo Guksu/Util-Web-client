@@ -1,6 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
-import { useRecoilValue } from "recoil";
-import { isFoodNoAtom } from "../../atom";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { isFoodContentAtom, isFoodNoAtom, isFoodTitleAtom } from "../../atom";
 
 interface GetReviewOutput {
   ok: string;
@@ -36,8 +38,17 @@ const GET_REVIEW = gql`
 
 function FoodReview() {
   const isFoodNo = useRecoilValue(isFoodNoAtom);
+  const isFoodTitle = useSetRecoilState<any>(isFoodTitleAtom);
+  const isFoodContent = useSetRecoilState<any>(isFoodContentAtom);
+
+  const history = useHistory();
   const { data: reviewData } = useQuery<GetReviewIF>(GET_REVIEW, {
     variables: { getReviewInput: { FoodBoardNo: isFoodNo } },
+  });
+
+  useEffect(() => {
+    isFoodTitle(reviewData?.getReview.review?.title);
+    isFoodContent(reviewData?.getReview.review?.content);
   });
   return (
     <>
@@ -50,6 +61,16 @@ function FoodReview() {
         <span>조회 수 : {reviewData?.getReview.review?.view}</span>
       </div>
       <div>{reviewData?.getReview.review?.content}</div>
+      {localStorage.getItem("id") ===
+        reviewData?.getReview.review?.userName && (
+        <button
+          onClick={() => {
+            history.push("/food/review/edit");
+          }}
+        >
+          수정하기
+        </button>
+      )}
     </>
   );
 }

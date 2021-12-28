@@ -18,6 +18,7 @@ import Food from "./pages/FoodPages/Food";
 import FoodReviewBoard from "./pages/FoodPages/FoodReviewBoard";
 import FoodReviewCreate from "./pages/FoodPages/FoodReviewCreate";
 import FoodReview from "./pages/FoodPages/FoodReview";
+import FoodReviewEdit from "./pages/FoodPages/FoodReviewEdit";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route exact path={"/food/reviewList"} component={FoodReviewBoard} />
         <Route exact path={"/food/create"} component={FoodReviewCreate} />
         <Route exact path={"/food/review"} component={FoodReview} />
+        <Route exact path={"/food/review/edit"} component={FoodReviewEdit} />
       </Switch>
     </BrowserRouter>
   );
