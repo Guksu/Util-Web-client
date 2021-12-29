@@ -1,6 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import AccountChart from "../../components/AccountComponents/AccountChart";
 
 interface CreateAccountOutput {
   ok: string;
@@ -63,6 +64,7 @@ function Account() {
 
   return (
     <>
+      <AccountChart />
       <form onSubmit={onSubmit}>
         <input
           type={"date"}
