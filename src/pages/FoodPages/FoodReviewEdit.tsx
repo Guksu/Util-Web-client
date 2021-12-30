@@ -1,6 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { isFoodContentAtom, isFoodNoAtom, isFoodTitleAtom } from "../../atom";
 

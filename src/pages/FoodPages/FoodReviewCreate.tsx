@@ -1,6 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 
 interface CreateReviewOutput {
   ok: string;
