@@ -1,28 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { ResponsivePie } from "@nivo/pie";
 import { useEffect, useState } from "react";
-
-interface DataIF {
-  id: string;
-  value: number;
-  color: string;
-}
-
-interface Account {
-  category: string;
-  type: string;
-  amount: number;
-}
-
-interface GetAccountListOutput {
-  ok: string;
-  error: string;
-  account?: Account[];
-}
-
-interface GetAccountListIF {
-  getAccountList: GetAccountListOutput;
-}
+import { DataIF, GetAccountListIF } from "../../intefaces/AccountIF";
 
 const GET_ALL_ACCOUNT_LIST = gql`
   query getAccountList {
@@ -217,12 +196,8 @@ function AccountChart() {
         {num > 0 && (
           <span
             onClick={() => {
-              {
-                num === 2 && setData(profitData);
-              }
-              {
-                num === 1 && setData(allData);
-              }
+              num === 2 && setData(profitData);
+              num === 1 && setData(allData);
               setNum(num - 1);
             }}
           >
@@ -250,7 +225,7 @@ function AccountChart() {
             arcLinkLabelsColor={{ from: "color", modifiers: [] }}
             isInteractive={false}
             arcLabel={function (e) {
-              return e.id + " (" + e.value + "%" + ")";
+              return e.id + ` ${e.value}% `;
             }}
             arcLabelsTextColor={{ from: "color", modifiers: [["darker", 8]] }}
             legends={[]}
@@ -259,12 +234,8 @@ function AccountChart() {
         {num < 2 && (
           <span
             onClick={() => {
-              {
-                num === 0 && setData(profitData);
-              }
-              {
-                num === 1 && setData(expenseData);
-              }
+              num === 0 && setData(profitData);
+              num === 1 && setData(expenseData);
               setNum(num + 1);
             }}
           >

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isLatAtom, isLoginAtom, isLonAtom, isTempAtom } from "../atom";
-import { ProfileInfoIF } from "../pages/UserPages/Profile";
+import { ProfileInfoIF } from "../intefaces/UserIF";
 import ProfileNav from "./ProfileComponents/ProfileNav";
 
 const PROFILE_INFO = gql`

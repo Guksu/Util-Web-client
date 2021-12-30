@@ -5,25 +5,11 @@ import { useSetRecoilState } from "recoil";
 import { isFoodNoAtom } from "../../atom";
 import FoodBoardLayOut from "../../components/FoodComponents/FoodBoardLayOut";
 import Pagination from "../../components/Pagination";
-
-interface Foodboard {
-  FoodBoardNo: number;
-  category: string;
-  title: string;
-  date: string;
-  view: string;
-  userName: string;
-}
-
-interface GetFoodReviewListOutput {
-  ok: string;
-  error?: string;
-  review?: Foodboard[];
-}
-
-interface GetFoodReviewListIF {
-  getFoodReviewList: GetFoodReviewListOutput;
-}
+import {
+  FoodBoard,
+  GetFoodReviewListIF,
+  ViewUpdateIF,
+} from "../../intefaces/FoodIF";
 
 const GET_FOOD_REVIEW_LIST = gql`
   query getFoodReviewList {
@@ -41,15 +27,6 @@ const GET_FOOD_REVIEW_LIST = gql`
     }
   }
 `;
-
-interface ViewUpdateOutput {
-  ok: string;
-  error?: string;
-}
-
-interface ViewUpdateIF {
-  viewUpdate: ViewUpdateOutput;
-}
 
 const VIEW_UPDATE = gql`
   mutation viewUpdate($viewUpdateInput: ViewUpadateInput!) {
@@ -74,7 +51,7 @@ function FoodReviewBoard() {
   const selectList = reviewList?.getFoodReviewList.review?.filter(
     (item) => item.category === category
   );
-  const [list, setList] = useState<Foodboard[] | undefined>(allList);
+  const [list, setList] = useState<FoodBoard[] | undefined>(allList);
 
   //viewUpdate
   const [viewUpdate] = useMutation<ViewUpdateIF>(VIEW_UPDATE);

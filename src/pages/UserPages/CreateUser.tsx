@@ -1,17 +1,9 @@
 import { gql, useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { CreateUserIF } from "../../intefaces/UserIF";
 
-interface CreateUserOutput {
-  ok: string;
-  error?: string;
-}
-
-interface CreateUserIF {
-  createUser: CreateUserOutput;
-}
-
-const CREATE_USER = gql`
+export const CREATE_USER = gql`
   mutation createUser($createUserInput: CreateUserInput!) {
     createUser(input: $createUserInput) {
       ok

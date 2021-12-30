@@ -1,15 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-
-interface CreateFassionOutput {
-  ok: string;
-  error?: string;
-}
-
-interface CreateFassionIF {
-  createFassion: CreateFassionOutput;
-}
+import { CreateFassionIF } from "../../intefaces/FassionIF";
 
 const CREATE_FASSION = gql`
   mutation createFassion($createFassionInput: CreateFassionInput!) {

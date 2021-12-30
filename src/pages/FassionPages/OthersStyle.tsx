@@ -2,11 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useState } from "react";
 import FassionLayOut from "../../components/FassionComponents/FassionLayOut";
 import Pagination from "../../components/Pagination";
-import { GetMyFassionListOutput } from "./MyStyle";
-
-interface GetAllFassionListIF {
-  getAllFassionList: GetMyFassionListOutput;
-}
+import { GetAllFassionListIF } from "../../intefaces/FassionIF";
 
 const GET_ALL_FASSION_LIST = gql`
   query getAllFassionList {

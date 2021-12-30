@@ -4,15 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { client } from "../../apollo";
 import { isLoginAtom } from "../../atom";
-
-interface ChangePwOutput {
-  ok: string;
-  error?: string;
-}
-
-interface ChangePwIF {
-  changePw: ChangePwOutput;
-}
+import { ChangePwIF } from "../../intefaces/UserIF";
 
 const CHANGE_PW = gql`
   mutation changePw($changePwInput: ChangePwInput!) {

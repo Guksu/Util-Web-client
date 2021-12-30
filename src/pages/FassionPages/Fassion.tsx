@@ -3,10 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { isTempAtom } from "../../atom";
 import axios from "axios";
-
-interface ImgIF {
-  link: string[];
-}
+import { ImgIF } from "../../intefaces/FassionIF";
 
 function Fassion() {
   const isTemp = useRecoilValue(isTempAtom);

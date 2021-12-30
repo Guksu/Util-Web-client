@@ -4,16 +4,8 @@ import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { client } from "../../apollo";
 import { isLoginAtom } from "../../atom";
+import { DeleteUserIF } from "../../intefaces/UserIF";
 import ProfileLayOut from "./ProfileLayOut";
-
-interface DeleteUserOutput {
-  ok: string;
-  error?: string;
-}
-
-interface DeleteUserIF {
-  deleteUser: DeleteUserOutput;
-}
 
 const DELETE_USER = gql`
   mutation deleteUser($deleteUserInput: DeleteUserInput!) {

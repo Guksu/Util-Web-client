@@ -3,18 +3,6 @@ import DeleteUser from "../../components/ProfileComponents/DeleteUser";
 import ProfileImg from "../../components/ProfileComponents/ProfileImg";
 import ProfileInfo from "../../components/ProfileComponents/ProfileInfo";
 
-export interface ProfileInfoOutput {
-  ok: string;
-  error?: string;
-  name?: string;
-  id?: string;
-  userImgUrl?: string;
-}
-
-export interface ProfileInfoIF {
-  profileInfo: ProfileInfoOutput;
-}
-
 const PROFILE_INFO = gql`
   query profileInfo {
     profileInfo {

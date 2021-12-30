@@ -3,22 +3,7 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isFoodContentAtom, isFoodNoAtom, isFoodTitleAtom } from "../../atom";
-
-interface GetReviewOutput {
-  ok: string;
-  error?: string;
-  review?: {
-    title: string;
-    content: string;
-    date: string;
-    view: number;
-    userName: string;
-  };
-}
-
-interface GetReviewIF {
-  getReview: GetReviewOutput;
-}
+import { GetReviewIF } from "../../intefaces/FoodIF";
 
 const GET_REVIEW = gql`
   query getReview($getReviewInput: GetReviewInput!) {

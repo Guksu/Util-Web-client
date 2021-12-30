@@ -1,14 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
-
-interface ChangeUserImgOutput {
-  ok: string;
-  error?: string;
-}
-
-interface ChangeUserImgIF {
-  changeUserImg: ChangeUserImgOutput;
-}
+import { ChangeUserImgIF } from "../../intefaces/UserIF";
 
 const CHANGE_USER_IMG = gql`
   mutation changeUserImg($changeUserImgInput: ChangeUserImgInput!) {

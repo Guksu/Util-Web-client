@@ -1,23 +1,6 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import DetailLayOut from "../../components/AccountComponents/DetailLayOut";
-
-interface Account {
-  category: string;
-  type: string;
-  amount: number;
-  date: Date;
-  accountNo: number;
-}
-
-interface GetAccountListOutput {
-  ok: string;
-  error: string;
-  account?: Account[];
-}
-
-interface GetAccountListIF {
-  getAccountList: GetAccountListOutput;
-}
+import { DeleteAccountIF, GetAccountListIF } from "../../intefaces/AccountIF";
 
 const GET_ALL_ACCOUNT_LIST = gql`
   query getAccountList {
@@ -34,15 +17,6 @@ const GET_ALL_ACCOUNT_LIST = gql`
     }
   }
 `;
-
-interface DeleteAccountOutput {
-  ok: string;
-  error?: string;
-}
-
-interface DeleteAccountIF {
-  deleteAccount: DeleteAccountOutput;
-}
 
 const DELETE_ACCOUNT = gql`
   mutation deleteAccount($deleteAccountInput: DeleteAccountInput!) {

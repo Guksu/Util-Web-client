@@ -3,16 +3,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { isAuthTokenAtom, isLoginAtom } from "../../atom";
-
-interface LoginOutput {
-  ok: boolean;
-  error?: string;
-  token?: string;
-}
-
-interface LoginIF {
-  login: LoginOutput;
-}
+import { LoginIF } from "../../intefaces/UserIF";
 
 const LOGIN = gql`
   mutation login($loginInput: LoginInput!) {

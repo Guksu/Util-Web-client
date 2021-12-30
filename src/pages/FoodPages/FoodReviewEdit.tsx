@@ -2,15 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { isFoodContentAtom, isFoodNoAtom, isFoodTitleAtom } from "../../atom";
-
-interface EditReviewOutput {
-  ok: string;
-  error?: string;
-}
-
-interface EditReviewIF {
-  editReview: EditReviewOutput;
-}
+import { DeleteReviewIF, EditReviewIF } from "../../intefaces/FoodIF";
 
 const EDIT_REVIEW = gql`
   mutation editReview($editReviewInput: EditReviewInput!) {
@@ -20,15 +12,6 @@ const EDIT_REVIEW = gql`
     }
   }
 `;
-
-interface DeleteReviewOutput {
-  ok: string;
-  error?: string;
-}
-
-interface DeleteReviewIF {
-  deleteReview: DeleteReviewOutput;
-}
 
 const DELETE_REVIEW = gql`
   mutation deleteReview($deleteReviewInput: DeleteReviewInput!) {

@@ -3,22 +3,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import FassionLayOut from "../../components/FassionComponents/FassionLayOut";
 import Pagination from "../../components/Pagination";
-
-export interface Fassion {
-  fassionNo: number;
-  date: string;
-  imgUrl: string;
-}
-
-export interface GetMyFassionListOutput {
-  ok: string;
-  error?: string;
-  fassion?: Fassion[];
-}
-
-interface GetMyFassionListIF {
-  getMyFassionList: GetMyFassionListOutput;
-}
+import { GetMyFassionListIF } from "../../intefaces/FassionIF";
 
 const GET_MY_FASSION_LIST = gql`
   query getMyFassionList {
