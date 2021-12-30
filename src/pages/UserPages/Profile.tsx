@@ -1,25 +1,13 @@
-import { gql } from "@apollo/client";
 import DeleteUser from "../../components/ProfileComponents/DeleteUser";
 import ProfileImg from "../../components/ProfileComponents/ProfileImg";
 import ProfileInfo from "../../components/ProfileComponents/ProfileInfo";
-
-const PROFILE_INFO = gql`
-  query profileInfo {
-    profileInfo {
-      ok
-      error
-      name
-      id
-      userImgUrl
-    }
-  }
-`;
+import { PROFILE } from "../../gql/query";
 
 function Profile() {
   return (
     <>
-      <ProfileInfo PROFILE_INFO={PROFILE_INFO} />
-      <ProfileImg PROFILE_IMG={PROFILE_INFO} />
+      <ProfileInfo PROFILE_INFO={PROFILE} />
+      <ProfileImg PROFILE_IMG={PROFILE} />
       <DeleteUser />
     </>
   );

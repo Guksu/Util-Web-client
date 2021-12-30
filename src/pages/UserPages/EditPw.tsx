@@ -1,19 +1,11 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { client } from "../../apollo";
 import { isLoginAtom } from "../../atom";
-import { ChangePwIF } from "../../intefaces/UserIF";
-
-const CHANGE_PW = gql`
-  mutation changePw($changePwInput: ChangePwInput!) {
-    changePw(input: $changePwInput) {
-      ok
-      error
-    }
-  }
-`;
+import { CHANGE_PW } from "../../gql/mutation";
+import { ChangePwIF } from "../../interfaces/UserIF";
 
 function EditPw() {
   const [password, setPassword] = useState("");

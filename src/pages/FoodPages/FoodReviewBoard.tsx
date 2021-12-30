@@ -1,41 +1,17 @@
-import { gql, useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { isFoodNoAtom } from "../../atom";
 import FoodBoardLayOut from "../../components/FoodComponents/FoodBoardLayOut";
 import Pagination from "../../components/Pagination";
+import { VIEW_UPDATE } from "../../gql/mutation";
+import { GET_FOOD_REVIEW_LIST } from "../../gql/query";
 import {
   FoodBoard,
   GetFoodReviewListIF,
   ViewUpdateIF,
-} from "../../intefaces/FoodIF";
-
-const GET_FOOD_REVIEW_LIST = gql`
-  query getFoodReviewList {
-    getFoodReviewList {
-      ok
-      error
-      review {
-        FoodBoardNo
-        category
-        title
-        date
-        view
-        userName
-      }
-    }
-  }
-`;
-
-const VIEW_UPDATE = gql`
-  mutation viewUpdate($viewUpdateInput: ViewUpadateInput!) {
-    viewUpdate(input: $viewUpdateInput) {
-      ok
-      error
-    }
-  }
-`;
+} from "../../interfaces/FoodIF";
 
 function FoodReviewBoard() {
   const [category, setCategory] = useState("");

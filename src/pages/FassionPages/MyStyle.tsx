@@ -1,23 +1,10 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import FassionLayOut from "../../components/FassionComponents/FassionLayOut";
 import Pagination from "../../components/Pagination";
-import { GetMyFassionListIF } from "../../intefaces/FassionIF";
-
-const GET_MY_FASSION_LIST = gql`
-  query getMyFassionList {
-    getMyFassionList {
-      ok
-      error
-      fassion {
-        fassionNo
-        date
-        imgUrl
-      }
-    }
-  }
-`;
+import { GET_MY_FASSION_LIST } from "../../gql/query";
+import { GetMyFassionListIF } from "../../interfaces/FassionIF";
 
 function MyStyle() {
   const history = useHistory();

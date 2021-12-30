@@ -1,20 +1,11 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isLatAtom, isLoginAtom, isLonAtom, isTempAtom } from "../atom";
-import { ProfileInfoIF } from "../intefaces/UserIF";
+import { PROFILE_INFO } from "../gql/query";
+import { ProfileInfoIF } from "../interfaces/UserIF";
 import ProfileNav from "./ProfileComponents/ProfileNav";
-
-const PROFILE_INFO = gql`
-  query profileInfo {
-    profileInfo {
-      ok
-      error
-      userImgUrl
-    }
-  }
-`;
 
 function Header() {
   const history = useHistory();

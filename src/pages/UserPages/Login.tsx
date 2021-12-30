@@ -1,19 +1,10 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { isAuthTokenAtom, isLoginAtom } from "../../atom";
-import { LoginIF } from "../../intefaces/UserIF";
-
-const LOGIN = gql`
-  mutation login($loginInput: LoginInput!) {
-    login(input: $loginInput) {
-      ok
-      error
-      token
-    }
-  }
-`;
+import { LOGIN } from "../../gql/mutation";
+import { LoginIF } from "../../interfaces/UserIF";
 
 function Login() {
   const [id, setId] = useState("");

@@ -1,15 +1,7 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { CreateReviewIF } from "../../intefaces/FoodIF";
-
-const CREATE_REVIEW = gql`
-  mutation createReview($createReviewInput: CreateReviewInput!) {
-    createReview(input: $createReviewInput) {
-      ok
-      error
-    }
-  }
-`;
+import { CREATE_REVIEW } from "../../gql/mutation";
+import { CreateReviewIF } from "../../interfaces/FoodIF";
 
 function FoodReviewCreate() {
   const [title, setTitle] = useState("");

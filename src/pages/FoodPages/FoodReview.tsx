@@ -1,25 +1,10 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isFoodContentAtom, isFoodNoAtom, isFoodTitleAtom } from "../../atom";
-import { GetReviewIF } from "../../intefaces/FoodIF";
-
-const GET_REVIEW = gql`
-  query getReview($getReviewInput: GetReviewInput!) {
-    getReview(input: $getReviewInput) {
-      ok
-      error
-      review {
-        title
-        content
-        date
-        view
-        userName
-      }
-    }
-  }
-`;
+import { GET_REVIEW } from "../../gql/query";
+import { GetReviewIF } from "../../interfaces/FoodIF";
 
 function FoodReview() {
   const isFoodNo = useRecoilValue(isFoodNoAtom);

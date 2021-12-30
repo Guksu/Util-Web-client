@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useHistory } from "react-router-dom";
-import { ProfileInfoIF } from "../../intefaces/UserIF";
+import { ProfileInfoIF } from "../../interfaces/UserIF";
 import ProfileLayOut from "./ProfileLayOut";
 
 interface Props {

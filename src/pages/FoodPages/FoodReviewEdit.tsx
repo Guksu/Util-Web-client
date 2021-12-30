@@ -1,26 +1,9 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { isFoodContentAtom, isFoodNoAtom, isFoodTitleAtom } from "../../atom";
-import { DeleteReviewIF, EditReviewIF } from "../../intefaces/FoodIF";
-
-const EDIT_REVIEW = gql`
-  mutation editReview($editReviewInput: EditReviewInput!) {
-    editReview(input: $editReviewInput) {
-      ok
-      error
-    }
-  }
-`;
-
-const DELETE_REVIEW = gql`
-  mutation deleteReview($deleteReviewInput: DeleteReviewInput!) {
-    deleteReview(input: $deleteReviewInput) {
-      ok
-      error
-    }
-  }
-`;
+import { DELETE_REVIEW, EDIT_REVIEW } from "../../gql/mutation";
+import { DeleteReviewIF, EditReviewIF } from "../../interfaces/FoodIF";
 
 function FoodReviewEdit() {
   const isFoodNo = useRecoilValue(isFoodNoAtom);

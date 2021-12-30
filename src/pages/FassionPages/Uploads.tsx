@@ -1,16 +1,8 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { CreateFassionIF } from "../../intefaces/FassionIF";
-
-const CREATE_FASSION = gql`
-  mutation createFassion($createFassionInput: CreateFassionInput!) {
-    createFassion(input: $createFassionInput) {
-      ok
-      error
-    }
-  }
-`;
+import { CREATE_FASSION } from "../../gql/mutation";
+import { CreateFassionIF } from "../../interfaces/FassionIF";
 
 function Uploads() {
   const [file, setFile] = useState<FileList | null>();

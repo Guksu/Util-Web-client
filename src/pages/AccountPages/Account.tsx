@@ -1,17 +1,9 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import AccountChart from "../../components/AccountComponents/AccountChart";
-import { CreateAccountIF } from "../../intefaces/AccountIF";
-
-const CREATE_ACCOUNT = gql`
-  mutation createAccount($createAccountInput: CreateAccountInput!) {
-    createAccount(input: $createAccountInput) {
-      ok
-      error
-    }
-  }
-`;
+import { CREATE_ACCOUNT } from "../../gql/mutation";
+import { CreateAccountIF } from "../../interfaces/AccountIF";
 
 function Account() {
   const [date, setDate] = useState("");

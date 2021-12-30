@@ -1,15 +1,7 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
-import { ChangeUserImgIF } from "../../intefaces/UserIF";
-
-const CHANGE_USER_IMG = gql`
-  mutation changeUserImg($changeUserImgInput: ChangeUserImgInput!) {
-    changeUserImg(input: $changeUserImgInput) {
-      ok
-      error
-    }
-  }
-`;
+import { CHANGE_USER_IMG } from "../../gql/mutation";
+import { ChangeUserImgIF } from "../../interfaces/UserIF";
 
 function EditImg() {
   const [file, setFile] = useState<FileList | null>();

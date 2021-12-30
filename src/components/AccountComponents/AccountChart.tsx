@@ -1,24 +1,11 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { ResponsivePie } from "@nivo/pie";
 import { useEffect, useState } from "react";
-import { DataIF, GetAccountListIF } from "../../intefaces/AccountIF";
-
-const GET_ALL_ACCOUNT_LIST = gql`
-  query getAccountList {
-    getAccountList {
-      ok
-      error
-      account {
-        category
-        type
-        amount
-      }
-    }
-  }
-`;
+import { GET_ALL_ACCOUNT } from "../../gql/query";
+import { DataIF, GetAccountListIF } from "../../interfaces/AccountIF";
 
 function AccountChart() {
-  const { data: allList } = useQuery<GetAccountListIF>(GET_ALL_ACCOUNT_LIST);
+  const { data: allList } = useQuery<GetAccountListIF>(GET_ALL_ACCOUNT);
   const profitList = allList?.getAccountList.account?.filter(
     (item) => item.type === "profit"
   );
