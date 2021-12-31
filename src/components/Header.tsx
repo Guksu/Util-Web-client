@@ -25,11 +25,11 @@ const TogleDiv = styled.div`
 const ProfileTogleDiv = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 2vw;
+  padding-left: 3vw;
 `;
 
 const LoginSpan = styled.span`
-  padding-left: 2vw;
+  padding-left: 3vw;
 `;
 
 const WeatherDiv = styled.div`
@@ -86,7 +86,7 @@ function Header() {
             onClick={() => {
               setMenuTogle(!menuTogle);
             }}
-            style={{ width: "3vw" }}
+            style={{ width: "40px" }}
           >
             메뉴
           </div>

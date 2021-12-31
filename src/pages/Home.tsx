@@ -1,6 +1,44 @@
 import { useHistory } from "react-router-dom";
 import { useRecoilValue } from "recoil";
+import styled from "styled-components";
 import { isLoginAtom } from "../atom";
+
+const MainDiv = styled.div`
+  font-size: 10vh;
+  text-align: center;
+  margin-top: 10%;
+`;
+
+const ContentWraper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 5% 30%;
+`;
+
+const ContentDiv = styled.div`
+  background-color: inherit;
+  border-radius: 80%;
+  border: 2px solid black;
+  width: 5vw;
+  height: 8vh;
+  min-width: 40px;
+  min-height: 50px;
+  text-align: center;
+`;
+
+const ContentImg = styled.img`
+  height: 6vh;
+  width: 3vw;
+  min-height: 40px;
+  min-width: 30px;
+  padding-top: 7%;
+  margin: 2%;
+`;
+
+const ContentName = styled.div`
+  margin-top: 8%;
+  text-align: center;
+`;
 
 function Home() {
   const isLogin = useRecoilValue(isLoginAtom);
@@ -8,30 +46,50 @@ function Home() {
 
   return (
     <>
-      <h1>Util Web</h1>
+      <MainDiv>Util Web</MainDiv>
       {isLogin ? (
         <>
-          <div
-            onClick={() => {
-              history.push("/account");
-            }}
-          >
-            가계부
-          </div>
-          <div
-            onClick={() => {
-              history.push("/fassion");
-            }}
-          >
-            스타일
-          </div>
-          <div
-            onClick={() => {
-              history.push("/food");
-            }}
-          >
-            맛집
-          </div>
+          <ContentWraper>
+            <div>
+              <ContentDiv
+                onClick={() => {
+                  history.push("/account");
+                }}
+              >
+                <ContentImg
+                  alt="가계부"
+                  src="https://guksuintengiblemarketuplaodsol6425.s3.ap-northeast-2.amazonaws.com/accounting.png"
+                />
+              </ContentDiv>
+              <ContentName>가계부</ContentName>
+            </div>
+            <div>
+              <ContentDiv
+                onClick={() => {
+                  history.push("/fassion");
+                }}
+              >
+                <ContentImg
+                  alt="스타일"
+                  src="https://guksuintengiblemarketuplaodsol6425.s3.ap-northeast-2.amazonaws.com/accessory.png"
+                />
+              </ContentDiv>
+              <ContentName>스타일</ContentName>
+            </div>
+            <div>
+              <ContentDiv
+                onClick={() => {
+                  history.push("/food");
+                }}
+              >
+                <ContentImg
+                  alt="맛집"
+                  src="https://guksuintengiblemarketuplaodsol6425.s3.ap-northeast-2.amazonaws.com/restaurant.png"
+                />
+              </ContentDiv>
+              <ContentName>맛집</ContentName>
+            </div>
+          </ContentWraper>
         </>
       ) : (
         <></>
