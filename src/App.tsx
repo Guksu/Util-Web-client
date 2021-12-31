@@ -19,6 +19,7 @@ import FoodReviewBoard from "./pages/FoodPages/FoodReviewBoard";
 import FoodReviewCreate from "./pages/FoodPages/FoodReviewCreate";
 import FoodReview from "./pages/FoodPages/FoodReview";
 import FoodReviewEdit from "./pages/FoodPages/FoodReviewEdit";
+import GlobalStyles from "./style/GlobalStyle";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route exact path={"/food/review"} component={FoodReview} />
         <Route exact path={"/food/review/edit"} component={FoodReviewEdit} />
       </Switch>
+      <GlobalStyles />
     </BrowserRouter>
   );
 }
