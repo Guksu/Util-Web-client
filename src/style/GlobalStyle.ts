@@ -3,13 +3,13 @@ import reset from "styled-reset";
 
 const GlobalStyles = createGlobalStyle`
     ${reset}; 
-    body{font-family: 'Gowun Dodum', sans-serif;}
+    body{font-family: 'Gowun Batang', serif;}
     ::placeholder {
-    font-family:'Gowun Dodum', sans-serif;
+    font-family: 'Gowun Batang', serif;
     text-align: center;
     }
     button{
-    font-family: 'Gowun Dodum', sans-serif;
+    font-family: 'Gowun Batang', serif;
     text-align: center;
     }
 `;
