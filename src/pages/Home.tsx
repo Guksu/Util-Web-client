@@ -16,9 +16,9 @@ const ContentWraper = styled.div`
 `;
 
 const ContentDiv = styled.div`
-  background-color: inherit;
+  background-color: #dee2e6;
   border-radius: 80%;
-  border: 2px solid black;
+  border: 0px;
   width: 5vw;
   height: 8vh;
   min-width: 40px;
