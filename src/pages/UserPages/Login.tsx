@@ -7,7 +7,7 @@ import { isAuthTokenAtom, isLoginAtom } from "../../atom";
 import { LOGIN } from "../../gql/mutation";
 import { LoginIF } from "../../interfaces/UserIF";
 
-const LoginDiv = styled.div`
+export const LoginDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 20vw;
@@ -16,11 +16,11 @@ const LoginDiv = styled.div`
   padding-top: 20vh;
 `;
 
-const InputStyle = styled.input`
+export const InputStyle = styled.input`
   margin-bottom: 10%;
 `;
 
-const ButtonDiv = styled.div`
+export const ButtonDiv = styled.div`
   display: flex;
   justify-content: space-around;
 `;

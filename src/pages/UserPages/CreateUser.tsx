@@ -4,24 +4,8 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { CREATE_USER } from "../../gql/mutation";
 import { CreateUserIF } from "../../interfaces/UserIF";
+import { ButtonDiv, InputStyle, LoginDiv } from "./Login";
 
-const CreateDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 20vw;
-  min-width: 300px;
-  margin: auto;
-  padding-top: 20vh;
-`;
-
-const InputStyle = styled.input`
-  margin-bottom: 10%;
-`;
-
-const ButtonDiv = styled.div`
-  display: flex;
-  justify-content: center;
-`;
 const Button = styled.button`
   width: 10vw;
   min-width: 100px;
@@ -68,7 +52,7 @@ function CreateUser() {
 
   return (
     <>
-      <CreateDiv>
+      <LoginDiv>
         <InputStyle
           type={"text"}
           required
@@ -98,7 +82,7 @@ function CreateUser() {
         <ButtonDiv>
           <Button onClick={onClick}>회원가입</Button>
         </ButtonDiv>
-      </CreateDiv>
+      </LoginDiv>
     </>
   );
 }
