@@ -2,9 +2,33 @@ import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import styled from "styled-components";
 import { isAuthTokenAtom, isLoginAtom } from "../../atom";
 import { LOGIN } from "../../gql/mutation";
 import { LoginIF } from "../../interfaces/UserIF";
+
+const LoginDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  min-width: 300px;
+  margin: auto;
+  padding-top: 20vh;
+`;
+
+const InputStyle = styled.input`
+  margin-bottom: 10%;
+`;
+
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const Button = styled.button`
+  width: 8vw;
+  min-width: 50px;
+`;
 
 function Login() {
   const [id, setId] = useState("");
@@ -21,7 +45,9 @@ function Login() {
     },
   });
 
-  const onLoginSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const onLoginClick: React.MouseEventHandler<HTMLButtonElement> = async (
+    e
+  ) => {
     e.preventDefault();
     try {
       const { data } = await login();
@@ -41,8 +67,8 @@ function Login() {
 
   return (
     <>
-      <form onSubmit={onLoginSubmit}>
-        <input
+      <LoginDiv>
+        <InputStyle
           type={"text"}
           name="id"
           placeholder="ID를 입력하세요"
@@ -51,7 +77,7 @@ function Login() {
             setId(e.currentTarget.value);
           }}
         />
-        <input
+        <InputStyle
           type={"password"}
           name="passwrod"
           placeholder="Passwrod를 입력하세요"
@@ -60,9 +86,11 @@ function Login() {
             setPassword(e.currentTarget.value);
           }}
         />
-        <button>로그인</button>
-      </form>
-      <button onClick={() => history.push("/user/create")}>회원가입</button>
+        <ButtonDiv>
+          <Button onClick={onLoginClick}>로그인</Button>
+          <Button onClick={() => history.push("/user/create")}>회원가입</Button>
+        </ButtonDiv>
+      </LoginDiv>
     </>
   );
 }
