@@ -27,7 +27,7 @@ const ButtonDiv = styled.div`
 
 const Button = styled.button`
   width: 8vw;
-  min-width: 50px;
+  min-width: 70px;
 `;
 
 function Login() {
