@@ -1,25 +1,29 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
     ${reset}; 
     body{font-family: 'Gowun Batang', serif;}
     ::placeholder {
     font-family: 'Gowun Batang', serif;
     text-align: center;
-    background-color:#dee2e6;
     }
     button{
     font-family: 'Gowun Batang', serif;
     text-align: center;
+    cursor: pointer;
     }
     input{
         :focus {
-            outline: 0;
+            outline:  #dee2e6 solid 1px;
         }
     border: 0;
     border-bottom: 1px solid black;
+    outline: #dee2e6 solid 1px;
     }
+
 `;
 
-export default GlobalStyles;
+export const CursorDiv = styled.div`
+  cursor: pointer;
+`;

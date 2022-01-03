@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { client } from "../../apollo";
 import { isLoginAtom } from "../../atom";
+import { CursorDiv } from "../../style/GlobalStyle";
 
 function ProfileNav() {
   const isLogin = useSetRecoilState(isLoginAtom);
@@ -15,8 +16,8 @@ function ProfileNav() {
 
   return (
     <>
-      <div onClick={() => history.push("/user")}>프로필</div>
-      <div onClick={onLogOutClick}>로그아웃</div>
+      <CursorDiv onClick={() => history.push("/user")}>프로필</CursorDiv>
+      <CursorDiv onClick={onLogOutClick}>로그아웃</CursorDiv>
     </>
   );
 }

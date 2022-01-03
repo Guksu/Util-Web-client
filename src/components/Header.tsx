@@ -30,6 +30,7 @@ const ProfileTogleDiv = styled.div`
 
 const LoginSpan = styled.span`
   padding-left: 3vw;
+  cursor: pointer;
 `;
 
 const WeatherDiv = styled.div`
@@ -70,7 +71,7 @@ function Header() {
     <>
       <HeaderDiv>
         <div>
-          <span>다크모드</span>
+          <span style={{ cursor: "pointer" }}>다크모드</span>
           <WeatherDiv>
             <img
               src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
@@ -86,7 +87,7 @@ function Header() {
             onClick={() => {
               setMenuTogle(!menuTogle);
             }}
-            style={{ width: "40px" }}
+            style={{ width: "50px", cursor: "pointer" }}
           >
             메뉴
           </div>
@@ -110,6 +111,7 @@ function Header() {
                 }}
                 height={70}
                 width={70}
+                style={{ cursor: "pointer" }}
               />
               <span
                 onMouseLeave={() => {

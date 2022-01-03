@@ -6,7 +6,7 @@ import { CREATE_USER } from "../../gql/mutation";
 import { CreateUserIF } from "../../interfaces/UserIF";
 import { ButtonDiv, InputStyle, LoginDiv } from "./Login";
 
-const Button = styled.button`
+export const Button = styled.button`
   width: 10vw;
   min-width: 100px;
 `;

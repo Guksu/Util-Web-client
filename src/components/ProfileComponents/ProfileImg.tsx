@@ -11,7 +11,7 @@ function ProfileImg({ PROFILE_IMG }: Props) {
   const { data } = useQuery<ProfileInfoIF>(PROFILE_IMG);
   const userImg = data?.profileInfo.userImgUrl;
   const divContent = (
-    <img src={userImg} alt="프로필사진" height={300} width={200} />
+    <img src={userImg} alt="프로필사진" height={100} width={100} />
   );
   const history = useHistory();
 

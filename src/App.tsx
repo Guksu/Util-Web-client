@@ -19,7 +19,7 @@ import FoodReviewBoard from "./pages/FoodPages/FoodReviewBoard";
 import FoodReviewCreate from "./pages/FoodPages/FoodReviewCreate";
 import FoodReview from "./pages/FoodPages/FoodReview";
 import FoodReviewEdit from "./pages/FoodPages/FoodReviewEdit";
-import GlobalStyles from "./style/GlobalStyle";
+import { GlobalStyles } from "./style/GlobalStyle";
 
 function App() {
   return (

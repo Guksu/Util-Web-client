@@ -24,6 +24,7 @@ const ContentDiv = styled.div`
   min-width: 40px;
   min-height: 50px;
   text-align: center;
+  cursor: pointer;
 `;
 
 const ContentImg = styled.img`
