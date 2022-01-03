@@ -16,7 +16,7 @@ const ContentWraper = styled.div`
 `;
 
 const ContentDiv = styled.div`
-  background-color: #dee2e6;
+  background-color: #ced4da;
   border-radius: 80%;
   border: 0px;
   width: 5vw;

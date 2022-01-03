@@ -7,7 +7,7 @@ import { ChangeUserImgIF } from "../../interfaces/UserIF";
 const EditDiv = styled.div`
   margin: auto;
   margin-top: 5%;
-  outline: #dee2e6 solid 1px;
+  outline: #ced4da solid 1px;
   width: 30vw;
   height: 20vh;
   min-width: 300px;
@@ -31,8 +31,8 @@ const FileName = styled.input`
 const FileLabel = styled.label`
   display: inline-block;
   padding: 10px 20px;
-  color: #fff;
   vertical-align: middle;
+  color: #fff;
   background-color: #999999;
   cursor: pointer;
   margin-left: 10px;

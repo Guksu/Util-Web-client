@@ -1,8 +1,20 @@
 import { useQuery } from "@apollo/client";
 import { ResponsivePie } from "@nivo/pie";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { GET_ALL_ACCOUNT } from "../../gql/query";
 import { DataIF, GetAccountListIF } from "../../interfaces/AccountIF";
+
+const ChartWrapper = styled.div`
+  display: flex;
+  border-right: #ced4da solid 1px;
+  padding: 5%;
+`;
+
+const ChartBtn = styled.span`
+  margin: auto;
+  cursor: pointer;
+`;
 
 function AccountChart() {
   const { data: allList } = useQuery<GetAccountListIF>(GET_ALL_ACCOUNT);
@@ -179,9 +191,9 @@ function AccountChart() {
 
   return (
     <>
-      <div>
-        {num > 0 && (
-          <span
+      <ChartWrapper>
+        {num > 0 ? (
+          <ChartBtn
             onClick={() => {
               num === 2 && setData(profitData);
               num === 1 && setData(allData);
@@ -189,7 +201,9 @@ function AccountChart() {
             }}
           >
             ◀
-          </span>
+          </ChartBtn>
+        ) : (
+          <div style={{ color: "white", margin: "auto" }}>◀</div>
         )}
         <div style={{ height: 350, width: 350 }}>
           <ResponsivePie
@@ -218,8 +232,8 @@ function AccountChart() {
             legends={[]}
           />
         </div>
-        {num < 2 && (
-          <span
+        {num < 2 ? (
+          <ChartBtn
             onClick={() => {
               num === 0 && setData(profitData);
               num === 1 && setData(expenseData);
@@ -227,9 +241,11 @@ function AccountChart() {
             }}
           >
             ▶
-          </span>
+          </ChartBtn>
+        ) : (
+          <div style={{ color: "white", margin: "auto" }}>▶</div>
         )}
-      </div>
+      </ChartWrapper>
     </>
   );
 }
