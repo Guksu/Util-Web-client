@@ -108,3 +108,21 @@ export const LOGIN = gql`
     }
   }
 `;
+
+export const LIKE_UPDATE = gql`
+  mutation likeUpdate($likeUpdateInput: LikeUpdateInput!) {
+    likeUpdate(input: $likeUpdateInput) {
+      ok
+      error
+    }
+  }
+`;
+
+export const LIKE_REMOVE = gql`
+  mutation likeRemove($likeUpdateInput: LikeUpdateInput!) {
+    likeRemove(input: $likeUpdateInput) {
+      ok
+      error
+    }
+  }
+`;

@@ -25,6 +25,17 @@ export const Img = styled.img`
   margin-left: 15%;
 `;
 
+const StyleBtnDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10%;
+  margin-bottom: 1%;
+`;
+
+const StyleBtn = styled.button`
+  width: 5vw;
+  height: 3vh;
+`;
 function MyStyle() {
   const history = useHistory();
   const { data: fassionList } =
@@ -58,20 +69,21 @@ function MyStyle() {
 
   return (
     <>
+      <StyleBtnDiv>
+        <StyleBtn
+          onClick={() => {
+            history.push("/fassion/uploads");
+          }}
+        >
+          업로드
+        </StyleBtn>
+      </StyleBtnDiv>
       <FassionLayOut content={content} />
       <Pagination
         perPage={imgPerPage}
         totalPage={fassionList?.getMyFassionList.fassion?.length}
         onClick={paginate}
       />
-
-      <button
-        onClick={() => {
-          history.push("/fassion/uploads");
-        }}
-      >
-        업로드
-      </button>
     </>
   );
 }

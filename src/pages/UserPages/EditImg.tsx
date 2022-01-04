@@ -19,7 +19,7 @@ const UploadDiv = styled.div`
   padding-top: 5%;
 `;
 
-const FileName = styled.input`
+export const FileName = styled.input`
   display: inline-block;
   padding: 0 10px;
   vertical-align: middle;
@@ -28,7 +28,7 @@ const FileName = styled.input`
   width: 15vw;
 `;
 
-const FileLabel = styled.label`
+export const FileLabel = styled.label`
   display: inline-block;
   padding: 10px 20px;
   vertical-align: middle;
@@ -38,7 +38,7 @@ const FileLabel = styled.label`
   margin-left: 10px;
 `;
 
-const FileInput = styled.input`
+export const FileInput = styled.input`
   position: absolute;
   width: 0;
   height: 0;

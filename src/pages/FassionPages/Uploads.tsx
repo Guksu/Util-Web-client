@@ -1,17 +1,47 @@
 import { useMutation } from "@apollo/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 import { CREATE_FASSION } from "../../gql/mutation";
 import { CreateFassionIF } from "../../interfaces/FassionIF";
+import { FileInput, FileLabel, FileName } from "../UserPages/EditImg";
+
+const FassionUploadWrapper = styled.div`
+  margin: auto;
+  margin-top: 10%;
+  outline: #ced4da solid 1px;
+  width: 30vw;
+  height: 20vh;
+  min-width: 300px;
+`;
+
+const UploadDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+`;
+
+const InputDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 20vw;
+  margin: auto;
+  margin-top: 5%;
+`;
 
 function Uploads() {
   const [file, setFile] = useState<FileList | null>();
   const history = useHistory();
-  const [date, setDate] = useState("");
+  const [fileName, setFileName] = useState("첨부파일");
+  const [date, setDate] = useState(new Date().toLocaleString());
   const [secret, setSecret] = useState("no");
   const [createFassion] = useMutation<CreateFassionIF>(CREATE_FASSION);
 
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  useEffect(() => {
+    if (file) setFileName(file[0].name);
+  }, [file]);
+
+  const onClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     try {
       e.preventDefault();
       if (file) {
@@ -42,35 +72,35 @@ function Uploads() {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input
-          type="date"
-          required
-          onChange={(e) => {
-            setDate(e.currentTarget.value);
-          }}
-        />
-        <input
-          type="file"
-          name="file"
-          required
-          accept="image/*"
-          onChange={(e) => {
-            setFile(e.currentTarget.files);
-          }}
-        />
-        <select
-          required
-          onChange={(e) => {
-            setSecret(e.currentTarget.value);
-          }}
-        >
-          <option value={""}>게시판 공개여부</option>
-          <option value="yes">공개</option>
-          <option value="no">비공개</option>
-        </select>
-        <button>등록하기</button>
-      </form>
+      <FassionUploadWrapper>
+        <UploadDiv>
+          <FileName placeholder={fileName} disabled />
+          <FileLabel htmlFor="file">파일찾기</FileLabel>
+          <FileInput
+            type="file"
+            id="file"
+            accept="image/*"
+            onChange={(e) => {
+              setFile(e.currentTarget.files);
+            }}
+          />
+        </UploadDiv>
+        <InputDiv>
+          <select
+            required
+            onChange={(e) => {
+              setSecret(e.currentTarget.value);
+            }}
+          >
+            <option value={""}>게시판 공개여부</option>
+            <option value="yes">공개</option>
+            <option value="no">비공개</option>
+          </select>
+          <button style={{ width: "8vw" }} onClick={onClick}>
+            등록하기
+          </button>
+        </InputDiv>
+      </FassionUploadWrapper>
     </>
   );
 }

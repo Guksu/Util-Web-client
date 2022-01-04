@@ -1,8 +1,21 @@
+import styled from "styled-components";
+
 interface Props {
   perPage: number;
   totalPage: any;
   onClick: any;
 }
+
+const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1%;
+  gap: 5px;
+`;
+
+const PaginationBtn = styled.button`
+  width: 2vw;
+`;
 
 function Pagination({ perPage, totalPage, onClick }: Props) {
   const pageNumbers = [];
@@ -14,13 +27,15 @@ function Pagination({ perPage, totalPage, onClick }: Props) {
   return (
     <>
       <ul>
-        {pageNumbers.map((item) => (
-          <li key={item}>
-            <button value={item} onClick={onClick}>
-              {item}
-            </button>
-          </li>
-        ))}
+        <PaginationWrapper>
+          {pageNumbers.map((item) => (
+            <li key={item}>
+              <PaginationBtn value={item} onClick={onClick}>
+                {item}
+              </PaginationBtn>
+            </li>
+          ))}
+        </PaginationWrapper>
       </ul>
     </>
   );

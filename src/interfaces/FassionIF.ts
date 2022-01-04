@@ -34,3 +34,10 @@ export interface LikeCheckOutput extends CommonOutput {
 export interface LikeCheckIF {
   likeCheck: LikeCheckOutput;
 }
+
+export interface LikeUpdateOutput extends CommonOutput {}
+
+export interface LikeUpdateIF {
+  likeUpdate?: LikeUpdateOutput;
+  likeRemove?: LikeUpdateOutput;
+}
