@@ -49,6 +49,7 @@ export const GET_MY_FASSION_LIST = gql`
         fassionNo
         date
         imgUrl
+        userImg
       }
     }
   }
@@ -63,6 +64,8 @@ export const GET_ALL_FASSION_LIST = gql`
         fassionNo
         date
         imgUrl
+        userImg
+        like
       }
     }
   }
@@ -109,6 +112,16 @@ export const PROFILE = gql`
       name
       id
       userImgUrl
+    }
+  }
+`;
+
+export const LIKE_CHECK = gql`
+  query likeCheck {
+    likeCheck {
+      ok
+      error
+      like
     }
   }
 `;

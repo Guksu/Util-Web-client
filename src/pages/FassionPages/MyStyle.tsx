@@ -1,10 +1,29 @@
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 import FassionLayOut from "../../components/FassionComponents/FassionLayOut";
 import Pagination from "../../components/Pagination";
 import { GET_MY_FASSION_LIST } from "../../gql/query";
 import { GetMyFassionListIF } from "../../interfaces/FassionIF";
+
+export const StyleDiv = styled.div`
+  outline: #ced4da solid 1px;
+  padding: 5%;
+`;
+
+export const InfoDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 10vw;
+`;
+
+export const Img = styled.img`
+  width: 300px;
+  height: 300px;
+  margin-top: 3%;
+  margin-left: 15%;
+`;
 
 function MyStyle() {
   const history = useHistory();
@@ -25,12 +44,14 @@ function MyStyle() {
   const content = currentImg?.map((item) => {
     return (
       <ul key={item.fassionNo}>
-        <li key={item.fassionNo}>
-          <div>
-            <div>{item.date}</div>
-            <img src={item.imgUrl} alt="이미지" height={200} width={200} />
-          </div>
-        </li>
+        <StyleDiv>
+          <li key={item.fassionNo}>
+            <InfoDiv>
+              <img src={item.userImg} width={20} height={20} alt="프로필" />
+            </InfoDiv>
+            <Img src={item.imgUrl} alt="이미지" />
+          </li>
+        </StyleDiv>
       </ul>
     );
   });

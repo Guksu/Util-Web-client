@@ -4,6 +4,8 @@ export interface Fassion {
   fassionNo: number;
   date: string;
   imgUrl: string;
+  userImg: string;
+  like?: number;
 }
 
 export interface GetMyFassionListOutput extends CommonOutput {
@@ -23,4 +25,12 @@ export interface CreateFassionIF {
 
 export interface ImgIF {
   link: string[];
+}
+
+export interface LikeCheckOutput extends CommonOutput {
+  like?: number[];
+}
+
+export interface LikeCheckIF {
+  likeCheck: LikeCheckOutput;
 }
