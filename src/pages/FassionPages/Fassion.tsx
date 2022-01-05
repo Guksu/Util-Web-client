@@ -37,9 +37,10 @@ const BtnDiv = styled.div`
 
 const DailyDiv = styled.div`
   cursor: pointer;
-  width: 5vw;
-  min-width: 100px;
+  min-width: 150px;
   text-align: center;
+  font-size: 20px;
+  margin-top: 3%;
 `;
 
 function Fassion() {
@@ -86,7 +87,13 @@ function Fassion() {
                 width={300}
                 style={{ borderRadius: "50%" }}
               />
-              <div style={{ textAlign: "center" }}>{`<오늘의 코디>`}</div>
+              <div
+                style={{
+                  textAlign: "center",
+                  fontSize: "18px",
+                  marginTop: "2%",
+                }}
+              >{`<오늘의 코디>`}</div>
             </div>
           </div>
           <ImgBtn
@@ -99,6 +106,7 @@ function Fassion() {
         </ImgDiv>
         <BtnDiv>
           <button
+            style={{ fontSize: "15px" }}
             value="남자"
             onClick={(e) => {
               setGender(e.currentTarget.value);
@@ -107,6 +115,7 @@ function Fassion() {
             남성
           </button>
           <button
+            style={{ fontSize: "15px" }}
             value="여자"
             onClick={(e) => {
               setGender(e.currentTarget.value);

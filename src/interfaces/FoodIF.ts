@@ -8,6 +8,7 @@ export interface FoodBoard {
   date: string;
   view: number;
   userName: string;
+  userImg: string;
 }
 
 export interface GetReviewOutput extends CommonOutput {

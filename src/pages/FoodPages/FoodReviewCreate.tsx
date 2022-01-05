@@ -1,7 +1,52 @@
 import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { CREATE_REVIEW } from "../../gql/mutation";
 import { CreateReviewIF } from "../../interfaces/FoodIF";
+
+const ReviewCreateWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  outline: #ced4da solid 1px;
+  width: 80%;
+  height: 70vh;
+  margin: auto;
+  padding: 1%;
+`;
+
+const TitleDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+  margin-bottom: 2%;
+`;
+
+const TitleInput = styled.input`
+  width: 30%;
+  height: 3vh;
+  outline: 1px solid #adb5bd;
+`;
+
+const Select = styled.select`
+  width: 8%;
+  text-align: center;
+  outline: 1px solid #adb5bd;
+`;
+
+const TextArea = styled.textarea`
+  width: 70%;
+  height: 80%;
+  margin: auto;
+  outline: 1px solid #adb5bd;
+  border: 0;
+`;
+
+const CreateBtnDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20%;
+`;
 
 function FoodReviewCreate() {
   const [title, setTitle] = useState("");
@@ -27,7 +72,7 @@ function FoodReviewCreate() {
     setDate(dateString);
   }, []);
 
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const onClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
     try {
       const { data } = await createReview();
@@ -44,38 +89,41 @@ function FoodReviewCreate() {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input
-          placeholder="제목"
-          type={"text"}
-          required
-          onChange={(e) => {
-            setTitle(e.currentTarget.value);
-          }}
-        />
-        <select
-          required
-          onChange={(e) => {
-            setCategory(e.currentTarget.value);
-          }}
-        >
-          <option value={""}>카테고리 설정</option>
-          <option value={"한식"}>한식</option>
-          <option value={"중식"}>중식</option>
-          <option value={"일식"}>일식</option>
-          <option value={"양식"}>양식</option>
-          <option value={"기타"}>기타</option>
-        </select>
-
-        <textarea
-          maxLength={600}
+      <ReviewCreateWrapper>
+        <TitleDiv>
+          <TitleInput
+            placeholder="제목"
+            type={"text"}
+            required
+            onChange={(e) => {
+              setTitle(e.currentTarget.value);
+            }}
+          />
+          <Select
+            required
+            onChange={(e) => {
+              setCategory(e.currentTarget.value);
+            }}
+          >
+            <option value={""}>카테고리 설정</option>
+            <option value={"한식"}>한식</option>
+            <option value={"중식"}>중식</option>
+            <option value={"일식"}>일식</option>
+            <option value={"양식"}>양식</option>
+            <option value={"기타"}>기타</option>
+          </Select>
+        </TitleDiv>
+        <TextArea
+          maxLength={2000}
           required
           onChange={(e) => {
             setContent(e.currentTarget.value);
           }}
         />
-        <button>제출하기</button>
-      </form>
+        <CreateBtnDiv>
+          <button onClick={onClick}>등록하기</button>
+        </CreateBtnDiv>
+      </ReviewCreateWrapper>
     </>
   );
 }

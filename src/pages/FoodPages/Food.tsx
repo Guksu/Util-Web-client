@@ -3,6 +3,18 @@ import { useRecoilValue } from "recoil";
 import { isLatAtom, isLonAtom } from "../../atom";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+
+const MapDiv = styled.div`
+  outline: #ced4da solid 1px;
+  width: 80%;
+  height: 60vh;
+  margin: auto;
+`;
+
+const KeywordInput = styled.input`
+  outline: 1px solid #adb5bd;
+`;
 
 function Food() {
   const kakao = (window as any).kakao;
@@ -10,6 +22,16 @@ function Food() {
   const isLon = useRecoilValue(isLonAtom);
   const [keyword, setKeyword] = useState("");
   const history = useHistory();
+
+  var geocoder = new kakao.maps.services.Geocoder();
+
+  var callback = function (result: any, status: any) {
+    if (status === kakao.maps.services.Status.OK) {
+      setKeyword(`${result[0].address_name} 맛집`);
+    }
+  };
+
+  geocoder.coord2RegionCode(isLon, isLat, callback);
 
   useEffect(() => {
     let markers: any = [];
@@ -115,7 +137,7 @@ function Food() {
         }
       };
 
-      let itemStr = "<h5>" + places.place_name + "</h5>";
+      let itemStr = "<h5>" + "▪ " + places.place_name + "</h5>";
 
       el.innerHTML = itemStr;
       el.onclick = getName;
@@ -205,52 +227,77 @@ function Food() {
 
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <input
-          id="keyword"
-          placeholder="음식점 검색"
-          onChange={(e) => {
-            setKeyword(e.currentTarget.value);
-          }}
-        />
-        <button>검색하기</button>
-      </form>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-        }}
-      >
-        <div
-          id="map"
+      <MapDiv>
+        <span
           style={{
-            width: "50vw",
-            height: "50vh",
-            position: "relative",
-            overflow: "hidden",
+            display: "flex",
+            width: "300px",
+            paddingTop: "1%",
+            paddingLeft: "10%",
+            gap: "20px",
           }}
-        />
-        <ul
-          id="placesList"
+        >
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <KeywordInput
+              id="keyword"
+              placeholder="음식점 검색"
+              onChange={(e) => {
+                setKeyword(e.currentTarget.value);
+              }}
+            />
+          </form>
+          <button
+            style={{ width: "5vw" }}
+            onClick={() => {
+              history.push("/food/reviewList");
+            }}
+          >
+            후기 게시판
+          </button>
+        </span>
+        <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gridTemplateRows: "1fr 1fr",
+            gridTemplateColumns: "1fr 1fr",
+            padding: "0 5%",
           }}
-        ></ul>
-      </div>
-      <div id="pagination"></div>
-      <button
-        onClick={() => {
-          history.push("/food/reviewList");
-        }}
-      >
-        후기 게시판
-      </button>
+        >
+          <div
+            id="map"
+            style={{
+              margin: "2%",
+              width: "30vw",
+              height: "50vh",
+              position: "relative",
+              overflow: "hidden",
+              borderRadius: "50px",
+            }}
+          />
+          <ul
+            id="placesList"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gridTemplateRows: "1fr 1fr",
+              padding: "5%",
+              cursor: "pointer",
+            }}
+          ></ul>
+        </div>
+        <span
+          id="pagination"
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            paddingRight: "25%",
+            gap: "5px",
+          }}
+        />
+      </MapDiv>
     </>
   );
 }

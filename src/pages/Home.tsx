@@ -39,6 +39,7 @@ const ContentImg = styled.img`
 const ContentName = styled.div`
   margin-top: 8%;
   text-align: center;
+  font-size: 20px;
 `;
 
 function Home() {

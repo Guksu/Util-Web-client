@@ -1,17 +1,31 @@
+import styled from "styled-components";
+import { ContentSpan } from "../../pages/FoodPages/FoodReviewBoard";
+
 interface Props {
   content: any;
 }
 
+const LayOutDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  gap: 3vw;
+  margin-top: 3%;
+  margin-bottom: 1%;
+  padding-bottom: 1%;
+  border-bottom: 1px solid #adb5bd;
+`;
+
 function FoodBoardLayOut({ content }: Props) {
   return (
     <>
-      <div>
-        <span>카테고리</span>
-        <span>제목</span>
-        <span>작성자</span>
-        <span>작성일</span>
-        <span>조회</span>
-      </div>
+      <LayOutDiv>
+        <ContentSpan>카테고리</ContentSpan>
+        <ContentSpan>제목</ContentSpan>
+        <ContentSpan>작성자</ContentSpan>
+        <ContentSpan>작성일</ContentSpan>
+        <ContentSpan>조회</ContentSpan>
+      </LayOutDiv>
       <div>{content}</div>
     </>
   );

@@ -41,40 +41,44 @@ function OthersStyle() {
             </InfoDiv>
             <Img src={item.imgUrl} alt="이미지" />
             {likeList?.likeCheck.like?.includes(item.fassionNo) ? (
-              <div
-                style={{ cursor: "pointer", marginTop: "2%" }}
-                onClick={async () => {
-                  try {
-                    await likeRemove({
-                      variables: {
-                        likeUpdateInput: { fassionNo: item.fassionNo },
-                      },
-                    });
-                    window.location.replace("/fassion/others");
-                  } catch (error) {
-                    console.log(error);
-                  }
-                }}
-              >
-                💗
+              <div style={{ marginTop: "2%" }}>
+                <span
+                  style={{ cursor: "pointer", marginTop: "2%" }}
+                  onClick={async () => {
+                    try {
+                      await likeRemove({
+                        variables: {
+                          likeUpdateInput: { fassionNo: item.fassionNo },
+                        },
+                      });
+                      window.location.replace("/fassion/others");
+                    } catch (error) {
+                      console.log(error);
+                    }
+                  }}
+                >
+                  💗
+                </span>
               </div>
             ) : (
-              <div
-                style={{ cursor: "pointer", marginTop: "2%" }}
-                onClick={async () => {
-                  try {
-                    await likeUpdate({
-                      variables: {
-                        likeUpdateInput: { fassionNo: item.fassionNo },
-                      },
-                    });
-                    window.location.replace("/fassion/others");
-                  } catch (error) {
-                    console.log(error);
-                  }
-                }}
-              >
-                🤍
+              <div style={{ marginTop: "2%" }}>
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={async () => {
+                    try {
+                      await likeUpdate({
+                        variables: {
+                          likeUpdateInput: { fassionNo: item.fassionNo },
+                        },
+                      });
+                      window.location.replace("/fassion/others");
+                    } catch (error) {
+                      console.log(error);
+                    }
+                  }}
+                >
+                  🤍
+                </span>
               </div>
             )}
             <div style={{ marginTop: "2%" }}>좋아요 {item.like}개</div>

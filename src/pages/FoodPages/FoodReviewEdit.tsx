@@ -1,10 +1,47 @@
 import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
+import styled from "styled-components";
 import { isFoodContentAtom, isFoodNoAtom, isFoodTitleAtom } from "../../atom";
 import { DELETE_REVIEW, EDIT_REVIEW } from "../../gql/mutation";
 import { DeleteReviewIF, EditReviewIF } from "../../interfaces/FoodIF";
 
+const ReviewEditWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  outline: #ced4da solid 1px;
+  width: 80%;
+  height: 70vh;
+  margin: auto;
+  padding: 1%;
+`;
+
+const EditTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+`;
+
+const EditContent = styled.textarea`
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  outline: 1px solid #adb5bd;
+  border: 0;
+  padding: 1%;
+  border-radius: 10px;
+`;
+
+const BtnDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+`;
+
+const Btn = styled.button`
+  font-size: 18px;
+`;
 function FoodReviewEdit() {
   const isFoodNo = useRecoilValue(isFoodNoAtom);
   const isFoodTitle = useRecoilValue(isFoodTitleAtom);
@@ -28,7 +65,7 @@ function FoodReviewEdit() {
     variables: { deleteReviewInput: { FoodBoardNo: isFoodNo } },
   });
 
-  const onEditSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const onEditClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
     try {
       const { data: editData } = await editReview();
@@ -54,18 +91,20 @@ function FoodReviewEdit() {
   };
   return (
     <>
-      <form onSubmit={onEditSubmit}>
-        <div>{isFoodTitle}</div>
-        <textarea
-          maxLength={600}
+      <ReviewEditWrapper>
+        <EditTitle>{isFoodTitle}</EditTitle>
+        <EditContent
+          maxLength={2000}
           defaultValue={isFoodContent}
           onChange={(e) => {
             setContent(e.currentTarget.value);
           }}
         />
-        <button>수정하기</button>
-      </form>
-      <button onClick={onDeleteClick}>삭제하기</button>
+        <BtnDiv>
+          <Btn onClick={onEditClick}>수정하기</Btn>
+          <Btn onClick={onDeleteClick}>삭제하기</Btn>
+        </BtnDiv>
+      </ReviewEditWrapper>
     </>
   );
 }

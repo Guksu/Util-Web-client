@@ -15,6 +15,7 @@ const TypeName = styled.div`
   justify-content: center;
   padding-bottom: 1%;
   border-bottom: #ced4da solid 1px;
+  font-size: 20px;
 `;
 
 function DetailLayOut({ typeName, content }: Props) {

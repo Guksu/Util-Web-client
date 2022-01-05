@@ -82,6 +82,7 @@ export const GET_REVIEW = gql`
         date
         view
         userName
+        userImg
       }
     }
   }

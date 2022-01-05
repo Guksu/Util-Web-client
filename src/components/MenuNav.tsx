@@ -28,7 +28,7 @@ function MenuNav() {
       </CursorDiv>
       <CursorDiv
         onClick={() => {
-          history.push("//food");
+          history.push("/food");
         }}
       >
         맛집

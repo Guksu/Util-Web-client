@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import styled from "styled-components";
 import { isFoodNoAtom } from "../../atom";
 import FoodBoardLayOut from "../../components/FoodComponents/FoodBoardLayOut";
 import Pagination from "../../components/Pagination";
@@ -12,6 +13,47 @@ import {
   GetFoodReviewListIF,
   ViewUpdateIF,
 } from "../../interfaces/FoodIF";
+
+const FoodBoardDiv = styled.div`
+  outline: #ced4da solid 1px;
+  width: 80%;
+  height: 75vh;
+  margin: auto;
+`;
+
+const CategoryDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  gap: 3vw;
+`;
+
+const CategorySpan = styled.span`
+  cursor: pointer;
+`;
+
+const ReviewBtnDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 1%;
+  margin-right: 3%;
+  height: 3vh;
+  flex-wrap: wrap;
+`;
+
+const ContentDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 2vh;
+  gap: 3vw;
+  margin-bottom: 1%;
+  padding-bottom: 1%;
+  border-bottom: 1px solid #e9ecef;
+`;
+
+export const ContentSpan = styled.span`
+  width: 10vw;
+`;
 
 function FoodReviewBoard() {
   const [category, setCategory] = useState("");
@@ -44,9 +86,10 @@ function FoodReviewBoard() {
 
   const content = currentList?.map((item) => {
     return (
-      <div key={item.FoodBoardNo}>
-        <span>{item.category}</span>
-        <span
+      <ContentDiv key={item.FoodBoardNo}>
+        <ContentSpan>{item.category}</ContentSpan>
+        <ContentSpan
+          style={{ cursor: "pointer" }}
           onClick={async () => {
             try {
               const { data: viewUpdateCheck } = await viewUpdate({
@@ -66,11 +109,11 @@ function FoodReviewBoard() {
           }}
         >
           {item.title}
-        </span>
-        <span>{item.userName}</span>
-        <span>{item.date}</span>
-        <span>{item.view}</span>
-      </div>
+        </ContentSpan>
+        <ContentSpan>{item.userName}</ContentSpan>
+        <ContentSpan>{item.date}</ContentSpan>
+        <ContentSpan>{item.view}</ContentSpan>
+      </ContentDiv>
     );
   });
 
@@ -84,47 +127,51 @@ function FoodReviewBoard() {
 
   return (
     <>
-      <div>
-        <span>{` 카테고리`}</span>
-        <span>{`   |   `}</span>
-        <span
-          onClick={() => {
-            setList(allList);
-          }}
-        >{`전체 `}</span>
-        <span
-          onClick={() => {
-            setCategory("한식");
-          }}
-        >{`한식 `}</span>
-        <span
-          onClick={() => {
-            setCategory("중식");
-          }}
-        >{`중식 `}</span>
-        <span
-          onClick={() => {
-            setCategory("일식");
-          }}
-        >{`일식 `}</span>
-        <span
-          onClick={() => {
-            setCategory("양식");
-          }}
-        >{`양식 `}</span>
-        <span
-          onClick={() => {
-            setCategory("기타");
-          }}
-        >{`기타`}</span>
-        <div>
-          <button
-            onClick={() => {
-              history.push("/food/create");
-            }}
-          >
-            글쓰기
-          </button>
+      <FoodBoardDiv>
+        <div style={{ padding: "3%" }}>
+          <CategoryDiv>
+            <CategorySpan
+              onClick={() => {
+                setList(allList);
+              }}
+            >{`전체 `}</CategorySpan>
+            <span>{`   |   `}</span>
+            <CategorySpan
+              onClick={() => {
+                setCategory("한식");
+              }}
+            >{`한식 `}</CategorySpan>
+            <CategorySpan
+              onClick={() => {
+                setCategory("중식");
+              }}
+            >{`중식 `}</CategorySpan>
+            <CategorySpan
+              onClick={() => {
+                setCategory("일식");
+              }}
+            >{`일식 `}</CategorySpan>
+            <CategorySpan
+              onClick={() => {
+                setCategory("양식");
+              }}
+            >{`양식 `}</CategorySpan>
+            <CategorySpan
+              onClick={() => {
+                setCategory("기타");
+              }}
+            >{`기타`}</CategorySpan>
+          </CategoryDiv>
+          <ReviewBtnDiv>
+            <button
+              style={{ width: "3vw" }}
+              onClick={() => {
+                history.push("/food/create");
+              }}
+            >
+              글쓰기
+            </button>
+          </ReviewBtnDiv>
           <FoodBoardLayOut content={content} />
           <Pagination
             onClick={paginate}
@@ -132,7 +179,7 @@ function FoodReviewBoard() {
             totalPage={list?.length}
           />
         </div>
-      </div>
+      </FoodBoardDiv>
     </>
   );
 }
