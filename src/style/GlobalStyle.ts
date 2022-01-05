@@ -3,10 +3,14 @@ import reset from "styled-reset";
 
 export const GlobalStyles = createGlobalStyle`
     ${reset}; 
-    body{font-family: 'Gowun Batang', serif;}
+    body{font-family: 'Gowun Batang', serif;
+    background-color: ${(props) => props.theme.bgColor};
+    color: ${(props) => props.theme.textColor};
+    }
     ::placeholder {
     font-family: 'Gowun Batang', serif;
     text-align: center;
+
     }
     button{
     font-family: 'Gowun Batang', serif;

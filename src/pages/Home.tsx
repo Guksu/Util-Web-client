@@ -16,7 +16,7 @@ const ContentWraper = styled.div`
 `;
 
 const ContentDiv = styled.div`
-  background-color: #ced4da;
+  background-color: ${(props) => props.theme.homeDivColor};
   border-radius: 80%;
   border: 0px;
   width: 5vw;

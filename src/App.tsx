@@ -20,33 +20,40 @@ import FoodReviewCreate from "./pages/FoodPages/FoodReviewCreate";
 import FoodReview from "./pages/FoodPages/FoodReview";
 import FoodReviewEdit from "./pages/FoodPages/FoodReviewEdit";
 import { GlobalStyles } from "./style/GlobalStyle";
+import { ThemeProvider } from "styled-components";
+import { isDarkThemAtom } from "./atom";
+import { darkThem, lightThem } from "./them";
+import { useRecoilValue } from "recoil";
 
 function App() {
+  const isDark = useRecoilValue(isDarkThemAtom);
   return (
-    <BrowserRouter>
-      <LoginCheck />
-      <Header />
-      <Switch>
-        <Route exact path={"/"} component={Home} />
-        <Route exact path={"/login"} component={Login} />
-        <Route exact path={"/user"} component={Profile} />
-        <Route exact path={"/user/create"} component={CreateUser} />
-        <Route exact path={"/user/edit/pw"} component={EditPw} />
-        <Route exact path={"/user/edit/img"} component={EditImg} />
-        <Route exact path={"/account"} component={Account} />
-        <Route exact path={"/account/detail"} component={AccountDetail} />
-        <Route exact path={"/fassion"} component={Fassion} />
-        <Route exact path={"/fassion/my"} component={MyStyle} />
-        <Route exact path={"/fassion/others"} component={OthersStyle} />
-        <Route exact path={"/fassion/uploads"} component={Uploads} />
-        <Route exact path={"/food"} component={Food} />
-        <Route exact path={"/food/reviewList"} component={FoodReviewBoard} />
-        <Route exact path={"/food/create"} component={FoodReviewCreate} />
-        <Route exact path={"/food/review"} component={FoodReview} />
-        <Route exact path={"/food/review/edit"} component={FoodReviewEdit} />
-      </Switch>
+    <ThemeProvider theme={isDark === "lightTheme" ? lightThem : darkThem}>
+      <BrowserRouter>
+        <LoginCheck />
+        <Header />
+        <Switch>
+          <Route exact path={"/"} component={Home} />
+          <Route exact path={"/login"} component={Login} />
+          <Route exact path={"/user"} component={Profile} />
+          <Route exact path={"/user/create"} component={CreateUser} />
+          <Route exact path={"/user/edit/pw"} component={EditPw} />
+          <Route exact path={"/user/edit/img"} component={EditImg} />
+          <Route exact path={"/account"} component={Account} />
+          <Route exact path={"/account/detail"} component={AccountDetail} />
+          <Route exact path={"/fassion"} component={Fassion} />
+          <Route exact path={"/fassion/my"} component={MyStyle} />
+          <Route exact path={"/fassion/others"} component={OthersStyle} />
+          <Route exact path={"/fassion/uploads"} component={Uploads} />
+          <Route exact path={"/food"} component={Food} />
+          <Route exact path={"/food/reviewList"} component={FoodReviewBoard} />
+          <Route exact path={"/food/create"} component={FoodReviewCreate} />
+          <Route exact path={"/food/review"} component={FoodReview} />
+          <Route exact path={"/food/review/edit"} component={FoodReviewEdit} />
+        </Switch>
+      </BrowserRouter>
       <GlobalStyles />
-    </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

@@ -39,3 +39,8 @@ export const isFoodContentAtom = atom({
   key: "isFoodContent",
   default: "",
 });
+
+export const isDarkThemAtom = atom({
+  key: "isDark",
+  default: localStorage.getItem("theme") || "lightTheme",
+});

@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { isLatAtom, isLoginAtom, isLonAtom, isTempAtom } from "../atom";
+import {
+  isDarkThemAtom,
+  isLatAtom,
+  isLoginAtom,
+  isLonAtom,
+  isTempAtom,
+} from "../atom";
 import { PROFILE_INFO } from "../gql/query";
 import { ProfileInfoIF } from "../interfaces/UserIF";
 import MenuNav from "./MenuNav";
@@ -48,6 +54,7 @@ function Header() {
   const [temp, setTemp] = useRecoilState(isTempAtom);
   const [weatherIcon, setWeatherIcon] = useState("");
   const isLogin = useRecoilValue(isLoginAtom);
+  const [isDark, setIsDark] = useRecoilState(isDarkThemAtom);
   const { data } = useQuery<ProfileInfoIF>(PROFILE_INFO);
   const API_KEY = process.env.REACT_APP_WEATHER_KEY;
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
@@ -71,7 +78,27 @@ function Header() {
     <>
       <HeaderDiv>
         <div>
-          <span style={{ cursor: "pointer" }}>다크모드</span>
+          {isDark === "lightTheme" ? (
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                localStorage.setItem("theme", "darkTheme");
+                setIsDark("darkTheme");
+              }}
+            >
+              다크모드
+            </span>
+          ) : (
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                localStorage.setItem("theme", "lightTheme");
+                setIsDark("lightTheme");
+              }}
+            >
+              라이트모드
+            </span>
+          )}
           <WeatherDiv>
             <img
               src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
