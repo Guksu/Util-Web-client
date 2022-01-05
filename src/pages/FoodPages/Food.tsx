@@ -189,8 +189,7 @@ function Food() {
       }
 
       for (i = 1; i <= pagination.last; i++) {
-        const el = document.createElement("a");
-        el.href = "#";
+        const el = document.createElement("button");
         el.innerHTML = i.toString();
 
         if (i === pagination.current) {

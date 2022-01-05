@@ -16,6 +16,11 @@ const ChartBtn = styled.span`
   cursor: pointer;
 `;
 
+const ArrowDiv = styled.div`
+  color: ${(props) => props.theme.arrowColor};
+  margin: auto;
+`;
+
 function AccountChart() {
   const { data: allList } = useQuery<GetAccountListIF>(GET_ALL_ACCOUNT);
   const profitList = allList?.getAccountList.account?.filter(
@@ -203,7 +208,7 @@ function AccountChart() {
             ◀
           </ChartBtn>
         ) : (
-          <div style={{ color: "white", margin: "auto" }}>◀</div>
+          <ArrowDiv>◀</ArrowDiv>
         )}
         <div style={{ height: 350, width: 350 }}>
           <ResponsivePie
@@ -243,7 +248,7 @@ function AccountChart() {
             ▶
           </ChartBtn>
         ) : (
-          <div style={{ color: "white", margin: "auto" }}>▶</div>
+          <ArrowDiv>▶</ArrowDiv>
         )}
       </ChartWrapper>
     </>

@@ -7,5 +7,7 @@ declare module "styled-components" {
     textColor: string;
 
     homeDivColor: string;
+
+    arrowColor: string;
   }
 }

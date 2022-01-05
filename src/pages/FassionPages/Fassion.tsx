@@ -25,6 +25,13 @@ const ImgDiv = styled.div`
 const ImgBtn = styled.div`
   margin: auto;
   cursor: pointer;
+  padding: 0 1%;
+`;
+
+const ArrowDiv = styled.div`
+  color: ${(props) => props.theme.arrowColor};
+  margin: auto;
+  padding: 0 1%;
 `;
 
 const BtnDiv = styled.div`
@@ -71,13 +78,17 @@ function Fassion() {
     <>
       <ImgWrapper>
         <ImgDiv>
-          <ImgBtn
-            onClick={() => {
-              imgNum !== 0 && setImgNum(imgNum - 1);
-            }}
-          >
-            ◀
-          </ImgBtn>
+          {imgNum > 0 ? (
+            <ImgBtn
+              onClick={() => {
+                imgNum !== 0 && setImgNum(imgNum - 1);
+              }}
+            >
+              ◀
+            </ImgBtn>
+          ) : (
+            <ArrowDiv>◀</ArrowDiv>
+          )}
           <div>
             <div>
               <img
@@ -96,13 +107,17 @@ function Fassion() {
               >{`<오늘의 코디>`}</div>
             </div>
           </div>
-          <ImgBtn
-            onClick={() => {
-              imgNum < imgList.length - 1 && setImgNum(imgNum + 1);
-            }}
-          >
-            ▶
-          </ImgBtn>
+          {imgNum < imgList.length - 1 ? (
+            <ImgBtn
+              onClick={() => {
+                imgNum < imgList.length - 1 && setImgNum(imgNum + 1);
+              }}
+            >
+              ▶
+            </ImgBtn>
+          ) : (
+            <ArrowDiv>▶</ArrowDiv>
+          )}
         </ImgDiv>
         <BtnDiv>
           <button
