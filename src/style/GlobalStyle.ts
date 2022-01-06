@@ -17,9 +17,9 @@ export const GlobalStyles = createGlobalStyle`
     text-align: center;
     cursor: pointer;
     color: #fff;
-    background-color: #999999;
+    background-color: #999999 ;
     border:0;
-    border-radius: 10px;
+    border-radius: 10px ;
     }
     input{
         :focus {

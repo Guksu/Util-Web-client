@@ -25,6 +25,7 @@ const ContentDiv = styled.div`
   min-height: 80px;
   text-align: center;
   cursor: pointer;
+  outline: ${(props) => props.theme.homeOutlineColor};
 `;
 
 const ContentImg = styled.img`

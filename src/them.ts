@@ -1,14 +1,16 @@
 import { DefaultTheme } from "styled-components";
 
 export const lightThem: DefaultTheme = {
-  bgColor: "white",
+  bgColor: "#FAF8FF",
   textColor: "black",
-  homeDivColor: "#dee2e6",
-  arrowColor: "white",
+  homeDivColor: "white",
+  homeOutlineColor: "2px solid #adb5bd",
+  arrowColor: "#FAF8FF",
 };
 export const darkThem: DefaultTheme = {
   bgColor: "#495057",
-  textColor: "white",
-  homeDivColor: "#f1f3f5",
+  textColor: "#FAF8FF",
+  homeDivColor: "#FAF8FF",
+  homeOutlineColor: "0",
   arrowColor: "#495057",
 };

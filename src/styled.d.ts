@@ -9,5 +9,7 @@ declare module "styled-components" {
     homeDivColor: string;
 
     arrowColor: string;
+
+    homeOutlineColor: string;
   }
 }
