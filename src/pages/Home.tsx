@@ -12,7 +12,7 @@ const MainDiv = styled.div`
 const ContentWraper = styled.div`
   display: flex;
   justify-content: space-around;
-  margin: 5% 30%;
+  margin: 15vh 30%;
 `;
 
 const ContentDiv = styled.div`
@@ -21,8 +21,8 @@ const ContentDiv = styled.div`
   border: 0px;
   width: 5vw;
   height: 8vh;
-  min-width: 40px;
-  min-height: 50px;
+  min-width: 80px;
+  min-height: 80px;
   text-align: center;
   cursor: pointer;
 `;
@@ -31,8 +31,8 @@ const ContentImg = styled.img`
   height: 6vh;
   width: 3vw;
   min-height: 40px;
-  min-width: 30px;
-  padding-top: 7%;
+  min-width: 40px;
+  padding-top: 10%;
   margin: 2%;
 `;
 

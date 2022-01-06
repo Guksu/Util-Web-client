@@ -9,7 +9,7 @@ interface Props {
 
 const LayOutDiv = styled.div`
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 30% 70%;
   margin: 8% 20%;
 `;
 

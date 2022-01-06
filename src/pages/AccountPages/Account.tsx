@@ -30,6 +30,7 @@ const AccountBtnDiv = styled.div`
 
 const AccountBtn = styled.button`
   width: 8vw;
+  font-size: 15px;
 `;
 
 function Account() {

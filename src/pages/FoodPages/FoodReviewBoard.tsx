@@ -164,7 +164,7 @@ function FoodReviewBoard() {
           </CategoryDiv>
           <ReviewBtnDiv>
             <button
-              style={{ width: "3vw" }}
+              style={{ width: "70px", height: "40px", fontSize: "15px" }}
               onClick={() => {
                 history.push("/food/create");
               }}

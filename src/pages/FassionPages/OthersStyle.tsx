@@ -9,7 +9,7 @@ import {
   LikeCheckIF,
   LikeUpdateIF,
 } from "../../interfaces/FassionIF";
-import { Img, InfoDiv, StyleDiv } from "./MyStyle";
+import { Img, ImgDiv, InfoDiv, StyleDiv } from "./MyStyle";
 
 function OthersStyle() {
   const { data: fassionList } =
@@ -39,7 +39,9 @@ function OthersStyle() {
             <InfoDiv>
               <img src={item.userImg} width={20} height={20} alt="프로필" />
             </InfoDiv>
-            <Img src={item.imgUrl} alt="이미지" />
+            <ImgDiv>
+              <Img src={item.imgUrl} alt="이미지" />
+            </ImgDiv>
             {likeList?.likeCheck.like?.includes(item.fassionNo) ? (
               <div style={{ marginTop: "2%" }}>
                 <span

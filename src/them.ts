@@ -3,7 +3,7 @@ import { DefaultTheme } from "styled-components";
 export const lightThem: DefaultTheme = {
   bgColor: "white",
   textColor: "black",
-  homeDivColor: "#ced4da",
+  homeDivColor: "#dee2e6",
   arrowColor: "white",
 };
 export const darkThem: DefaultTheme = {

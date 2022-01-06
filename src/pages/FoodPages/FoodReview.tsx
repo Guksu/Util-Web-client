@@ -10,7 +10,6 @@ import { GetReviewIF } from "../../interfaces/FoodIF";
 const FoodReviewDiv = styled.div`
   outline: #ced4da solid 1px;
   width: 80%;
-  height: 90vh;
   margin: auto;
   padding: 1%;
 `;

@@ -10,6 +10,7 @@ import { GetMyFassionListIF } from "../../interfaces/FassionIF";
 export const StyleDiv = styled.div`
   outline: #ced4da solid 1px;
   padding: 5%;
+  width: 85%;
 `;
 
 export const InfoDiv = styled.div`
@@ -18,17 +19,20 @@ export const InfoDiv = styled.div`
   width: 10vw;
 `;
 
+export const ImgDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 1%;
+`;
 export const Img = styled.img`
   width: 300px;
   height: 300px;
-  margin-top: 3%;
-  margin-left: 15%;
 `;
 
 const StyleBtnDiv = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-right: 10%;
+  margin-right: 15%;
   margin-bottom: 1%;
 `;
 
@@ -60,7 +64,9 @@ function MyStyle() {
             <InfoDiv>
               <img src={item.userImg} width={20} height={20} alt="프로필" />
             </InfoDiv>
-            <Img src={item.imgUrl} alt="이미지" />
+            <ImgDiv>
+              <Img src={item.imgUrl} alt="이미지" />
+            </ImgDiv>
           </li>
         </StyleDiv>
       </ul>

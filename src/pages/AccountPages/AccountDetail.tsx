@@ -8,14 +8,14 @@ import { AccountWrapper } from "./Account";
 
 const ListDiv = styled.div`
   display: flex;
-  font-size: 20px;
+  font-size: 110%;
 `;
 
 const ListLi = styled.li`
   display: grid;
   width: 40vw;
-  grid-template-columns: 20% 70%;
-  margin: 1%;
+  grid-template-columns: 30% 70%;
+  margin: 2%;
 `;
 
 const DeleteImg = styled.img`

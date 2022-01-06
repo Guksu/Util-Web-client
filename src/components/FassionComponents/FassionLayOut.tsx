@@ -6,7 +6,7 @@ interface Props {
 
 const LayOuytDiv = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 20px;
   width: 80%;

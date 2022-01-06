@@ -281,8 +281,9 @@ function Food() {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr 1fr",
-              gridTemplateRows: "1fr 1fr",
-              padding: "5%",
+              gridTemplateRows: "1fr 1fr 1fr ",
+              gridGap: "5px",
+              paddingTop: "5%",
               cursor: "pointer",
             }}
           ></ul>

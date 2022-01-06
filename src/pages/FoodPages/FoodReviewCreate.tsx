@@ -29,7 +29,7 @@ const TitleInput = styled.input`
 `;
 
 const Select = styled.select`
-  width: 8%;
+  width: 150px;
   text-align: center;
   outline: 1px solid #adb5bd;
 `;
@@ -121,7 +121,12 @@ function FoodReviewCreate() {
           }}
         />
         <CreateBtnDiv>
-          <button onClick={onClick}>등록하기</button>
+          <button
+            onClick={onClick}
+            style={{ width: "70px", height: "40px", fontSize: "15px" }}
+          >
+            등록하기
+          </button>
         </CreateBtnDiv>
       </ReviewCreateWrapper>
     </>
