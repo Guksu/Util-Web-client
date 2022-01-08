@@ -7,7 +7,7 @@ import { DataIF, GetAccountListIF } from "../../interfaces/AccountIF";
 
 const ChartWrapper = styled.div`
   display: flex;
-  border-right: #ced4da solid 1px;
+  border-right: ${(props) => props.theme.divOutLineColor};
   padding: 5%;
 `;
 

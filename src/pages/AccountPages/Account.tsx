@@ -13,7 +13,7 @@ export const AccountWrapper = styled.div`
   margin: auto;
   margin-top: 5%;
   border: 0;
-  outline: #ced4da solid 1px;
+  outline: ${(props) => props.theme.divOutLineColor};
 `;
 
 const AccountInputDiv = styled.div`

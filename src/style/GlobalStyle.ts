@@ -26,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
             outline:  #ced4da solid 1px;
         }
     border: 0;
-    outline: #ced4da solid 1px;
+    outline:  ${(props) => props.theme.divOutLineColor};
     }
     select{
         :focus {

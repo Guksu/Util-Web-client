@@ -19,7 +19,7 @@ const ContentName = styled.span`
 
 const ContentDiv = styled.div`
   border: 0px solid;
-  outline: #ced4da solid 1px;
+  outline: ${(props) => props.theme.divOutLineColor};
   padding: 3%;
   display: flex;
   justify-content: space-between;

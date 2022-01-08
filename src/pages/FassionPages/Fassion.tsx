@@ -15,7 +15,7 @@ const ImgWrapper = styled.div`
   margin: auto;
   margin-top: 5%;
   padding: 1%;
-  outline: #ced4da solid 1px;
+  outline: ${(props) => props.theme.divOutLineColor};
 `;
 
 const ImgDiv = styled.div`

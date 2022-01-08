@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const MapDiv = styled.div`
-  outline: #ced4da solid 1px;
+  outline: ${(props) => props.theme.divOutLineColor};
   width: 80%;
   height: 60vh;
   margin: auto;

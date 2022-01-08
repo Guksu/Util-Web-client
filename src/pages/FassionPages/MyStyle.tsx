@@ -8,7 +8,7 @@ import { GET_MY_FASSION_LIST } from "../../gql/query";
 import { GetMyFassionListIF } from "../../interfaces/FassionIF";
 
 export const StyleDiv = styled.div`
-  outline: #ced4da solid 1px;
+  outline: ${(props) => props.theme.divOutLineColor};
   padding: 5%;
   width: 85%;
 `;

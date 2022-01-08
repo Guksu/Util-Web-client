@@ -9,7 +9,7 @@ import { FileInput, FileLabel, FileName } from "../UserPages/EditImg";
 const FassionUploadWrapper = styled.div`
   margin: auto;
   margin-top: 10%;
-  outline: #ced4da solid 1px;
+  outline: ${(props) => props.theme.divOutLineColor};
   width: 30vw;
   height: 20vh;
   min-width: 300px;

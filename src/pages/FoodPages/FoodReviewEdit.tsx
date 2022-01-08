@@ -10,7 +10,7 @@ const ReviewEditWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-content: center;
-  outline: #ced4da solid 1px;
+  outline: ${(props) => props.theme.divOutLineColor};
   width: 80%;
   height: 70vh;
   margin: auto;

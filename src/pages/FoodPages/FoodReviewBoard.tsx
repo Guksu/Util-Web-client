@@ -15,7 +15,7 @@ import {
 } from "../../interfaces/FoodIF";
 
 const FoodBoardDiv = styled.div`
-  outline: #ced4da solid 1px;
+  outline: ${(props) => props.theme.divOutLineColor};
   width: 80%;
   height: 75vh;
   margin: auto;
@@ -48,7 +48,7 @@ const ContentDiv = styled.div`
   gap: 3vw;
   margin-bottom: 1%;
   padding-bottom: 1%;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: ${(props) => props.theme.divOutLineColor}; ;
 `;
 
 export const ContentSpan = styled.span`

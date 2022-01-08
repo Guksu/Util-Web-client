@@ -8,7 +8,7 @@ import { GET_REVIEW } from "../../gql/query";
 import { GetReviewIF } from "../../interfaces/FoodIF";
 
 const FoodReviewDiv = styled.div`
-  outline: #ced4da solid 1px;
+  outline: ${(props) => props.theme.divOutLineColor};
   width: 80%;
   margin: auto;
   padding: 1%;
@@ -38,6 +38,7 @@ const ContentDiv = styled.div`
   padding-top: 1%;
   font-size: 20px;
   line-height: 150%;
+  white-space: pre-line;
 `;
 
 function FoodReview() {

@@ -7,14 +7,14 @@ interface Props {
 
 const DetailWrapper = styled.div`
   padding: 3%;
-  outline: #ced4da solid 1px;
+  outline: ${(props) => props.theme.divOutLineColor};
 `;
 
 const TypeName = styled.div`
   display: flex;
   justify-content: center;
   padding-bottom: 1%;
-  border-bottom: #ced4da solid 1px;
+  border-bottom: ${(props) => props.theme.divOutLineColor};
   font-size: 20px;
 `;
 
