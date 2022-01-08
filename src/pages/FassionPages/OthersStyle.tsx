@@ -12,9 +12,10 @@ import {
 import { Img, ImgDiv, InfoDiv, StyleDiv } from "./MyStyle";
 
 function OthersStyle() {
-  const { data: fassionList } =
+  const { data: fassionList, refetch: fassionListRefetch } =
     useQuery<GetAllFassionListIF>(GET_ALL_FASSION_LIST);
-  const { data: likeList } = useQuery<LikeCheckIF>(LIKE_CHECK);
+  const { data: likeList, refetch: likeRefetch } =
+    useQuery<LikeCheckIF>(LIKE_CHECK);
   const [likeUpdate] = useMutation<LikeUpdateIF>(LIKE_UPDATE);
   const [likeRemove] = useMutation<LikeUpdateIF>(LIKE_REMOVE);
 
@@ -53,7 +54,8 @@ function OthersStyle() {
                           likeUpdateInput: { fassionNo: item.fassionNo },
                         },
                       });
-                      window.location.replace("/fassion/others");
+                      fassionListRefetch();
+                      likeRefetch();
                     } catch (error) {
                       console.log(error);
                     }
@@ -73,7 +75,8 @@ function OthersStyle() {
                           likeUpdateInput: { fassionNo: item.fassionNo },
                         },
                       });
-                      window.location.replace("/fassion/others");
+                      fassionListRefetch();
+                      likeRefetch();
                     } catch (error) {
                       console.log(error);
                     }
