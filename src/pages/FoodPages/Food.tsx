@@ -20,18 +20,19 @@ function Food() {
   const kakao = (window as any).kakao;
   const isLat = useRecoilValue(isLatAtom);
   const isLon = useRecoilValue(isLonAtom);
-  const [keyword, setKeyword] = useState("");
   const history = useHistory();
+  const [keyword, setKeyword] = useState("");
 
-  var geocoder = new kakao.maps.services.Geocoder();
+  useEffect(() => {
+    var geocoder = new kakao.maps.services.Geocoder();
+    var callback = function (result: any, status: any) {
+      if (status === kakao.maps.services.Status.OK) {
+        setKeyword(`${result[0].address_name} 맛집`);
+      }
+    };
 
-  var callback = function (result: any, status: any) {
-    if (status === kakao.maps.services.Status.OK) {
-      setKeyword(`${result[0].address_name} 맛집`);
-    }
-  };
-
-  geocoder.coord2RegionCode(isLon, isLat, callback);
+    geocoder.coord2RegionCode(isLon, isLat, callback);
+  }, [isLat, isLon]);
 
   useEffect(() => {
     let markers: any = [];
