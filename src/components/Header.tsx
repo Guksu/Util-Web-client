@@ -55,7 +55,7 @@ function Header() {
   const [weatherIcon, setWeatherIcon] = useState("");
   const isLogin = useRecoilValue(isLoginAtom);
   const [isDark, setIsDark] = useRecoilState(isDarkThemAtom);
-  const { data } = useQuery<ProfileInfoIF>(PROFILE_INFO);
+  const { data, refetch } = useQuery<ProfileInfoIF>(PROFILE_INFO);
   const API_KEY = process.env.REACT_APP_WEATHER_KEY;
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
 
@@ -72,6 +72,7 @@ function Header() {
         setTemp(Math.ceil(data.main.temp));
         setWeatherIcon(data.weather[0].icon);
       });
+    refetch();
   });
 
   return (

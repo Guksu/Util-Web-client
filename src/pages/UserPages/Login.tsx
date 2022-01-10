@@ -45,10 +45,7 @@ function Login() {
     },
   });
 
-  const onLoginClick: React.MouseEventHandler<HTMLButtonElement> = async (
-    e
-  ) => {
-    e.preventDefault();
+  const onLoginClick: React.MouseEventHandler<HTMLButtonElement> = async () => {
     try {
       const { data } = await login();
       if (data?.login.ok && data.login.token) {
@@ -56,13 +53,17 @@ function Login() {
         localStorage.setItem("id", id);
         isAuthToken(data.login.token);
         isLogin(true);
-        window.location.replace("/");
+        history.push("/");
       } else {
         alert(data?.login.error);
       }
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const enterKeyEvent: any = (e: any) => {
+    if (e.key === "Enter") return onLoginClick(e);
   };
 
   return (
@@ -76,6 +77,7 @@ function Login() {
           onChange={(e) => {
             setId(e.currentTarget.value);
           }}
+          onKeyPress={enterKeyEvent}
         />
         <InputStyle
           type={"password"}
@@ -85,6 +87,7 @@ function Login() {
           onChange={(e) => {
             setPassword(e.currentTarget.value);
           }}
+          onKeyPress={enterKeyEvent}
         />
         <ButtonDiv>
           <Button onClick={onLoginClick}>로그인</Button>

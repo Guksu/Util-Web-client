@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
+import { useEffect } from "react";
 import styled from "styled-components";
 import DetailLayOut from "../../components/AccountComponents/DetailLayOut";
 import { DELETE_ACCOUNT } from "../../gql/mutation";
@@ -26,7 +27,8 @@ const DeleteImg = styled.img`
 `;
 
 function AccountDetail() {
-  const { data: getList } = useQuery<GetAccountListIF>(GET_ALL_ACCOUNT_LIST);
+  const { data: getList, refetch } =
+    useQuery<GetAccountListIF>(GET_ALL_ACCOUNT_LIST);
   const [deleteAccount] = useMutation<DeleteAccountIF>(DELETE_ACCOUNT);
 
   const profit = getList?.getAccountList.account?.filter(
@@ -61,7 +63,6 @@ function AccountDetail() {
                 });
                 if (deletData?.deleteAccount.ok) {
                   alert("삭제되었습니다.");
-                  window.location.replace("/account/detail");
                 } else {
                   alert(deletData?.deleteAccount.error);
                 }
@@ -99,7 +100,6 @@ function AccountDetail() {
               });
               if (deletData?.deleteAccount.ok) {
                 alert("삭제되었습니다.");
-                window.location.replace("/account/detail");
               } else {
                 alert(deletData?.deleteAccount.error);
               }
@@ -110,6 +110,10 @@ function AccountDetail() {
         />
       </ListDiv>
     );
+  });
+
+  useEffect(() => {
+    refetch();
   });
 
   return (

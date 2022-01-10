@@ -22,7 +22,8 @@ const ArrowDiv = styled.div`
 `;
 
 function AccountChart() {
-  const { data: allList } = useQuery<GetAccountListIF>(GET_ALL_ACCOUNT);
+  const { data: allList, refetch } =
+    useQuery<GetAccountListIF>(GET_ALL_ACCOUNT);
   const profitList = allList?.getAccountList.account?.filter(
     (item) => item.type === "profit"
   );
@@ -189,6 +190,10 @@ function AccountChart() {
 
   const [data, setData] = useState<DataIF[]>(allData);
   const [num, setNum] = useState(0);
+
+  useEffect(() => {
+    refetch();
+  });
 
   useEffect(() => {
     setData(allData);
