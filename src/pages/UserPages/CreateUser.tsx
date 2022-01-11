@@ -71,7 +71,7 @@ function CreateUser() {
           }}
         />
         <InputStyle
-          type={"text"}
+          type={"password"}
           name="passwrod"
           placeholder="Passwrod를 입력하세요"
           required

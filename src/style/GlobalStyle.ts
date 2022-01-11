@@ -10,7 +10,6 @@ export const GlobalStyles = createGlobalStyle`
     ::placeholder {
     font-family: 'Gowun Batang', serif;
     text-align: center;
-
     }
     button{
     font-family: 'Gowun Batang', serif;
@@ -27,6 +26,7 @@ export const GlobalStyles = createGlobalStyle`
         }
     border: 0;
     outline:  ${(props) => props.theme.divOutLineColor};
+    height: 25px;
     }
     select{
         :focus {

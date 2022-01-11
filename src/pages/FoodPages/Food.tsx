@@ -12,6 +12,15 @@ const MapDiv = styled.div`
   margin: auto;
 `;
 
+const Map = styled.div`
+  margin: 2%;
+  width: 30vw;
+  height: 50vh;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50px;
+`;
+
 const KeywordInput = styled.input`
   outline: 1px solid #adb5bd;
 `;
@@ -138,7 +147,19 @@ function Food() {
         }
       };
 
-      let itemStr = "<h5>" + "▪ " + places.place_name + "</h5>";
+      let itemStr =
+        "▪ " +
+        place +
+        "<br/>" +
+        "<br/>" +
+        "&nbsp;" +
+        places.category_name.slice(5, 9) +
+        "<br/>" +
+        "<br/>" +
+        "&nbsp;" +
+        "&nbsp;" +
+        places.address_name +
+        "</div>";
 
       el.innerHTML = itemStr;
       el.onclick = getName;
@@ -211,7 +232,8 @@ function Food() {
     // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
     // 인포윈도우에 장소명을 표시합니다
     function displayInfowindow(marker: any, title: any) {
-      const content = '<div style="padding:5px;z-index:1;">' + title + "</div>";
+      const content =
+        '<div style="padding:5px;z-index:1;color:#495057">' + title + "</div>";
 
       infowindow.setContent(content);
       infowindow.open(map, marker);
@@ -266,17 +288,7 @@ function Food() {
             padding: "0 5%",
           }}
         >
-          <div
-            id="map"
-            style={{
-              margin: "2%",
-              width: "30vw",
-              height: "50vh",
-              position: "relative",
-              overflow: "hidden",
-              borderRadius: "50px",
-            }}
-          />
+          <Map id="map" />
           <ul
             id="placesList"
             style={{

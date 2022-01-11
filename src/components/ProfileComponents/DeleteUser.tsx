@@ -28,6 +28,7 @@ function DeleteUser() {
         탈퇴를 원하면 아래에 비밀번호를 입력해 주세요
       </DeleteContent>
       <input
+        type={"password"}
         required
         onChange={(e) => {
           setPassword(e.currentTarget.value);

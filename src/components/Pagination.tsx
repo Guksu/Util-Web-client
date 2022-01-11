@@ -15,6 +15,8 @@ const PaginationWrapper = styled.div`
 
 const PaginationBtn = styled.button`
   width: 2vw;
+  margin-top: 50%;
+  margin-bottom: 100%;
 `;
 
 function Pagination({ perPage, totalPage, onClick }: Props) {

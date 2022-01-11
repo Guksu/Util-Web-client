@@ -201,61 +201,65 @@ function AccountChart() {
 
   return (
     <>
-      <ChartWrapper>
-        {num > 0 ? (
-          <ChartBtn
-            onClick={() => {
-              num === 2 && setData(profitData);
-              num === 1 && setData(allData);
-              setNum(num - 1);
-            }}
-          >
-            ◀
-          </ChartBtn>
-        ) : (
-          <ArrowDiv>◀</ArrowDiv>
-        )}
-        <div style={{ height: 350, width: 350 }}>
-          <ResponsivePie
-            data={data}
-            margin={{ top: 40, right: 0, bottom: 0, left: 0 }}
-            valueFormat=">-~%"
-            innerRadius={0.5}
-            padAngle={1}
-            cornerRadius={4}
-            activeOuterRadiusOffset={8}
-            colors={{ scheme: "pastel1" }}
-            borderWidth={1}
-            borderColor={{ from: "color", modifiers: [["darker", 0.6]] }}
-            enableArcLinkLabels={false}
-            arcLinkLabelsTextOffset={3}
-            arcLinkLabelsTextColor={{ from: "color", modifiers: [] }}
-            arcLinkLabelsDiagonalLength={9}
-            arcLinkLabelsStraightLength={13}
-            arcLinkLabelsThickness={2}
-            arcLinkLabelsColor={{ from: "color", modifiers: [] }}
-            isInteractive={false}
-            arcLabel={function (e) {
-              return e.id + ` ${e.value}% `;
-            }}
-            arcLabelsTextColor={{ from: "color", modifiers: [["darker", 8]] }}
-            legends={[]}
-          />
-        </div>
-        {num < 2 ? (
-          <ChartBtn
-            onClick={() => {
-              num === 0 && setData(profitData);
-              num === 1 && setData(expenseData);
-              setNum(num + 1);
-            }}
-          >
-            ▶
-          </ChartBtn>
-        ) : (
-          <ArrowDiv>▶</ArrowDiv>
-        )}
-      </ChartWrapper>
+      {allList?.getAccountList.account?.length === 0 ? (
+        <div style={{ height: 470, width: 397 }}></div>
+      ) : (
+        <ChartWrapper>
+          {num > 0 ? (
+            <ChartBtn
+              onClick={() => {
+                num === 2 && setData(profitData);
+                num === 1 && setData(allData);
+                setNum(num - 1);
+              }}
+            >
+              ◀
+            </ChartBtn>
+          ) : (
+            <ArrowDiv>◀</ArrowDiv>
+          )}
+          <div style={{ height: 350, width: 350 }}>
+            <ResponsivePie
+              data={data}
+              margin={{ top: 40, right: 0, bottom: 0, left: 0 }}
+              valueFormat=">-~%"
+              innerRadius={0.5}
+              padAngle={1}
+              cornerRadius={4}
+              activeOuterRadiusOffset={8}
+              colors={{ scheme: "pastel1" }}
+              borderWidth={1}
+              borderColor={{ from: "color", modifiers: [["darker", 0.6]] }}
+              enableArcLinkLabels={false}
+              arcLinkLabelsTextOffset={3}
+              arcLinkLabelsTextColor={{ from: "color", modifiers: [] }}
+              arcLinkLabelsDiagonalLength={9}
+              arcLinkLabelsStraightLength={13}
+              arcLinkLabelsThickness={2}
+              arcLinkLabelsColor={{ from: "color", modifiers: [] }}
+              isInteractive={false}
+              arcLabel={function (e) {
+                return e.id + ` ${e.value}% `;
+              }}
+              arcLabelsTextColor={{ from: "color", modifiers: [["darker", 8]] }}
+              legends={[]}
+            />
+          </div>
+          {num < 2 ? (
+            <ChartBtn
+              onClick={() => {
+                num === 0 && setData(profitData);
+                num === 1 && setData(expenseData);
+                setNum(num + 1);
+              }}
+            >
+              ▶
+            </ChartBtn>
+          ) : (
+            <ArrowDiv>▶</ArrowDiv>
+          )}
+        </ChartWrapper>
+      )}
     </>
   );
 }
