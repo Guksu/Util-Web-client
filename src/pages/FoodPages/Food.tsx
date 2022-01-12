@@ -158,8 +158,7 @@ function Food() {
         "<br/>" +
         "&nbsp;" +
         "&nbsp;" +
-        places.address_name +
-        "</div>";
+        places.address_name;
 
       el.innerHTML = itemStr;
       el.onclick = getName;
@@ -298,6 +297,7 @@ function Food() {
               gridGap: "5px",
               paddingTop: "5%",
               cursor: "pointer",
+              fontSize: "15px",
             }}
           ></ul>
         </div>

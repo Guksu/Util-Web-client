@@ -24,6 +24,7 @@ import { ThemeProvider } from "styled-components";
 import { isDarkThemAtom } from "./atom";
 import { darkThem, lightThem } from "./them";
 import { useRecoilValue } from "recoil";
+import ChatRoom from "./pages/FleaMarket/ChatRoom";
 
 function App() {
   const isDark = useRecoilValue(isDarkThemAtom);
@@ -50,6 +51,7 @@ function App() {
           <Route exact path={"/food/create"} component={FoodReviewCreate} />
           <Route exact path={"/food/review"} component={FoodReview} />
           <Route exact path={"/food/review/edit"} component={FoodReviewEdit} />
+          <Route exact path={"/fleaMarket/chatroom"} component={ChatRoom} />
         </Switch>
       </BrowserRouter>
       <GlobalStyles />

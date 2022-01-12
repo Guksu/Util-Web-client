@@ -92,6 +92,16 @@ function Home() {
               </ContentDiv>
               <ContentName>맛집</ContentName>
             </div>
+            <div>
+              <ContentDiv
+                onClick={() => {
+                  history.push("/fleaMarket/chatroom");
+                }}
+              >
+                <ContentImg alt="플리마켓" />
+              </ContentDiv>
+              <ContentName>플리마켓</ContentName>
+            </div>
           </ContentWraper>
         </>
       ) : (
