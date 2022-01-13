@@ -25,6 +25,10 @@ import { isDarkThemAtom } from "./atom";
 import { darkThem, lightThem } from "./them";
 import { useRecoilValue } from "recoil";
 import ChatRoom from "./pages/FleaMarket/ChatRoom";
+import FleaMarketHome from "./pages/FleaMarket/FleaMarketHome";
+import FleaMarketProduct from "./pages/FleaMarket/FleaMarketProduct";
+import FleaMarketCreate from "./pages/FleaMarket/FleaMarketCreate";
+import FleaMarketEdit from "./pages/FleaMarket/FleaMarketEdit";
 
 function App() {
   const isDark = useRecoilValue(isDarkThemAtom);
@@ -51,6 +55,18 @@ function App() {
           <Route exact path={"/food/create"} component={FoodReviewCreate} />
           <Route exact path={"/food/review"} component={FoodReview} />
           <Route exact path={"/food/review/edit"} component={FoodReviewEdit} />
+          <Route exact path={"/fleaMarket"} component={FleaMarketHome} />
+          <Route
+            exact
+            path={"/fleaMarket/create"}
+            component={FleaMarketCreate}
+          />
+          <Route
+            exact
+            path={"/fleaMarket/product"}
+            component={FleaMarketProduct}
+          />
+          <Route exact path={"/fleaMarket/edit"} component={FleaMarketEdit} />
           <Route exact path={"/fleaMarket/chatroom"} component={ChatRoom} />
         </Switch>
       </BrowserRouter>

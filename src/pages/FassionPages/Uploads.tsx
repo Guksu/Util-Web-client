@@ -6,7 +6,7 @@ import { CREATE_FASSION } from "../../gql/mutation";
 import { CreateFassionIF } from "../../interfaces/FassionIF";
 import { FileInput, FileLabel, FileName } from "../UserPages/EditImg";
 
-const FassionUploadWrapper = styled.div`
+export const FassionUploadWrapper = styled.div`
   margin: auto;
   margin-top: 10%;
   outline: ${(props) => props.theme.divOutLineColor};
@@ -15,13 +15,13 @@ const FassionUploadWrapper = styled.div`
   min-width: 300px;
 `;
 
-const UploadDiv = styled.div`
+export const UploadDiv = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 10%;
 `;
 
-const InputDiv = styled.div`
+export const InputDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 20vw;

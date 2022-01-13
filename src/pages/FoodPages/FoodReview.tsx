@@ -7,21 +7,21 @@ import { isFoodContentAtom, isFoodNoAtom, isFoodTitleAtom } from "../../atom";
 import { GET_REVIEW } from "../../gql/query";
 import { GetReviewIF } from "../../interfaces/FoodIF";
 
-const FoodReviewDiv = styled.div`
+export const FoodReviewDiv = styled.div`
   outline: ${(props) => props.theme.divOutLineColor};
   width: 80%;
   margin: auto;
   padding: 1%;
 `;
 
-const TitleDiv = styled.div`
+export const TitleDiv = styled.div`
   display: flex;
   justify-content: center;
   font-size: 30px;
   gap: 3vw;
 `;
 
-const ReviewInfoDiv = styled.div`
+export const ReviewInfoDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 70%;
@@ -31,7 +31,7 @@ const ReviewInfoDiv = styled.div`
   font-size: 18px;
 `;
 
-const ContentDiv = styled.div`
+export const ContentDiv = styled.div`
   width: 90%;
   margin: auto;
   border-top: 1px solid #adb5bd;

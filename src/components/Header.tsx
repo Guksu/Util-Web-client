@@ -19,7 +19,7 @@ const HeaderDiv = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 3%;
-  height: 10vh;
+  height: 150px;
 `;
 
 const TogleDiv = styled.div`
@@ -139,7 +139,7 @@ function Header() {
                 }}
                 height={70}
                 width={70}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", borderRadius: "35px" }}
               />
               <span
                 onMouseLeave={() => {

@@ -1,10 +1,10 @@
 import { useMutation } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { CREATE_REVIEW } from "../../gql/mutation";
 import { CreateReviewIF } from "../../interfaces/FoodIF";
 
-const ReviewCreateWrapper = styled.div`
+export const ReviewCreateWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -15,26 +15,26 @@ const ReviewCreateWrapper = styled.div`
   padding: 1%;
 `;
 
-const TitleDiv = styled.div`
+export const TitleDiv = styled.div`
   display: flex;
   justify-content: center;
   gap: 5vw;
   margin-bottom: 2%;
 `;
 
-const TitleInput = styled.input`
+export const TitleInput = styled.input`
   width: 30%;
   height: 3vh;
   outline: 1px solid #adb5bd;
 `;
 
-const Select = styled.select`
+export const Select = styled.select`
   width: 150px;
   text-align: center;
   outline: 1px solid #adb5bd;
 `;
 
-const TextArea = styled.textarea`
+export const TextArea = styled.textarea`
   width: 70%;
   height: 80%;
   margin: auto;
@@ -42,7 +42,7 @@ const TextArea = styled.textarea`
   border: 0;
 `;
 
-const CreateBtnDiv = styled.div`
+export const CreateBtnDiv = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-right: 20%;
@@ -50,14 +50,9 @@ const CreateBtnDiv = styled.div`
 
 function FoodReviewCreate() {
   const [title, setTitle] = useState("");
+  const [date] = useState(new Date().toISOString().slice(0, 10));
   const [category, setCategory] = useState("");
-  const [date, setDate] = useState("");
   const [content, setContent] = useState("");
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = ("0" + (today.getMonth() + 1)).slice(-2);
-  const day = ("0" + today.getDate()).slice(-2);
-  const dateString = year + "-" + month + "-" + day;
   const [createReview] = useMutation<CreateReviewIF>(CREATE_REVIEW, {
     variables: {
       createReviewInput: {
@@ -68,9 +63,6 @@ function FoodReviewCreate() {
       },
     },
   });
-  useEffect(() => {
-    setDate(dateString);
-  }, []);
 
   const onClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();

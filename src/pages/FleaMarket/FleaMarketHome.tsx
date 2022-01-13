@@ -1,78 +1,85 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import styled from "styled-components";
-import { isFoodNoAtom } from "../../atom";
+import { isFleaNoAtom } from "../../atom";
 import FoodBoardLayOut from "../../components/FoodComponents/FoodBoardLayOut";
 import Pagination from "../../components/Pagination";
-import { VIEW_UPDATE } from "../../gql/mutation";
-import { GET_FOOD_REVIEW_LIST } from "../../gql/query";
+import { CommonOutput } from "../../interfaces/CommonIF";
 import {
-  FoodBoard,
-  GetFoodReviewListIF,
-  ViewUpdateIF,
-} from "../../interfaces/FoodIF";
+  CategoryDiv,
+  CategorySpan,
+  ContentDiv,
+  ContentSpan,
+  FoodBoardDiv,
+  ReviewBtnDiv,
+} from "../FoodPages/FoodReviewBoard";
 
-export const FoodBoardDiv = styled.div`
-  outline: ${(props) => props.theme.divOutLineColor};
-  width: 80%;
-  height: 75vh;
-  margin: auto;
+export interface FleaMarket {
+  FleaMarketNo: number;
+  title: string;
+  content: string;
+  date: string;
+  view: number;
+  userImg: string;
+  productImg: string;
+  userName: string;
+  category: string;
+}
+
+interface GetMarketListOutput extends CommonOutput {
+  market: FleaMarket[];
+}
+
+interface GetMarketListIF {
+  getMarketList: GetMarketListOutput;
+}
+
+const GET_MARKET_LIST = gql`
+  query getMarketList {
+    getMarketList {
+      ok
+      error
+      market {
+        title
+        view
+        userName
+        date
+        category
+        FleaMarketNo
+      }
+    }
+  }
 `;
 
-export const CategoryDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  font-size: 30px;
-  gap: 3vw;
+interface MarketViewUpdateIF {
+  marketViewUpdate: CommonOutput;
+}
+
+const MARKET_VIEW_UPDATE = gql`
+  mutation marketViewUpdate($marketViewUpdateInput: MarketViewUpdateInput!) {
+    marketViewUpdate(input: $marketViewUpdateInput) {
+      ok
+      error
+    }
+  }
 `;
 
-export const CategorySpan = styled.span`
-  cursor: pointer;
-`;
-
-export const ReviewBtnDiv = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin: 1%;
-  margin-right: 3%;
-  height: 3vh;
-  flex-wrap: wrap;
-`;
-
-export const ContentDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  font-size: 2vh;
-  gap: 3vw;
-  margin-bottom: 1%;
-  padding-bottom: 1%;
-  border-bottom: ${(props) => props.theme.divOutLineColor}; ;
-`;
-
-export const ContentSpan = styled.span`
-  width: 10vw;
-`;
-
-function FoodReviewBoard() {
-  const [category, setCategory] = useState("");
+function FleaMarketHome() {
   const history = useHistory();
-  const isFoodNo = useSetRecoilState(isFoodNoAtom);
+  const [category, setCategory] = useState("");
+  const isFleaNo = useSetRecoilState(isFleaNoAtom);
+  const { data: marketList } = useQuery<GetMarketListIF>(GET_MARKET_LIST);
+  const [marketViewUpdate] =
+    useMutation<MarketViewUpdateIF>(MARKET_VIEW_UPDATE);
 
-  //getFoodReviewList
-  const { data: reviewList } =
-    useQuery<GetFoodReviewListIF>(GET_FOOD_REVIEW_LIST);
-  const allList = reviewList?.getFoodReviewList.review?.filter(
-    (item) => item.category === "한식" || "일식" || "양식" || "중식" || "기타"
+  const allList = marketList?.getMarketList.market?.filter(
+    (item) => item.category === "음식" || "의류" || "전자기기" || "책" || "기타"
   );
-  const selectList = reviewList?.getFoodReviewList.review?.filter(
+  const selectList = marketList?.getMarketList.market?.filter(
     (item) => item.category === category
   );
-  const [list, setList] = useState<FoodBoard[] | undefined>(allList);
-
-  //viewUpdate
-  const [viewUpdate] = useMutation<ViewUpdateIF>(VIEW_UPDATE);
+  const [list, setList] = useState<FleaMarket[] | undefined>(allList);
 
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -86,22 +93,22 @@ function FoodReviewBoard() {
 
   const content = currentList?.map((item) => {
     return (
-      <ContentDiv key={item.FoodBoardNo}>
+      <ContentDiv key={item.FleaMarketNo}>
         <ContentSpan>{item.category}</ContentSpan>
         <ContentSpan
           style={{ cursor: "pointer" }}
           onClick={async () => {
             try {
-              const { data: viewUpdateCheck } = await viewUpdate({
+              const { data: viewUpdateCheck } = await marketViewUpdate({
                 variables: {
-                  viewUpdateInput: { FoodBoardNo: item.FoodBoardNo },
+                  marketViewUpdateInput: { FleaMarketNo: item.FleaMarketNo },
                 },
               });
-              if (viewUpdateCheck?.viewUpdate.ok) {
-                isFoodNo(item.FoodBoardNo);
-                history.push("/food/review");
+              if (viewUpdateCheck?.marketViewUpdate.ok) {
+                isFleaNo(item.FleaMarketNo);
+                history.push("/fleaMarket/product");
               } else {
-                alert(viewUpdateCheck?.viewUpdate.error);
+                alert(viewUpdateCheck?.marketViewUpdate.error);
               }
             } catch (error) {
               console.log(error);
@@ -123,7 +130,7 @@ function FoodReviewBoard() {
 
   useEffect(() => {
     setList(allList);
-  }, [reviewList]);
+  }, [marketList]);
 
   return (
     <>
@@ -135,27 +142,27 @@ function FoodReviewBoard() {
                 setList(allList);
               }}
             >{`전체 `}</CategorySpan>
-            <span>{`   |   `}</span>
+            <CategorySpan>{`   |   `}</CategorySpan>
             <CategorySpan
               onClick={() => {
-                setCategory("한식");
+                setCategory("음식");
               }}
-            >{`한식 `}</CategorySpan>
+            >{`음식 `}</CategorySpan>
             <CategorySpan
               onClick={() => {
-                setCategory("중식");
+                setCategory("의류");
               }}
-            >{`중식 `}</CategorySpan>
+            >{`의류 `}</CategorySpan>
             <CategorySpan
               onClick={() => {
-                setCategory("일식");
+                setCategory("전자기기");
               }}
-            >{`일식 `}</CategorySpan>
+            >{`전자기기 `}</CategorySpan>
             <CategorySpan
               onClick={() => {
-                setCategory("양식");
+                setCategory("책");
               }}
-            >{`양식 `}</CategorySpan>
+            >{`책 `}</CategorySpan>
             <CategorySpan
               onClick={() => {
                 setCategory("기타");
@@ -166,7 +173,7 @@ function FoodReviewBoard() {
             <button
               style={{ width: "70px", height: "40px", fontSize: "15px" }}
               onClick={() => {
-                history.push("/food/create");
+                history.push("/fleaMarket/create");
               }}
             >
               글쓰기
@@ -184,4 +191,4 @@ function FoodReviewBoard() {
   );
 }
 
-export default FoodReviewBoard;
+export default FleaMarketHome;

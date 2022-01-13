@@ -40,6 +40,21 @@ export const isFoodContentAtom = atom({
   default: "",
 });
 
+export const isFleaNoAtom = atom({
+  key: "isFleaNo",
+  default: 0,
+});
+
+export const isFleaTitleAtom = atom({
+  key: "isFleaTitle",
+  default: "",
+});
+
+export const isFleaContentAtom = atom({
+  key: "isFleaContent",
+  default: "",
+});
+
 export const isDarkThemAtom = atom({
   key: "isDark",
   default: localStorage.getItem("theme") || "lightTheme",

@@ -95,10 +95,13 @@ function Home() {
             <div>
               <ContentDiv
                 onClick={() => {
-                  history.push("/fleaMarket/chatroom");
+                  history.push("/fleaMarket");
                 }}
               >
-                <ContentImg alt="플리마켓" />
+                <ContentImg
+                  alt="플리마켓"
+                  src="https://guksuintengiblemarketuplaodsol6425.s3.ap-northeast-2.amazonaws.com/market.png"
+                />
               </ContentDiv>
               <ContentName>플리마켓</ContentName>
             </div>

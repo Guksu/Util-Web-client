@@ -42,6 +42,13 @@ function MenuNav() {
         >
           맛집
         </CursorDiv>
+        <CursorDiv
+          onClick={() => {
+            history.push("/fleamarket");
+          }}
+        >
+          플리마켓
+        </CursorDiv>
       </Div>
     </>
   );
