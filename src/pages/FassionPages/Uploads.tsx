@@ -33,7 +33,7 @@ function Uploads() {
   const [file, setFile] = useState<FileList | null>();
   const history = useHistory();
   const [fileName, setFileName] = useState("첨부파일");
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [date] = useState(new Date().toISOString().slice(0, 10));
   const [secret, setSecret] = useState("no");
   const [createFassion] = useMutation<CreateFassionIF>(CREATE_FASSION);
 

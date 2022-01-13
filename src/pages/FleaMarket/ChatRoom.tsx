@@ -13,20 +13,17 @@ interface Payload {
 }
 
 function ChatRoom() {
-  const [socket, setSocket] = useState<any>(io("http://localhost:4000"));
+  const [socket, setSocket] = useState<any>(io());
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
+  const [send, setSend] = useState(false);
 
   useEffect(() => {
     setSocket(io("http://localhost:4000"));
-    return () => {
-      socket.disconnect();
-    };
   }, []);
 
   useEffect(() => {
-    socket.connect();
     const receivedMessage = (message: Payload) => {
       const newMessage: Message = {
         id: Date.now().toString(),
@@ -37,60 +34,61 @@ function ChatRoom() {
       setMessages([...messages, newMessage]);
     };
 
-    socket.on("msgToClient", (message: Payload) => {
-      receivedMessage(message);
-    });
-  }, [messages, text]);
+    socket.on("msgToClient", (message: Payload) => receivedMessage(message));
+  }, [messages, name, text]);
 
   const sendMessage = () => {
+    setSend(!send);
     const message: Payload = {
       name,
       text,
     };
-
     socket.emit("msgToServer", message);
     setText("");
   };
+
   return (
     <>
-      {" "}
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter name..."
-      />
-      <div>
-        <ul>
-          {messages.map((message) => {
-            if (message.name === name) {
-              return (
-                <li key={message.id}>
-                  <span>{message.name}</span>
-
-                  <p>{message.text}</p>
-                </li>
-              );
-            }
-
-            return (
-              <li key={message.id}>
-                <span>{message.name}</span>
-
-                <p>{message.text}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-      <input
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Enter message..."
-      />
-      <button type="button" onClick={() => sendMessage()}>
-        Send
-      </button>
+      {socket ? (
+        <>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter name..."
+          />
+          <div>
+            <ul>
+              {messages.map((message) => {
+                if (message.name === name) {
+                  return (
+                    <li key={message.id}>
+                      <div>{message.name}</div>
+                      <p>{message.text}</p>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={message.id}>
+                    <div>{message.name}</div>
+                    <p>{message.text}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <input
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Enter message..."
+          />
+          <button type="button" onClick={() => sendMessage()}>
+            Send
+          </button>
+        </>
+      ) : (
+        <div>Loading</div>
+      )}
     </>
   );
 }
