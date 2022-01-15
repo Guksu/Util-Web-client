@@ -161,3 +161,17 @@ export const GET_MARKET_LIST = gql`
     }
   }
 `;
+
+export const GET_CHAT = gql`
+  query getChat($getChatLogInput: GetChatLogInput!) {
+    getChat(input: $getChatLogInput) {
+      ok
+      error
+      chatLog {
+        chatLogNo
+        name
+        chatLog
+      }
+    }
+  }
+`;

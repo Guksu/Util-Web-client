@@ -54,3 +54,21 @@ export interface Payload {
   text: string;
   room: string;
 }
+
+export interface SaveChatIF {
+  saveChat: CommonOutput;
+}
+
+export interface ChatLog {
+  chatLogNo: number;
+  name: string;
+  chatLog: string;
+}
+
+export interface GetChatOutput extends CommonOutput {
+  chatLog: ChatLog[];
+}
+
+export interface GetChatIF {
+  getChat: GetChatOutput;
+}

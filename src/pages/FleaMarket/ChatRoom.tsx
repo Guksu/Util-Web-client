@@ -1,11 +1,14 @@
+import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { io } from "socket.io-client";
 import styled from "styled-components";
 import { isFleaNoAtom } from "../../atom";
-import { Message, Payload } from "../../interfaces/FleaMarket";
+import ChatLog from "../../components/FleaMarketComponents/ChatLog";
+import { SAVE_CHAT } from "../../gql/mutation";
+import { Message, Payload, SaveChatIF } from "../../interfaces/FleaMarket";
 
-const ChatDiv = styled.div`
+export const ChatDiv = styled.div`
   display: flex;
   justify-content: center;
   height: 60vh;
@@ -14,7 +17,7 @@ const ChatDiv = styled.div`
   outline: ${(props) => props.theme.divOutLineColor};
 `;
 
-const MyLi = styled.div`
+export const MyLi = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -25,7 +28,7 @@ const MyLi = styled.div`
   gap: 10px;
 `;
 
-const OtherLi = styled.div`
+export const OtherLi = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -36,7 +39,7 @@ const OtherLi = styled.div`
   gap: 10px;
 `;
 
-const MessageDiv = styled.div`
+export const MessageDiv = styled.div`
   border: 1px solid #868e96;
   padding: 1%;
 `;
@@ -54,6 +57,7 @@ function ChatRoom() {
   const [name] = useState<any>(localStorage.getItem("id"));
   const [text, setText] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
+  const [saveChat] = useMutation<SaveChatIF>(SAVE_CHAT);
 
   useEffect(() => {
     setSocket(io("http://localhost:4000"));
@@ -73,13 +77,25 @@ function ChatRoom() {
     socket.on("msgToClient", (message: Payload) => receivedMessage(message));
   }, [messages, name, text]);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     const message: Payload = {
       name,
       text,
       room,
     };
     socket.emit("msgToServer", message);
+    try {
+      await saveChat({
+        variables: {
+          saveChatInput: {
+            room: parseInt(room),
+            chatLog: text,
+          },
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
     setText("");
   };
 
@@ -93,6 +109,7 @@ function ChatRoom() {
         <>
           <ChatDiv>
             <ul>
+              <ChatLog />
               {messages.map((message) => {
                 if (message.name === name) {
                   return (

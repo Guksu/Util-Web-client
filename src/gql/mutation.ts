@@ -162,3 +162,12 @@ export const CREATE_MARKET = gql`
     }
   }
 `;
+
+export const SAVE_CHAT = gql`
+  mutation saveChat($saveChatInput: SaveChatInput!) {
+    saveChat(input: $saveChatInput) {
+      ok
+      error
+    }
+  }
+`;
