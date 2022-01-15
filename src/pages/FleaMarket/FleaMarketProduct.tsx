@@ -2,7 +2,12 @@ import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { isFleaContentAtom, isFleaNoAtom, isFleaTitleAtom } from "../../atom";
+import {
+  isFleaContentAtom,
+  isFleaNoAtom,
+  isFleaOwnerAtom,
+  isFleaTitleAtom,
+} from "../../atom";
 import { GET_MARKET } from "../../gql/query";
 import { GetMarketIF } from "../../interfaces/FleaMarket";
 import {
@@ -17,6 +22,7 @@ function FleaMarketProduct() {
   const isFleaNo = useRecoilValue(isFleaNoAtom);
   const isFleaTitle = useSetRecoilState<any>(isFleaTitleAtom);
   const isFlaeContent = useSetRecoilState<any>(isFleaContentAtom);
+  const isFleaOwner = useSetRecoilState<any>(isFleaOwnerAtom);
 
   const history = useHistory();
   const { data: marketData } = useQuery<GetMarketIF>(GET_MARKET, {
@@ -26,6 +32,7 @@ function FleaMarketProduct() {
   useEffect(() => {
     isFleaTitle(marketData?.getMarket.market?.title);
     isFlaeContent(marketData?.getMarket.market.content);
+    isFleaOwner(marketData?.getMarket.market.userName);
   });
 
   return (

@@ -5,6 +5,7 @@ import { io } from "socket.io-client";
 import styled from "styled-components";
 import { isFleaNoAtom } from "../../atom";
 import ChatLog from "../../components/FleaMarketComponents/ChatLog";
+import ChatLogDelete from "../../components/FleaMarketComponents/ChatLogDelete";
 import { SAVE_CHAT } from "../../gql/mutation";
 import { Message, Payload, SaveChatIF } from "../../interfaces/FleaMarket";
 
@@ -15,6 +16,7 @@ export const ChatDiv = styled.div`
   width: 50vw;
   margin: auto;
   outline: ${(props) => props.theme.divOutLineColor};
+  overflow-y: auto;
 `;
 
 export const MyLi = styled.div`
@@ -48,7 +50,13 @@ const SendDiv = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 3%;
-  gap: 30px;
+  gap: 60px;
+`;
+
+const SendDiv2 = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 `;
 
 function ChatRoom() {
@@ -129,15 +137,18 @@ function ChatRoom() {
             </ul>
           </ChatDiv>
           <SendDiv>
-            <input
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              placeholder="메세지를 입력하세요"
-              onKeyPress={enterKeyEvent}
-            />
-            <button type="button" onClick={() => sendMessage()}>
-              전송
-            </button>
+            <SendDiv2>
+              <input
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                placeholder="메세지를 입력하세요"
+                onKeyPress={enterKeyEvent}
+              />
+              <button type="button" onClick={() => sendMessage()}>
+                전송
+              </button>
+            </SendDiv2>
+            <ChatLogDelete />
           </SendDiv>
         </>
       ) : (

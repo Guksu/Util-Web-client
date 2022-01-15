@@ -55,6 +55,11 @@ export const isFleaContentAtom = atom({
   default: "",
 });
 
+export const isFleaOwnerAtom = atom({
+  key: "isFleaOwner",
+  default: "",
+});
+
 export const isDarkThemAtom = atom({
   key: "isDark",
   default: localStorage.getItem("theme") || "lightTheme",

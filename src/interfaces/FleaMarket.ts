@@ -72,3 +72,7 @@ export interface GetChatOutput extends CommonOutput {
 export interface GetChatIF {
   getChat: GetChatOutput;
 }
+
+export interface DeleteChatIF {
+  deleteChat: CommonOutput;
+}

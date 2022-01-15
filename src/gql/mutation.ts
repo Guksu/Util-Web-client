@@ -171,3 +171,12 @@ export const SAVE_CHAT = gql`
     }
   }
 `;
+
+export const DELETE_CHAT = gql`
+  mutation deleteChat($deleteChatLogInput: DeleteChatLogInput!) {
+    deleteChat(input: $deleteChatLogInput) {
+      ok
+      error
+    }
+  }
+`;
