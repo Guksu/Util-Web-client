@@ -116,7 +116,7 @@ function FleaMarketProduct() {
             }}
             style={{ width: "70px", height: "50px", fontSize: "15px" }}
           >
-            판매자 연락하기
+            판매자 대화하기
           </button>
         </CreateBtnDiv>
       </FoodReviewDiv>
