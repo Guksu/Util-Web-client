@@ -1,7 +1,8 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { CommonOutput } from "../../interfaces/CommonIF";
+import { CREATE_MARKET } from "../../gql/mutation";
+import { CreateMarketIF } from "../../interfaces/FleaMarket";
 import {
   ReviewCreateWrapper,
   Select,
@@ -10,19 +11,6 @@ import {
   TitleInput,
 } from "../FoodPages/FoodReviewCreate";
 import { FileInput, FileLabel, FileName } from "../UserPages/EditImg";
-
-interface CreateMarketIF {
-  createMarket: CommonOutput;
-}
-
-const CREATE_MARKET = gql`
-  mutation createMarket($createMarketInput: CreateMarketInput!) {
-    createMarket(input: $createMarketInput) {
-      ok
-      error
-    }
-  }
-`;
 
 const ButtonDiv = styled.div`
   display: flex;

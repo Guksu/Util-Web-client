@@ -126,3 +126,39 @@ export const LIKE_REMOVE = gql`
     }
   }
 `;
+
+export const MARKET_VIEW_UPDATE = gql`
+  mutation marketViewUpdate($marketViewUpdateInput: MarketViewUpdateInput!) {
+    marketViewUpdate(input: $marketViewUpdateInput) {
+      ok
+      error
+    }
+  }
+`;
+
+export const EDIT_MARKET = gql`
+  mutation editMarket($editMarketInput: EditMarketInput!) {
+    editMarket(input: $editMarketInput) {
+      ok
+      error
+    }
+  }
+`;
+
+export const DELETE_MARKET = gql`
+  mutation deleteMarket($deleteMarketInput: DeleteMarketInput!) {
+    deleteMarket(input: $deleteMarketInput) {
+      ok
+      error
+    }
+  }
+`;
+
+export const CREATE_MARKET = gql`
+  mutation createMarket($createMarketInput: CreateMarketInput!) {
+    createMarket(input: $createMarketInput) {
+      ok
+      error
+    }
+  }
+`;

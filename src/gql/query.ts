@@ -126,3 +126,38 @@ export const LIKE_CHECK = gql`
     }
   }
 `;
+
+export const GET_MARKET = gql`
+  query getMarket($getMarketInput: GetMarketInput!) {
+    getMarket(input: $getMarketInput) {
+      ok
+      error
+      market {
+        title
+        view
+        userName
+        date
+        content
+        productImg
+        userImg
+      }
+    }
+  }
+`;
+
+export const GET_MARKET_LIST = gql`
+  query getMarketList {
+    getMarketList {
+      ok
+      error
+      market {
+        title
+        view
+        userName
+        date
+        category
+        FleaMarketNo
+      }
+    }
+  }
+`;

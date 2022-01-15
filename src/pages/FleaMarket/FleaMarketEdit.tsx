@@ -1,8 +1,9 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { isFleaContentAtom, isFleaNoAtom, isFleaTitleAtom } from "../../atom";
-import { CommonOutput } from "../../interfaces/CommonIF";
+import { DELETE_MARKET, EDIT_MARKET } from "../../gql/mutation";
+import { DeleteMarketIF, EditMarketIF } from "../../interfaces/FleaMarket";
 import {
   Btn,
   BtnDiv,
@@ -10,32 +11,6 @@ import {
   EditTitle,
   ReviewEditWrapper,
 } from "../FoodPages/FoodReviewEdit";
-
-interface EditMarketIF {
-  editMarket: CommonOutput;
-}
-
-const EDIT_MARKET = gql`
-  mutation editMarket($editMarketInput: EditMarketInput!) {
-    editMarket(input: $editMarketInput) {
-      ok
-      error
-    }
-  }
-`;
-
-interface DeleteMarketIF {
-  deleteMarket: CommonOutput;
-}
-
-const DELETE_MARKET = gql`
-  mutation deleteMarket($deleteMarketInput: DeleteMarketInput!) {
-    deleteMarket(input: $deleteMarketInput) {
-      ok
-      error
-    }
-  }
-`;
 
 function FleaMarketEdit() {
   const isFleaNo = useRecoilValue(isFleaNoAtom);

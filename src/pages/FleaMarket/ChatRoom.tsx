@@ -3,18 +3,7 @@ import { useRecoilValue } from "recoil";
 import { io } from "socket.io-client";
 import styled from "styled-components";
 import { isFleaNoAtom } from "../../atom";
-
-interface Message {
-  id: string;
-  name: string;
-  text: string;
-}
-
-interface Payload {
-  name: string;
-  text: string;
-  room: string;
-}
+import { Message, Payload } from "../../interfaces/FleaMarket";
 
 const ChatDiv = styled.div`
   display: flex;

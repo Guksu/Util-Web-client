@@ -1,9 +1,10 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isFleaContentAtom, isFleaNoAtom, isFleaTitleAtom } from "../../atom";
-import { CommonOutput } from "../../interfaces/CommonIF";
+import { GET_MARKET } from "../../gql/query";
+import { GetMarketIF } from "../../interfaces/FleaMarket";
 import {
   ContentDiv,
   FoodReviewDiv,
@@ -11,33 +12,6 @@ import {
   TitleDiv,
 } from "../FoodPages/FoodReview";
 import { CreateBtnDiv } from "../FoodPages/FoodReviewCreate";
-import { FleaMarket } from "./FleaMarketHome";
-
-interface GetMarketOutput extends CommonOutput {
-  market: FleaMarket;
-}
-
-interface GetMarketIF {
-  getMarket: GetMarketOutput;
-}
-
-const GET_MARKET = gql`
-  query getMarket($getMarketInput: GetMarketInput!) {
-    getMarket(input: $getMarketInput) {
-      ok
-      error
-      market {
-        title
-        view
-        userName
-        date
-        content
-        productImg
-        userImg
-      }
-    }
-  }
-`;
 
 function FleaMarketProduct() {
   const isFleaNo = useRecoilValue(isFleaNoAtom);

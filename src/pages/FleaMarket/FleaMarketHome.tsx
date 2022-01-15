@@ -1,11 +1,17 @@
-import { gql, useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { isFleaNoAtom } from "../../atom";
 import FoodBoardLayOut from "../../components/FoodComponents/FoodBoardLayOut";
 import Pagination from "../../components/Pagination";
-import { CommonOutput } from "../../interfaces/CommonIF";
+import { MARKET_VIEW_UPDATE } from "../../gql/mutation";
+import { GET_MARKET_LIST } from "../../gql/query";
+import {
+  FleaMarket,
+  GetMarketListIF,
+  MarketViewUpdateIF,
+} from "../../interfaces/FleaMarket";
 import {
   CategoryDiv,
   CategorySpan,
@@ -14,56 +20,6 @@ import {
   FoodBoardDiv,
   ReviewBtnDiv,
 } from "../FoodPages/FoodReviewBoard";
-
-export interface FleaMarket {
-  FleaMarketNo: number;
-  title: string;
-  content: string;
-  date: string;
-  view: number;
-  userImg: string;
-  productImg: string;
-  userName: string;
-  category: string;
-}
-
-interface GetMarketListOutput extends CommonOutput {
-  market: FleaMarket[];
-}
-
-interface GetMarketListIF {
-  getMarketList: GetMarketListOutput;
-}
-
-const GET_MARKET_LIST = gql`
-  query getMarketList {
-    getMarketList {
-      ok
-      error
-      market {
-        title
-        view
-        userName
-        date
-        category
-        FleaMarketNo
-      }
-    }
-  }
-`;
-
-interface MarketViewUpdateIF {
-  marketViewUpdate: CommonOutput;
-}
-
-const MARKET_VIEW_UPDATE = gql`
-  mutation marketViewUpdate($marketViewUpdateInput: MarketViewUpdateInput!) {
-    marketViewUpdate(input: $marketViewUpdateInput) {
-      ok
-      error
-    }
-  }
-`;
 
 function FleaMarketHome() {
   const history = useHistory();
