@@ -7,13 +7,24 @@ import styled from "styled-components";
 
 const MapDiv = styled.div`
   outline: ${(props) => props.theme.divOutLineColor};
-  width: 80%;
-  height: 60vh;
+  width: 50%;
+  height: 1fr;
   margin: auto;
+  background-color: ${(props) => props.theme.backgroundColor};
+  border-radius: 20px;
+`;
+
+const InputSpan = styled.span`
+  display: flex;
+  margin: auto;
+  width: 300px;
+  padding-top: 2%;
+  gap: 20px;
 `;
 
 const Map = styled.div`
-  margin: 2%;
+  margin: auto;
+  margin-top: 3%;
   width: 30vw;
   height: 50vh;
   position: relative;
@@ -249,15 +260,7 @@ function Food() {
   return (
     <>
       <MapDiv>
-        <span
-          style={{
-            display: "flex",
-            width: "300px",
-            paddingTop: "1%",
-            paddingLeft: "10%",
-            gap: "20px",
-          }}
-        >
+        <InputSpan>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -279,11 +282,11 @@ function Food() {
           >
             후기 게시판
           </button>
-        </span>
+        </InputSpan>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateRows: "1fr 1fr",
             padding: "0 5%",
           }}
         >
@@ -298,6 +301,9 @@ function Food() {
               paddingTop: "5%",
               cursor: "pointer",
               fontSize: "15px",
+              borderTop: "1px solid black",
+              borderBottom: "1px solid black",
+              marginTop: "3%",
             }}
           ></ul>
         </div>
@@ -305,9 +311,10 @@ function Food() {
           id="pagination"
           style={{
             display: "flex",
-            justifyContent: "flex-end",
-            paddingRight: "25%",
+            justifyContent: "center",
             gap: "5px",
+            marginTop: "2%",
+            paddingBottom: "3%",
           }}
         />
       </MapDiv>

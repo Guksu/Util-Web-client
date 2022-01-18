@@ -19,6 +19,8 @@ export const FoodBoardDiv = styled.div`
   width: 80%;
   height: 75vh;
   margin: auto;
+  background-color: ${(props) => props.theme.backgroundColor};
+  border-radius: 25px;
 `;
 
 export const CategoryDiv = styled.div`

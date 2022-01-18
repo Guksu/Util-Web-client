@@ -23,6 +23,8 @@ const ContentDiv = styled.div`
   padding: 3%;
   display: flex;
   justify-content: space-between;
+  border-radius: 25px;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const LayOutBtn = styled.button`

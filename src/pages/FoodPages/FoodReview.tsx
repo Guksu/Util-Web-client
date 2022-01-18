@@ -12,6 +12,8 @@ export const FoodReviewDiv = styled.div`
   width: 80%;
   margin: auto;
   padding: 1%;
+  background-color: ${(props) => props.theme.backgroundColor};
+  border-radius: 25px;
 `;
 
 export const TitleDiv = styled.div`
