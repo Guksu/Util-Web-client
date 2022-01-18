@@ -43,7 +43,7 @@ function FleaMarketProduct() {
           <div style={{ width: "10vw" }}>
             <img
               src={marketData?.getMarket.market.userImg}
-              alt="유저프로필"
+              alt="유저프로필이미지"
               width={20}
               height={20}
             />
