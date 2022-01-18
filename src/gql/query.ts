@@ -50,6 +50,7 @@ export const GET_MY_FASSION_LIST = gql`
         date
         imgUrl
         userImg
+        like
       }
     }
   }

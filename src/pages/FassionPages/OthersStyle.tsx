@@ -9,7 +9,7 @@ import {
   LikeCheckIF,
   LikeUpdateIF,
 } from "../../interfaces/FassionIF";
-import { Img, ImgDiv, InfoDiv, StyleDiv } from "./MyStyle";
+import { Img, ImgDiv, InfoDiv, StyleDiv, LikeCountDiv } from "./MyStyle";
 
 function OthersStyle() {
   const { data: fassionList, refetch: fassionListRefetch } =
@@ -42,7 +42,11 @@ function OthersStyle() {
               <img src={item.userImg} width={20} height={20} alt="프로필" />
             </InfoDiv>
             <ImgDiv>
-              <Img src={item.imgUrl} alt="이미지" />
+              <Img
+                src={item.imgUrl}
+                alt="이미지"
+                style={{ borderRadius: "10px" }}
+              />
             </ImgDiv>
             {likeList?.likeCheck.like?.includes(item.fassionNo) ? (
               <div style={{ marginTop: "2%" }}>
@@ -87,7 +91,7 @@ function OthersStyle() {
                 </span>
               </div>
             )}
-            <div style={{ marginTop: "2%" }}>좋아요 {item.like}개</div>
+            <LikeCountDiv>좋아요 {item.like}개</LikeCountDiv>
           </li>
         </StyleDiv>
       </ul>

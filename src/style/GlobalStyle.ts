@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     ::placeholder {
         font-family: 'Noto Sans KR', sans-serif;
     text-align: center;
+    color: black;
     }
     button{
         font-family: 'Noto Sans KR', sans-serif;
@@ -28,6 +29,7 @@ export const GlobalStyles = createGlobalStyle`
     border-radius: 30px;
     outline:  ${(props) => props.theme.divOutLineColor};
     height: 25px;
+    text-align: center;
     }
     select{
         :focus {

@@ -11,22 +11,29 @@ export const StyleDiv = styled.div`
   outline: ${(props) => props.theme.divOutLineColor};
   padding: 5%;
   width: 85%;
+  border-radius: 20px;
+  background-color: white;
 `;
 
 export const InfoDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 10vw;
+  margin-left: 5%;
+  margin-bottom: 2%;
 `;
 
 export const ImgDiv = styled.div`
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   display: flex;
   justify-content: center;
   padding-top: 1%;
 `;
 export const Img = styled.img`
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
+  margin-bottom: 2%;
 `;
 
 const StyleBtnDiv = styled.div`
@@ -39,7 +46,14 @@ const StyleBtnDiv = styled.div`
 const StyleBtn = styled.button`
   width: 5vw;
   height: 3vh;
+  min-width: 100px;
 `;
+
+export const LikeCountDiv = styled.div`
+  color: black;
+  margin-top: 2%;
+`;
+
 function MyStyle() {
   const history = useHistory();
   const { data: fassionList, refetch } =
@@ -79,7 +93,7 @@ function MyStyle() {
             <ImgDiv>
               <Img src={item.imgUrl} alt="이미지" />
             </ImgDiv>
-            <div style={{ marginTop: "2%" }}>좋아요 {item.like}개</div>
+            <LikeCountDiv>좋아요 {item.like}개</LikeCountDiv>
           </li>
         </StyleDiv>
       </ul>
