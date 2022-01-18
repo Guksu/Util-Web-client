@@ -110,7 +110,7 @@ function Header() {
             <span style={{ paddingTop: "2.5vh" }}>{temp}℃</span>
           </WeatherDiv>
         </div>
-        {isLogin ? (
+        {!isLogin ? (
           <div
             onClick={() => {
               setMenuTogle(!menuTogle);
