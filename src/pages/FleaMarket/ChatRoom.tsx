@@ -68,7 +68,7 @@ function ChatRoom() {
   const [saveChat] = useMutation<SaveChatIF>(SAVE_CHAT);
 
   useEffect(() => {
-    setSocket(io("http://localhost:4000"));
+    setSocket(io("https://util-web.herokuapp.com/"));
   }, []);
 
   useEffect(() => {
