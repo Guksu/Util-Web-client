@@ -138,7 +138,7 @@ function Food() {
         try {
           const {
             data: { items },
-          } = await axios.get("http://localhost:4000/foodInfo/", {
+          } = await axios.get("https://util-web.herokuapp.com/foodInfo/", {
             params: { place },
           });
           window.open(items[0].link);

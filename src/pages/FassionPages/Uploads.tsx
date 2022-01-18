@@ -49,7 +49,7 @@ function Uploads() {
         const formData = new FormData();
         formData.append("file", actualFile);
         const { url: imgUrl } = await (
-          await fetch("http://localhost:4000/uploads/", {
+          await fetch("https://util-web.herokuapp.com/uploads/", {
             method: "POST",
             body: formData,
           })
