@@ -1,5 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { CREATE_REVIEW } from "../../gql/mutation";
 import { CreateReviewIF } from "../../interfaces/FoodIF";
@@ -49,6 +50,7 @@ export const CreateBtnDiv = styled.div`
 `;
 
 function FoodReviewCreate() {
+  const history = useHistory();
   const [title, setTitle] = useState("");
   const [date] = useState(new Date().toISOString().slice(0, 10));
   const [category, setCategory] = useState("");
@@ -70,7 +72,7 @@ function FoodReviewCreate() {
       const { data } = await createReview();
       if (data?.createReview.ok) {
         alert("글이 등록되었습니다.");
-        window.location.replace("/food/reviewList");
+        history.push("/food/reviewList");
       } else {
         alert(data?.createReview.error);
       }

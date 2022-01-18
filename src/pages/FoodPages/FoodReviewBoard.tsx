@@ -61,7 +61,7 @@ function FoodReviewBoard() {
   const isFoodNo = useSetRecoilState(isFoodNoAtom);
 
   //getFoodReviewList
-  const { data: reviewList } =
+  const { data: reviewList, refetch } =
     useQuery<GetFoodReviewListIF>(GET_FOOD_REVIEW_LIST);
   const allList = reviewList?.getFoodReviewList.review?.filter(
     (item) => item.category === "한식" || "일식" || "양식" || "중식" || "기타"
@@ -125,6 +125,9 @@ function FoodReviewBoard() {
     setList(allList);
   }, [reviewList]);
 
+  useEffect(() => {
+    refetch();
+  }, [reviewList]);
   return (
     <>
       <FoodBoardDiv>
