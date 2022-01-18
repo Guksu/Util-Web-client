@@ -110,7 +110,7 @@ function Header() {
             <span style={{ paddingTop: "2.5vh" }}>{temp}℃</span>
           </WeatherDiv>
         </div>
-        <TogleDiv>
+        {isLogin ? (
           <div
             onClick={() => {
               setMenuTogle(!menuTogle);
@@ -119,15 +119,26 @@ function Header() {
           >
             메뉴
           </div>
-          <div
-            onMouseLeave={() => {
-              setMenuTogle(!menuTogle);
-            }}
-            style={{ marginTop: "0.5vh" }}
-          >
-            {menuTogle ? <MenuNav /> : <></>}
-          </div>
-        </TogleDiv>
+        ) : (
+          <TogleDiv>
+            <div
+              onClick={() => {
+                setMenuTogle(!menuTogle);
+              }}
+              style={{ width: "60px", cursor: "pointer" }}
+            >
+              메뉴
+            </div>
+            <div
+              onMouseLeave={() => {
+                setMenuTogle(!menuTogle);
+              }}
+              style={{ marginTop: "0.5vh" }}
+            >
+              {menuTogle ? <MenuNav /> : <></>}
+            </div>
+          </TogleDiv>
+        )}
         {isLogin ? (
           <>
             <ProfileTogleDiv>
