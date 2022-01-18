@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import FassionLayOut from "../../components/FassionComponents/FassionLayOut";
@@ -42,7 +42,7 @@ const StyleBtn = styled.button`
 `;
 function MyStyle() {
   const history = useHistory();
-  const { data: fassionList } =
+  const { data: fassionList, refetch } =
     useQuery<GetMyFassionListIF>(GET_MY_FASSION_LIST);
   const [currentPage, setCurrentPage] = useState(1);
   const [imgPerPage] = useState(9);
@@ -55,6 +55,10 @@ function MyStyle() {
     firstIndex,
     lastIndex
   );
+
+  useEffect(() => {
+    refetch();
+  }, [fassionList]);
 
   const content = currentImg?.map((item) => {
     return (
