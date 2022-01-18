@@ -9,7 +9,8 @@ import { CreateAccountIF } from "../../interfaces/AccountIF";
 export const AccountWrapper = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
-  width: 80vw;
+  width: 90vw;
+  min-width: 500px;
   margin: auto;
   margin-top: 5%;
   border: 0;

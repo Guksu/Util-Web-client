@@ -218,13 +218,13 @@ function AccountChart() {
           ) : (
             <ArrowDiv>◀</ArrowDiv>
           )}
-          <div style={{ height: 350, width: 350 }}>
+          <div style={{ height: "35vh", width: "40vw" }}>
             <ResponsivePie
               data={data}
               margin={{ top: 40, right: 0, bottom: 0, left: 0 }}
               valueFormat=">-~%"
               innerRadius={0.5}
-              padAngle={1}
+              padAngle={5}
               cornerRadius={4}
               activeOuterRadiusOffset={8}
               colors={{ scheme: "pastel1" }}

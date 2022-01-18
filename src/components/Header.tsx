@@ -115,7 +115,7 @@ function Header() {
             onClick={() => {
               setMenuTogle(!menuTogle);
             }}
-            style={{ width: "50px", cursor: "pointer" }}
+            style={{ width: "60px", cursor: "pointer" }}
           >
             메뉴
           </div>
