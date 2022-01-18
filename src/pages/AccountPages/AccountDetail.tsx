@@ -45,7 +45,7 @@ function AccountDetail() {
           <ListLi key={item.accountNo}>
             <div>{item.date} </div>
             <div>
-              {item.category} : {item.amount}
+              {item.category} : {item.amount.toLocaleString()}원
             </div>
           </ListLi>
           <DeleteImg

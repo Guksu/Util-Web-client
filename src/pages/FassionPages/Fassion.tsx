@@ -61,7 +61,7 @@ function Fassion() {
     try {
       const {
         data: { items },
-      } = await axios.get("https://util-web.herokuapp.com/fassionList/", {
+      } = await axios.get("https://util-web.herokuapp.com/fassionList", {
         params: { isTemp, gender },
       });
       setImgList(items);
