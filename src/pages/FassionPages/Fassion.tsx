@@ -14,8 +14,10 @@ const ImgWrapper = styled.div`
   min-width: 360px;
   margin: auto;
   margin-top: 5%;
+  border-radius: 10px;
   padding: 1%;
   outline: ${(props) => props.theme.divOutLineColor};
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const ImgDiv = styled.div`
@@ -29,7 +31,7 @@ const ImgBtn = styled.div`
 `;
 
 const ArrowDiv = styled.div`
-  color: ${(props) => props.theme.arrowColor};
+  color: ${(props) => props.theme.backgroundColor};
   margin: auto;
   padding: 0 1%;
 `;

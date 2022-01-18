@@ -9,6 +9,7 @@ const ChartWrapper = styled.div`
   display: flex;
   border-right: ${(props) => props.theme.divOutLineColor};
   padding: 5%;
+  min-width: 320px;
 `;
 
 const ChartBtn = styled.span`
@@ -17,7 +18,7 @@ const ChartBtn = styled.span`
 `;
 
 const ArrowDiv = styled.div`
-  color: ${(props) => props.theme.arrowColor};
+  color: ${(props) => props.theme.backgroundColor};
   margin: auto;
 `;
 

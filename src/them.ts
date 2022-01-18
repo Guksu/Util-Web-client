@@ -6,7 +6,7 @@ export const lightThem: DefaultTheme = {
   homeDivColor: "white",
   homeOutlineColor: "2px solid #adb5bd",
   divOutLineColor: "1px solid #adb5bd",
-  arrowColor: "#E5E5E5",
+  backgroundColor: "whitesmoke",
 };
 export const darkThem: DefaultTheme = {
   bgColor: "#495057",
@@ -14,5 +14,5 @@ export const darkThem: DefaultTheme = {
   homeDivColor: "#FAF8FF",
   homeOutlineColor: "0",
   divOutLineColor: " solid 1px #adb5bd",
-  arrowColor: "#495057",
+  backgroundColor: "#363a3f",
 };

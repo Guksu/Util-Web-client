@@ -6,14 +6,16 @@ import AccountChart from "../../components/AccountComponents/AccountChart";
 import { CREATE_ACCOUNT } from "../../gql/mutation";
 import { CreateAccountIF } from "../../interfaces/AccountIF";
 
-export const AccountWrapper = styled.div`
+const AccountWrapper = styled.div`
+  background-color: ${(props) => props.theme.backgroundColor};
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 50%));
   width: 90vw;
-  min-width: 500px;
+  min-width: 250px;
   margin: auto;
   margin-top: 5%;
   border: 0;
+  border-radius: 50px;
   outline: ${(props) => props.theme.divOutLineColor};
 `;
 
@@ -21,6 +23,7 @@ const AccountInputDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 20vw;
+  min-width: 300px;
   margin: auto;
 `;
 
@@ -32,6 +35,7 @@ const AccountBtnDiv = styled.div`
 const AccountBtn = styled.button`
   width: 8vw;
   font-size: 15px;
+  min-width: 40px;
 `;
 
 function Account() {

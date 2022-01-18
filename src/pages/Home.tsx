@@ -10,9 +10,16 @@ const MainDiv = styled.div`
 `;
 
 const ContentWraper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin: 15vh 30%;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  width: 40%;
+  min-width: 300px;
+  height: 50vh;
+  margin: auto;
+  border: 1px solid #faf8ff;
+  background-color: ${(props) => props.theme.backgroundColor};
+  border-radius: 50px;
 `;
 
 const ContentDiv = styled.div`
@@ -26,6 +33,8 @@ const ContentDiv = styled.div`
   text-align: center;
   cursor: pointer;
   outline: ${(props) => props.theme.homeOutlineColor};
+  margin: auto;
+  margin-top: 15%;
 `;
 
 const ContentImg = styled.img`
@@ -38,7 +47,7 @@ const ContentImg = styled.img`
 `;
 
 const ContentName = styled.div`
-  margin-top: 8%;
+  margin-top: 5%;
   text-align: center;
   font-size: 20px;
 `;
@@ -49,7 +58,6 @@ function Home() {
 
   return (
     <>
-      <MainDiv>Util Web</MainDiv>
       {isLogin ? (
         <>
           <ContentWraper>
@@ -108,7 +116,9 @@ function Home() {
           </ContentWraper>
         </>
       ) : (
-        <></>
+        <>
+          <MainDiv>Login Plz</MainDiv>
+        </>
       )}
     </>
   );

@@ -62,7 +62,7 @@ function EditPw() {
           }}
         />
         <InputStyle
-          placeholder="변경 한 비밀번호를 다시 입력하세요"
+          placeholder="변경한 비밀번호를 다시 입력하세요"
           type={"password"}
           required
           onChange={(e) => {

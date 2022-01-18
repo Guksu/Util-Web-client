@@ -5,11 +5,24 @@ import DetailLayOut from "../../components/AccountComponents/DetailLayOut";
 import { DELETE_ACCOUNT } from "../../gql/mutation";
 import { GET_ALL_ACCOUNT_LIST } from "../../gql/query";
 import { DeleteAccountIF, GetAccountListIF } from "../../interfaces/AccountIF";
-import { AccountWrapper } from "./Account";
+
+const AccountDetailWrapper = styled.div`
+  background-color: ${(props) => props.theme.backgroundColor};
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 50%));
+  width: 90vw;
+  min-width: 250px;
+  margin: auto;
+  margin-top: 5%;
+  border: 0;
+  border-radius: 50px;
+  outline: ${(props) => props.theme.divOutLineColor};
+`;
 
 const ListDiv = styled.div`
   display: flex;
   font-size: 110%;
+  min-width: 400px;
 `;
 
 const ListLi = styled.li`
@@ -118,10 +131,10 @@ function AccountDetail() {
 
   return (
     <>
-      <AccountWrapper>
+      <AccountDetailWrapper>
         <DetailLayOut typeName="수입" content={profitList} />
         <DetailLayOut typeName="지출" content={expenseList} />
-      </AccountWrapper>
+      </AccountDetailWrapper>
     </>
   );
 }

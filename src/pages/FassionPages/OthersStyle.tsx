@@ -19,6 +19,7 @@ function OthersStyle() {
   const [likeUpdate] = useMutation<LikeUpdateIF>(LIKE_UPDATE);
   const [likeRemove] = useMutation<LikeUpdateIF>(LIKE_REMOVE);
 
+  //페이지네이션
   const [currentPage, setCurrentPage] = useState(1);
   const [imgPerPage] = useState(9);
   const paginate: React.MouseEventHandler<HTMLButtonElement> = (e) => {

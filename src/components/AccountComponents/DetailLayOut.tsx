@@ -7,7 +7,7 @@ interface Props {
 
 const DetailWrapper = styled.div`
   padding: 3%;
-  outline: ${(props) => props.theme.divOutLineColor};
+  min-width: 300px;
 `;
 
 const TypeName = styled.div`

@@ -44,6 +44,8 @@ function MyStyle() {
   const history = useHistory();
   const { data: fassionList, refetch } =
     useQuery<GetMyFassionListIF>(GET_MY_FASSION_LIST);
+
+  //페이지네이션
   const [currentPage, setCurrentPage] = useState(1);
   const [imgPerPage] = useState(9);
   const paginate: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -66,11 +68,18 @@ function MyStyle() {
         <StyleDiv>
           <li key={item.fassionNo}>
             <InfoDiv>
-              <img src={item.userImg} width={20} height={20} alt="프로필" />
+              <img
+                src={item.userImg}
+                width={30}
+                height={30}
+                style={{ borderRadius: "10px" }}
+                alt="프로필"
+              />
             </InfoDiv>
             <ImgDiv>
               <Img src={item.imgUrl} alt="이미지" />
             </ImgDiv>
+            <div style={{ marginTop: "2%" }}>좋아요 {item.like}개</div>
           </li>
         </StyleDiv>
       </ul>

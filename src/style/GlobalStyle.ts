@@ -3,16 +3,16 @@ import reset from "styled-reset";
 
 export const GlobalStyles = createGlobalStyle`
     ${reset}; 
-    body{font-family: 'Gowun Batang', serif;
+    body{font-family: 'Noto Sans KR', sans-serif;
     background-color: ${(props) => props.theme.bgColor};
     color: ${(props) => props.theme.textColor};
     }
     ::placeholder {
-    font-family: 'Gowun Batang', serif;
+        font-family: 'Noto Sans KR', sans-serif;
     text-align: center;
     }
     button{
-    font-family: 'Gowun Batang', serif;
+        font-family: 'Noto Sans KR', sans-serif;
     text-align: center;
     cursor: pointer;
     color: #fff;
@@ -25,6 +25,7 @@ export const GlobalStyles = createGlobalStyle`
             outline:  #ced4da solid 1px;
         }
     border: 0;
+    border-radius: 30px;
     outline:  ${(props) => props.theme.divOutLineColor};
     height: 25px;
     }
@@ -36,7 +37,7 @@ export const GlobalStyles = createGlobalStyle`
     outline: #ced4da solid 1px;
     }
     option{
-        font-family: 'Gowun Batang', serif;
+        font-family: 'Noto Sans KR', sans-serif;
     }
 `;
 
