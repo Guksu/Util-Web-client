@@ -80,8 +80,8 @@ function FleaMarketProduct() {
             alt="상품이미지"
             src={marketData?.getMarket.market.productImg}
             style={{
-              width: "100px",
-              height: "100px",
+              width: "200px",
+              height: "200px",
               display: "block",
               margin: "auto",
               marginBottom: "10px",
