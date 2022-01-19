@@ -13,6 +13,7 @@ export const StyleDiv = styled.div`
   width: 85%;
   border-radius: 20px;
   background-color: white;
+  box-shadow: 0 0 5px black;
 `;
 
 export const InfoDiv = styled.div`
@@ -36,22 +37,31 @@ export const Img = styled.img`
   margin-bottom: 2%;
 `;
 
-const StyleBtnDiv = styled.div`
+export const BtnDiv = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-right: 15%;
-  margin-bottom: 1%;
+  width: 70vw;
+  margin-bottom: 20px;
+  @media (max-width: 762px) {
+    width: 75vw;
+  }
+  @media (max-width: 535px) {
+    width: 85vw;
+  }
 `;
 
-const StyleBtn = styled.button`
+export const Btn = styled.button`
   width: 5vw;
   height: 3vh;
   min-width: 100px;
+  font-size: 15px;
+  box-shadow: 0 0 3px black;
 `;
 
 export const LikeCountDiv = styled.div`
   color: black;
   margin-top: 2%;
+  font-size: 20px;
 `;
 
 function MyStyle() {
@@ -84,8 +94,8 @@ function MyStyle() {
             <InfoDiv>
               <img
                 src={item.userImg}
-                width={30}
-                height={30}
+                width={40}
+                height={40}
                 style={{ borderRadius: "10px" }}
                 alt="프로필"
               />
@@ -102,15 +112,15 @@ function MyStyle() {
 
   return (
     <>
-      <StyleBtnDiv>
-        <StyleBtn
+      <BtnDiv>
+        <Btn
           onClick={() => {
             history.push("/fassion/uploads");
           }}
         >
           업로드
-        </StyleBtn>
-      </StyleBtnDiv>
+        </Btn>
+      </BtnDiv>
       <FassionLayOut content={content} />
       <Pagination
         perPage={imgPerPage}

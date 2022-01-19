@@ -12,6 +12,7 @@ import { GET_MARKET } from "../../gql/query";
 import { GetMarketIF } from "../../interfaces/FleaMarket";
 import {
   ContentDiv,
+  EditBtn,
   FoodReviewDiv,
   ReviewInfoDiv,
   TitleDiv,
@@ -64,14 +65,13 @@ function FleaMarketProduct() {
             </span>
             {localStorage.getItem("id") ===
               marketData?.getMarket.market.userName && (
-              <button
-                style={{ marginLeft: "5%", fontSize: "15px" }}
+              <EditBtn
                 onClick={() => {
                   history.push("/fleamarket/edit");
                 }}
               >
                 수정하기
-              </button>
+              </EditBtn>
             )}
           </div>
         </ReviewInfoDiv>

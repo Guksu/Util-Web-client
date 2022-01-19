@@ -70,6 +70,8 @@ function Account() {
     },
   });
 
+  // 인풋값 콤마 적용
+
   const changNum: React.FormEventHandler<HTMLInputElement> = (e) => {
     const i = e.currentTarget;
     const startPosition = i.value.length - i.selectionEnd!;

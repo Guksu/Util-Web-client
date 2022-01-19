@@ -4,6 +4,7 @@ import { isLatAtom, isLonAtom } from "../../atom";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { Btn, BtnDiv } from "../FassionPages/MyStyle";
 
 const MapDiv = styled.div`
   outline: ${(props) => props.theme.divOutLineColor};
@@ -12,14 +13,16 @@ const MapDiv = styled.div`
   margin: auto;
   background-color: ${(props) => props.theme.backgroundColor};
   border-radius: 20px;
+  box-shadow: 0 0 5px black;
+  @media (max-width: 1024px) {
+    width: 90%;
+  }
 `;
 
 const InputSpan = styled.span`
   display: flex;
-  margin: auto;
-  width: 300px;
+  justify-content: center;
   padding-top: 2%;
-  gap: 20px;
 `;
 
 const Map = styled.div`
@@ -30,6 +33,31 @@ const Map = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 50px;
+  @media (max-width: 1024px) {
+    width: 70%;
+    height: 90%;
+  }
+`;
+
+const FoodList = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  padding: 5% 0;
+  cursor: pointer;
+  font-size: 15px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-top: 3%;
+
+  @media (max-width: 539px) {
+    font-size: 12px;
+  }
+  @media (max-width: 375px) {
+    font-size: 10px;
+    font-weight: bold;
+  }
 `;
 
 const KeywordInput = styled.input`
@@ -259,6 +287,15 @@ function Food() {
 
   return (
     <>
+      <BtnDiv>
+        <Btn
+          onClick={() => {
+            history.push("/food/reviewList");
+          }}
+        >
+          후기 게시판
+        </Btn>
+      </BtnDiv>
       <MapDiv>
         <InputSpan>
           <form
@@ -274,14 +311,6 @@ function Food() {
               }}
             />
           </form>
-          <button
-            style={{ width: "5vw" }}
-            onClick={() => {
-              history.push("/food/reviewList");
-            }}
-          >
-            후기 게시판
-          </button>
         </InputSpan>
         <div
           style={{
@@ -291,21 +320,7 @@ function Food() {
           }}
         >
           <Map id="map" />
-          <ul
-            id="placesList"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gridTemplateRows: "1fr 1fr 1fr ",
-              gridGap: "5px",
-              paddingTop: "5%",
-              cursor: "pointer",
-              fontSize: "15px",
-              borderTop: "1px solid black",
-              borderBottom: "1px solid black",
-              marginTop: "3%",
-            }}
-          ></ul>
+          <FoodList id="placesList"></FoodList>
         </div>
         <span
           id="pagination"

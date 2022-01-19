@@ -10,7 +10,7 @@ const MobileNavWrapper = styled.div`
   width: 20%;
   height: 200px;
 
-  @media (min-width: 500px) {
+  @media (min-width: 501px) {
     display: none;
   }
 `;

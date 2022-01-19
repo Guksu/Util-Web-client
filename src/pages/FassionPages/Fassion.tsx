@@ -11,17 +11,36 @@ const ImgWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 30vw;
-  min-width: 360px;
   margin: auto;
-  margin-top: 5%;
   border-radius: 10px;
+  box-shadow: 0 0 5px black;
   padding: 1%;
   outline: ${(props) => props.theme.divOutLineColor};
   background-color: ${(props) => props.theme.backgroundColor};
+  @media (max-width: 1024px) {
+    width: 50vw;
+  }
+  @media (max-width: 720px) {
+    width: 80vw;
+  }
+  @media (max-width: 425px) {
+    width: 95%;
+  }
 `;
 
 const ImgDiv = styled.div`
   display: flex;
+  margin-top: 5%;
+`;
+
+const Img = styled.img`
+  height: 300px;
+  width: 300px;
+  border-radius: 50px;
+  @media (max-width: 355px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 const ImgBtn = styled.div`
@@ -93,13 +112,7 @@ function Fassion() {
           )}
           <div>
             <div>
-              <img
-                src={`${imgList[imgNum]?.link}`}
-                alt="이미지 리스트"
-                height={300}
-                width={300}
-                style={{ borderRadius: "50%" }}
-              />
+              <Img src={`${imgList[imgNum]?.link}`} alt="이미지 리스트" />
               <div
                 style={{
                   textAlign: "center",
@@ -141,7 +154,7 @@ function Fassion() {
             여성
           </button>
         </BtnDiv>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", marginBottom: "20px" }}>
           <DailyDiv
             onClick={() => {
               history.push("/fassion/my");

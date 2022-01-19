@@ -32,6 +32,18 @@ export const CategoryDiv = styled.div`
 
 export const CategorySpan = styled.span`
   cursor: pointer;
+  @media (max-width: 600px) {
+    font-size: 25px;
+  }
+  @media (max-width: 482px) {
+    font-size: 22px;
+  }
+  @media (max-width: 438px) {
+    font-size: 18px;
+  }
+  @media (max-width: 362px) {
+    font-size: 15px;
+  }
 `;
 
 export const ReviewBtnDiv = styled.div`
@@ -43,6 +55,16 @@ export const ReviewBtnDiv = styled.div`
   flex-wrap: wrap;
 `;
 
+const ReviewBtn = styled.button`
+  width: 70px;
+  height: 40px;
+  font-size: 15px;
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 30px;
+  }
+`;
+
 export const ContentDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -50,11 +72,39 @@ export const ContentDiv = styled.div`
   gap: 3vw;
   margin-bottom: 1%;
   padding-bottom: 1%;
-  border-bottom: ${(props) => props.theme.divOutLineColor}; ;
+  border-bottom: ${(props) => props.theme.divOutLineColor};
+  @media (max-width: 501px) {
+    display: none;
+  }
 `;
 
 export const ContentSpan = styled.span`
   width: 10vw;
+  cursor: pointer;
+  @media (max-width: 502px) {
+    width: 90%;
+    margin-top: 5%;
+  }
+`;
+
+export const MobileContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3%;
+  border-bottom: ${(props) => props.theme.divOutLineColor};
+  @media (min-width: 502px) {
+    display: none;
+  }
+`;
+
+export const MobileContentDiv = styled.div`
+  display: flex;
+  gap: 50px;
+  margin-top: 2%;
+`;
+
+export const MobileContentSpan = styled.span`
+  font-size: 12px;
 `;
 
 function FoodReviewBoard() {
@@ -88,34 +138,63 @@ function FoodReviewBoard() {
 
   const content = currentList?.map((item) => {
     return (
-      <ContentDiv key={item.FoodBoardNo}>
-        <ContentSpan>{item.category}</ContentSpan>
-        <ContentSpan
-          style={{ cursor: "pointer" }}
-          onClick={async () => {
-            try {
-              const { data: viewUpdateCheck } = await viewUpdate({
-                variables: {
-                  viewUpdateInput: { FoodBoardNo: item.FoodBoardNo },
-                },
-              });
-              if (viewUpdateCheck?.viewUpdate.ok) {
-                isFoodNo(item.FoodBoardNo);
-                history.push("/food/review");
-              } else {
-                alert(viewUpdateCheck?.viewUpdate.error);
+      <>
+        <ContentDiv key={item.FoodBoardNo}>
+          <ContentSpan>{item.category}</ContentSpan>
+          <ContentSpan
+            onClick={async () => {
+              try {
+                const { data: viewUpdateCheck } = await viewUpdate({
+                  variables: {
+                    viewUpdateInput: { FoodBoardNo: item.FoodBoardNo },
+                  },
+                });
+                if (viewUpdateCheck?.viewUpdate.ok) {
+                  isFoodNo(item.FoodBoardNo);
+                  history.push("/food/review");
+                } else {
+                  alert(viewUpdateCheck?.viewUpdate.error);
+                }
+              } catch (error) {
+                console.log(error);
               }
-            } catch (error) {
-              console.log(error);
-            }
-          }}
-        >
-          {item.title}
-        </ContentSpan>
-        <ContentSpan>{item.userName}</ContentSpan>
-        <ContentSpan>{item.date}</ContentSpan>
-        <ContentSpan>{item.view}</ContentSpan>
-      </ContentDiv>
+            }}
+          >
+            {item.title}
+          </ContentSpan>
+          <ContentSpan>{item.userName}</ContentSpan>
+          <ContentSpan>{item.date}</ContentSpan>
+          <ContentSpan>{item.view}</ContentSpan>
+        </ContentDiv>
+        <MobileContentWrapper key={item.FoodBoardNo * -1}>
+          <ContentSpan
+            onClick={async () => {
+              try {
+                const { data: viewUpdateCheck } = await viewUpdate({
+                  variables: {
+                    viewUpdateInput: { FoodBoardNo: item.FoodBoardNo },
+                  },
+                });
+                if (viewUpdateCheck?.viewUpdate.ok) {
+                  isFoodNo(item.FoodBoardNo);
+                  history.push("/food/review");
+                } else {
+                  alert(viewUpdateCheck?.viewUpdate.error);
+                }
+              } catch (error) {
+                console.log(error);
+              }
+            }}
+          >
+            {item.title}
+          </ContentSpan>
+          <MobileContentDiv>
+            <MobileContentSpan>{item.category}</MobileContentSpan>
+            <MobileContentSpan>{item.date}</MobileContentSpan>
+            <MobileContentSpan>{item.userName}</MobileContentSpan>
+          </MobileContentDiv>
+        </MobileContentWrapper>
+      </>
     );
   });
 
@@ -168,14 +247,13 @@ function FoodReviewBoard() {
             >{`기타`}</CategorySpan>
           </CategoryDiv>
           <ReviewBtnDiv>
-            <button
-              style={{ width: "70px", height: "40px", fontSize: "15px" }}
+            <ReviewBtn
               onClick={() => {
                 history.push("/food/create");
               }}
             >
               글쓰기
-            </button>
+            </ReviewBtn>
           </ReviewBtnDiv>
           <FoodBoardLayOut content={content} />
           <Pagination

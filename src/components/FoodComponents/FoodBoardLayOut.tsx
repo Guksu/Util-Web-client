@@ -14,6 +14,9 @@ const LayOutDiv = styled.div`
   margin-bottom: 1%;
   padding-bottom: 1%;
   border-bottom: 1px solid #adb5bd;
+  @media (max-width: 501px) {
+    display: none;
+  }
 `;
 
 function FoodBoardLayOut({ content }: Props) {

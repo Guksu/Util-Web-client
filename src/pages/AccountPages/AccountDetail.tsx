@@ -14,6 +14,7 @@ const AccountDetailWrapper = styled.div`
   margin: auto;
   margin-top: 5%;
   border: 0;
+  box-shadow: 0 0 5px black;
   border-radius: 50px;
   outline: ${(props) => props.theme.divOutLineColor};
   @media (max-width: 760px) {

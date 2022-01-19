@@ -11,9 +11,11 @@ export const FoodReviewDiv = styled.div`
   outline: ${(props) => props.theme.divOutLineColor};
   width: 80%;
   margin: auto;
+  margin-bottom: 5%;
   padding: 1%;
   background-color: ${(props) => props.theme.backgroundColor};
   border-radius: 25px;
+  height: 70vh;
 `;
 
 export const TitleDiv = styled.div`
@@ -21,6 +23,10 @@ export const TitleDiv = styled.div`
   justify-content: center;
   font-size: 30px;
   gap: 3vw;
+  @media (max-width: 768px) {
+    margin-top: 3%;
+    font-size: 20px;
+  }
 `;
 
 export const ReviewInfoDiv = styled.div`
@@ -28,9 +34,12 @@ export const ReviewInfoDiv = styled.div`
   justify-content: space-between;
   width: 70%;
   margin: auto;
-  margin-top: 1%;
+  margin-top: 3%;
   padding-bottom: 5px;
   font-size: 18px;
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
 export const ContentDiv = styled.div`
@@ -41,6 +50,21 @@ export const ContentDiv = styled.div`
   font-size: 20px;
   line-height: 150%;
   white-space: pre-line;
+`;
+
+export const EditBtn = styled.button`
+  margin-left: 5%;
+  font-size: 15px;
+  @media (max-width: 647px) {
+    width: 15vw;
+  }
+  @media (max-width: 551px) {
+    font-size: 10px;
+  }
+  @media (max-width: 425px) {
+    width: 300px;
+    font-size: 10px;
+  }
 `;
 
 function FoodReview() {
@@ -86,14 +110,13 @@ function FoodReview() {
             </span>
             {localStorage.getItem("id") ===
               reviewData?.getReview.review?.userName && (
-              <button
-                style={{ marginLeft: "5%", fontSize: "15px" }}
+              <EditBtn
                 onClick={() => {
                   history.push("/food/review/edit");
                 }}
               >
                 수정하기
-              </button>
+              </EditBtn>
             )}
           </div>
         </ReviewInfoDiv>

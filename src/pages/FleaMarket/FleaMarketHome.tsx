@@ -18,6 +18,9 @@ import {
   ContentDiv,
   ContentSpan,
   FoodBoardDiv,
+  MobileContentDiv,
+  MobileContentSpan,
+  MobileContentWrapper,
   ReviewBtnDiv,
 } from "../FoodPages/FoodReviewBoard";
 
@@ -49,34 +52,63 @@ function FleaMarketHome() {
 
   const content = currentList?.map((item) => {
     return (
-      <ContentDiv key={item.FleaMarketNo}>
-        <ContentSpan>{item.category}</ContentSpan>
-        <ContentSpan
-          style={{ cursor: "pointer" }}
-          onClick={async () => {
-            try {
-              const { data: viewUpdateCheck } = await marketViewUpdate({
-                variables: {
-                  marketViewUpdateInput: { FleaMarketNo: item.FleaMarketNo },
-                },
-              });
-              if (viewUpdateCheck?.marketViewUpdate.ok) {
-                isFleaNo(item.FleaMarketNo);
-                history.push("/fleaMarket/product");
-              } else {
-                alert(viewUpdateCheck?.marketViewUpdate.error);
+      <>
+        <ContentDiv key={item.FleaMarketNo}>
+          <ContentSpan>{item.category}</ContentSpan>
+          <ContentSpan
+            onClick={async () => {
+              try {
+                const { data: viewUpdateCheck } = await marketViewUpdate({
+                  variables: {
+                    marketViewUpdateInput: { FleaMarketNo: item.FleaMarketNo },
+                  },
+                });
+                if (viewUpdateCheck?.marketViewUpdate.ok) {
+                  isFleaNo(item.FleaMarketNo);
+                  history.push("/fleaMarket/product");
+                } else {
+                  alert(viewUpdateCheck?.marketViewUpdate.error);
+                }
+              } catch (error) {
+                console.log(error);
               }
-            } catch (error) {
-              console.log(error);
-            }
-          }}
-        >
-          {item.title}
-        </ContentSpan>
-        <ContentSpan>{item.userName}</ContentSpan>
-        <ContentSpan>{item.date}</ContentSpan>
-        <ContentSpan>{item.view}</ContentSpan>
-      </ContentDiv>
+            }}
+          >
+            {item.title}
+          </ContentSpan>
+          <ContentSpan>{item.userName}</ContentSpan>
+          <ContentSpan>{item.date}</ContentSpan>
+          <ContentSpan>{item.view}</ContentSpan>
+        </ContentDiv>
+        <MobileContentWrapper key={item.FleaMarketNo * -1}>
+          <ContentSpan
+            onClick={async () => {
+              try {
+                const { data: viewUpdateCheck } = await marketViewUpdate({
+                  variables: {
+                    marketViewUpdateInput: { FleaMarketNo: item.FleaMarketNo },
+                  },
+                });
+                if (viewUpdateCheck?.marketViewUpdate.ok) {
+                  isFleaNo(item.FleaMarketNo);
+                  history.push("/fleaMarket/product");
+                } else {
+                  alert(viewUpdateCheck?.marketViewUpdate.error);
+                }
+              } catch (error) {
+                console.log(error);
+              }
+            }}
+          >
+            {item.title}
+          </ContentSpan>
+          <MobileContentDiv>
+            <MobileContentSpan>{item.category}</MobileContentSpan>
+            <MobileContentSpan>{item.date}</MobileContentSpan>
+            <MobileContentSpan>{item.userName}</MobileContentSpan>
+          </MobileContentDiv>
+        </MobileContentWrapper>
+      </>
     );
   });
 
