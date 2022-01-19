@@ -13,7 +13,6 @@ const AccountWrapper = styled.div`
   width: 90vw;
   margin: auto;
   margin-top: 5%;
-  border: 0;
   border-radius: 50px;
   outline: ${(props) => props.theme.divOutLineColor};
   box-shadow: 0 0 5px black;
