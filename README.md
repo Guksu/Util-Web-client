@@ -22,7 +22,12 @@
 - Daum 지도 API
 - Naver 이미지 검색 / 블로그 검색 API
 
-## **1. 구조**
+## **2. 프로젝트 구조**
 
-**ERD**
+# **ERD**
+
 <img src="https://user-images.githubusercontent.com/87972252/150096948-4231039d-444e-44c2-a5ce-bceb2484a639.png" width={80%}>
+
+# **기능설계도**
+
+<img src="https://user-images.githubusercontent.com/87972252/150099426-3d9a5c2e-6325-4966-8ac8-70ed4b99432e.png" width={80%}>
