@@ -27,7 +27,6 @@ const AccountDetailWrapper = styled.div`
 const ListDiv = styled.div`
   display: flex;
   font-size: 110%;
-  min-width: 400px;
 `;
 
 const ListLi = styled.li`
@@ -35,6 +34,15 @@ const ListLi = styled.li`
   width: 40vw;
   grid-template-columns: 30% 70%;
   margin: 2%;
+  @media (max-width: 760px) {
+    width: 800vw;
+  }
+  @media (max-width: 404px) {
+    font-size: 15px;
+  }
+  @media (max-width: 347px) {
+    font-size: 13px;
+  }
 `;
 
 const DeleteImg = styled.img`

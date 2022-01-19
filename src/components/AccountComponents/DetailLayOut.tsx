@@ -7,7 +7,7 @@ interface Props {
 
 const DetailWrapper = styled.div`
   padding: 3%;
-  min-width: 300px;
+  min-width: 250px;
 `;
 
 const TypeName = styled.div`
