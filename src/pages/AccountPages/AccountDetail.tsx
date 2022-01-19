@@ -11,12 +11,17 @@ const AccountDetailWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 50%));
   width: 90vw;
-  min-width: 250px;
   margin: auto;
   margin-top: 5%;
   border: 0;
   border-radius: 50px;
   outline: ${(props) => props.theme.divOutLineColor};
+  @media (max-width: 760px) {
+    width: 90vw;
+    margin-bottom: 5%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 `;
 
 const ListDiv = styled.div`

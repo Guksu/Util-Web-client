@@ -16,8 +16,9 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'Noto Sans KR', sans-serif;
     text-align: center;
     cursor: pointer;
-    color: ${(props) => props.theme.textColor};
-    background-color: #FFA676;
+    color: black;
+    background-color: white;
+    outline:  ${(props) => props.theme.divOutLineColor};
     border:0;
     border-radius: 10px ;
     }
@@ -36,7 +37,10 @@ export const GlobalStyles = createGlobalStyle`
             outline:  #ced4da solid 1px;
         }
     border: 0;
-    outline: #ced4da solid 1px;
+    border-radius: 30px;
+    outline: ${(props) => props.theme.divOutLineColor};
+    height: 25px;
+    text-align: center;
     }
     option{
         font-family: 'Noto Sans KR', sans-serif;

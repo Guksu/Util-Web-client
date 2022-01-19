@@ -20,7 +20,7 @@ const MobileNavDiv = styled.div`
   flex-direction: column;
   gap: 5px;
   font-size: 20px;
-  @media (max-width: 411px) {
+  @media (max-width: 425px) {
     font-size: 15px;
   }
 `;

@@ -11,20 +11,34 @@ const AccountWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 50%));
   width: 90vw;
-  min-width: 250px;
   margin: auto;
   margin-top: 5%;
   border: 0;
   border-radius: 50px;
   outline: ${(props) => props.theme.divOutLineColor};
+  box-shadow: 0 0 5px black;
+  @media (max-width: 760px) {
+    width: 1fr;
+    margin-bottom: 5%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  @media (max-width: 335px) {
+    width: 320px;
+  }
+  @media (max-width: 320px) {
+    width: 300px;
+  }
 `;
 
 const AccountInputDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 20vw;
-  min-width: 300px;
   margin: auto;
+  @media (max-width: 1024px) {
+    width: 280px;
+  }
 `;
 
 const AccountBtnDiv = styled.div`
@@ -35,7 +49,9 @@ const AccountBtnDiv = styled.div`
 const AccountBtn = styled.button`
   width: 8vw;
   font-size: 15px;
-  min-width: 40px;
+  @media (max-width: 1024px) {
+    width: 120px;
+  }
 `;
 
 function Account() {

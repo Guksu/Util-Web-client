@@ -9,7 +9,10 @@ const ChartWrapper = styled.div`
   display: flex;
   border-right: ${(props) => props.theme.divOutLineColor};
   padding: 5%;
-  min-width: 320px;
+  @media (max-width: 760px) {
+    border-bottom: ${(props) => props.theme.divOutLineColor};
+    border-right: 0;
+  }
 `;
 
 const ChartBtn = styled.span`
