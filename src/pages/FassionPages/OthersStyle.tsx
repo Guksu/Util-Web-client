@@ -39,7 +39,13 @@ function OthersStyle() {
         <StyleDiv>
           <li key={item.fassionNo}>
             <InfoDiv>
-              <img src={item.userImg} width={20} height={20} alt="프로필" />
+              <img
+                src={item.userImg}
+                width={30}
+                height={30}
+                style={{ borderRadius: "10px" }}
+                alt="프로필"
+              />
             </InfoDiv>
             <ImgDiv>
               <Img
