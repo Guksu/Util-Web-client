@@ -26,8 +26,10 @@ export const ButtonDiv = styled.div`
 `;
 
 const Button = styled.button`
-  width: 8vw;
-  min-width: 70px;
+  width: 7vw;
+  @media (max-width: 1024px) {
+    width: 100px;
+  }
 `;
 
 function Login() {

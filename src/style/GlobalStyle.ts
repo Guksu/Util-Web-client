@@ -16,8 +16,8 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'Noto Sans KR', sans-serif;
     text-align: center;
     cursor: pointer;
-    color: #fff;
-    background-color: #999999 ;
+    color: ${(props) => props.theme.textColor};
+    background-color: #FFA676;
     border:0;
     border-radius: 10px ;
     }
@@ -44,5 +44,6 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const CursorDiv = styled.div`
+  height: 10px;
   cursor: pointer;
 `;

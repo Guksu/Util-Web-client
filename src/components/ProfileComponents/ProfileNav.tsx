@@ -8,6 +8,8 @@ import { CursorDiv } from "../../style/GlobalStyle";
 const Div = styled.div`
   display: flex;
   flex-direction: column;
+  font-size: 20px;
+  width: 100px;
   gap: 10px;
   margin-top: 3%;
   margin-left: 10%;

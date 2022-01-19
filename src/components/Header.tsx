@@ -13,36 +13,54 @@ import {
 import { PROFILE_INFO } from "../gql/query";
 import { ProfileInfoIF } from "../interfaces/UserIF";
 import MenuNav from "./MenuNav";
+import MobileNav from "./MobileNav";
 import ProfileNav from "./ProfileComponents/ProfileNav";
 
 const HeaderDiv = styled.div`
   display: flex;
-  justify-content: flex-end;
-  margin: 3%;
-  height: 150px;
+  width: 60%;
+  height: 200px;
+  margin: auto;
+  margin-top: 3%;
+  justify-content: space-between;
+  font-size: 22px;
+  position: sticky;
+  top: 0;
+  @media (max-width: 1024px) {
+    width: 70%;
+  }
+  @media (max-width: 768px) {
+    width: 90%;
+    font-size: 20px;
+  }
 `;
 
-const TogleDiv = styled.div`
+const TitleDiv = styled.div``;
+
+const MainNavDiv = styled.div`
   display: flex;
-  flex-direction: column;
-  margin: 0 1.5vw;
+  gap: 60px;
+  @media (max-width: 768px) {
+    width: 90%;
+    margin-left: 3%;
+  }
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
+
+const SidNavDiv = styled.div``;
 
 const ProfileTogleDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 3vw;
-`;
-
-const LoginSpan = styled.span`
-  padding-left: 3vw;
-  cursor: pointer;
+  width: 60px;
 `;
 
 const WeatherDiv = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 3%;
+  display: flex;
+  margin-top: 10px;
+`;
+const LoginSpan = styled.span`
+  cursor: pointer;
 `;
 
 function Header() {
@@ -50,7 +68,6 @@ function Header() {
   const [lat, setLat] = useRecoilState(isLatAtom);
   const [lon, setLon] = useRecoilState(isLonAtom);
   const [profileMenuTogle, setProfileMenuTogle] = useState(false);
-  const [menuTogle, setMenuTogle] = useState(false);
   const [temp, setTemp] = useRecoilState(isTempAtom);
   const [weatherIcon, setWeatherIcon] = useState("");
   const isLogin = useRecoilValue(isLoginAtom);
@@ -78,93 +95,70 @@ function Header() {
   return (
     <>
       <HeaderDiv>
-        <div>
-          {isDark === "lightTheme" ? (
-            <span
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                localStorage.setItem("theme", "darkTheme");
-                setIsDark("darkTheme");
-              }}
-            >
-              다크모드
-            </span>
+        <MobileNav />
+        <TitleDiv>UtilWeb</TitleDiv>
+        <MainNavDiv>
+          <MenuNav />
+          {isLogin ? (
+            <>
+              <ProfileTogleDiv>
+                <img
+                  src={data?.profileInfo.userImgUrl}
+                  alt="프로필사진"
+                  onClick={() => {
+                    setProfileMenuTogle(!profileMenuTogle);
+                  }}
+                  height={60}
+                  width={60}
+                  style={{ cursor: "pointer", borderRadius: "35px" }}
+                />
+                <span
+                  onMouseLeave={() => {
+                    setProfileMenuTogle(!profileMenuTogle);
+                  }}
+                  style={{ marginTop: "0.5vh" }}
+                >
+                  {profileMenuTogle ? <ProfileNav /> : <></>}
+                </span>
+              </ProfileTogleDiv>
+            </>
           ) : (
-            <span
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                localStorage.setItem("theme", "lightTheme");
-                setIsDark("lightTheme");
-              }}
-            >
-              라이트모드
-            </span>
+            <LoginSpan onClick={() => history.push("/login")}>로그인</LoginSpan>
           )}
+        </MainNavDiv>
+        <SidNavDiv>
+          <div>
+            {isDark === "lightTheme" ? (
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  localStorage.setItem("theme", "darkTheme");
+                  setIsDark("darkTheme");
+                }}
+              >
+                다크모드
+              </span>
+            ) : (
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  localStorage.setItem("theme", "lightTheme");
+                  setIsDark("lightTheme");
+                }}
+              >
+                라이트모드
+              </span>
+            )}
+          </div>
           <WeatherDiv>
             <img
               src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
               alt="기상 이미지"
-              height={60}
               width={60}
             />
-            <span style={{ paddingTop: "2.5vh" }}>{temp}℃</span>
+            <span style={{ paddingTop: "2vh" }}>{temp}℃</span>
           </WeatherDiv>
-        </div>
-        {!isLogin ? (
-          <div
-            onClick={() => {
-              setMenuTogle(!menuTogle);
-            }}
-            style={{ width: "60px", cursor: "pointer" }}
-          >
-            메뉴
-          </div>
-        ) : (
-          <TogleDiv>
-            <div
-              onClick={() => {
-                setMenuTogle(!menuTogle);
-              }}
-              style={{ width: "60px", cursor: "pointer" }}
-            >
-              메뉴
-            </div>
-            <div
-              onMouseLeave={() => {
-                setMenuTogle(!menuTogle);
-              }}
-              style={{ marginTop: "0.5vh" }}
-            >
-              {menuTogle ? <MenuNav /> : <></>}
-            </div>
-          </TogleDiv>
-        )}
-        {isLogin ? (
-          <>
-            <ProfileTogleDiv>
-              <img
-                src={data?.profileInfo.userImgUrl}
-                alt="프로필사진"
-                onClick={() => {
-                  setProfileMenuTogle(!profileMenuTogle);
-                }}
-                height={70}
-                width={70}
-                style={{ cursor: "pointer", borderRadius: "35px" }}
-              />
-              <span
-                onMouseLeave={() => {
-                  setProfileMenuTogle(!profileMenuTogle);
-                }}
-                style={{ marginTop: "0.5vh" }}
-              >
-                {profileMenuTogle ? <ProfileNav /> : <></>}
-              </span>
-            </ProfileTogleDiv>
-          </>
-        ) : (
-          <LoginSpan onClick={() => history.push("/login")}>로그인</LoginSpan>
-        )}
+        </SidNavDiv>
       </HeaderDiv>
     </>
   );

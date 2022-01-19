@@ -1,10 +1,12 @@
 ## **Util-Web**
 
-- https://jovial-minsky-db2ac4.netlify.app
+- Demo: https://jovial-minsky-db2ac4.netlify.app
 - 체험 아이디1 : min / 비밀번호 : 123123
 - 체험 아이디2 : jong / 비밀번호 : 123123
 
-## **1. 사용기술 / 라이브러리**
+## **개발 동기**
+
+## **사용기술 / 라이브러리**
 
 **Client**
 
@@ -22,7 +24,7 @@
 - Daum 지도 API
 - Naver 이미지 검색 / 블로그 검색 API
 
-## **2. 프로젝트 구조**
+## **프로젝트 구조**
 
 # **ERD**
 
