@@ -14,7 +14,7 @@
 
 **Client**
 
-- React.js / Typescript / Graphql / Apollo-client / Recoil
+- React.js / TypeScript / Graphql / Apollo-client / Recoil
 - nivo / Axios / Styled-components / Socket.io-client
 
 **Server**
@@ -47,15 +47,16 @@
   <img src="https://user-images.githubusercontent.com/87972252/150284739-98bc0994-f010-4a82-b478-a5a5c63b049a.png" width={50%}>
   <img src="https://user-images.githubusercontent.com/87972252/150284807-f3269523-16eb-4cc4-a099-e0dad6217ba5.png" width={50%}>
 
-- <`Theme작성 코드`>
+- `Theme작성 코드`
   <img src="https://user-images.githubusercontent.com/87972252/150285923-6fb9d0f8-3c2d-414a-b883-5edd13aeb03b.png" width={50%}>
 
 2. **가계부기능**
 
 - 유저가 입력한 value를 MySQL에 저장한 뒤 nivo라이브러리를 활용해 원형 차트로 보이도록 하였고, 유저가 원할 시 입력한 내역을 삭제 가능하도록 구현했습니다.
-  <img src="https://user-images.githubusercontent.com/87972252/150288106-db90bebd-717c-4dc2-89b6-ed1946de140e.png" width={50%}>
+  <img src="https://user-images.githubusercontent.com/87972252/150288106-db90bebd-717c-4dc2-89b6-ed1946de140e.png" width={70%}>
 
-- <가계부입력 코드>
+- `가계부입력 코드`
+
   <img src="https://user-images.githubusercontent.com/87972252/150288522-27659d95-f20f-4a5c-b6a2-5ab180423e35.png" width={50%}>
 
 3. **패션추천 / 게시판기능**
@@ -66,11 +67,11 @@
  <img src="https://user-images.githubusercontent.com/87972252/150289556-3bc8735b-74e5-442c-ab67-68cff77cb14d.png" width={50%}>
  <img src="https://user-images.githubusercontent.com/87972252/150289616-8277382a-40ec-498e-8ef0-e132124ea25c.png" width={50%}>
 
-- <온도확인 후 코디추천 코드>
+- `온도확인 후 코디추천 코드`
   <img src="https://user-images.githubusercontent.com/87972252/150290101-5c8a6165-57cd-44b1-8da0-5b33f1b51239.png" width={50%}>
   <img src="https://user-images.githubusercontent.com/87972252/150290109-5ae4d626-2f83-4f7f-a993-efbdb60312f7.png" width={50%}>
 
-- <게시판 업로드 코드>
+- `게시판 업로드 코드`
   <img src="https://user-images.githubusercontent.com/87972252/150291004-983426e2-ef42-4442-b71b-0090dbd130ba.png" width={50%}>
   <img src="https://user-images.githubusercontent.com/87972252/150291008-03bbfb53-e6af-456f-9404-429aa190a311.png" width={50%}>
 
@@ -81,7 +82,8 @@
 
   <img src="https://user-images.githubusercontent.com/87972252/150291712-6a2230b1-e8e0-412e-b8c1-e7b0af723ec1.png" width={50%}>
 
-- <맛집검색 코드>
+- `맛집검색 코드`
+
   <img src="https://user-images.githubusercontent.com/87972252/150292329-a4290feb-322e-4175-9536-58338fb85189.png" width={50%}>
 
 5. **플리마켓 기능**
@@ -90,6 +92,6 @@
 
  <img src="https://user-images.githubusercontent.com/87972252/150292818-68ad4b8b-e6cb-4398-b038-4114b6fdc00c.png" width={50%}>
 
-- <채팅기능 코드>
+- `채팅기능 코드`
   <img src="https://user-images.githubusercontent.com/87972252/150293369-69f24e04-dabe-492b-aea5-03d081516ff6.png" width={50%}>
   <img src="https://user-images.githubusercontent.com/87972252/150293379-ca54b8ec-856b-48bc-ab0a-8fb246656048.png" width={50%}>
