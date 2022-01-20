@@ -14,6 +14,7 @@ const HomeDiv = styled.div`
       flex-direction: column-reverse;
     }
   }
+  height: 800px;
 `;
 
 const HomeImg = styled.img`
