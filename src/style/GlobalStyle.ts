@@ -20,14 +20,14 @@ export const GlobalStyles = createGlobalStyle`
     background-color: white;
     outline:  ${(props) => props.theme.divOutLineColor};
     border:0;
-    border-radius: 10px ;
+    border-radius: 1vh ;
     }
     input{
         :focus {
             outline:  #ced4da solid 1px;
         }
     border: 0;
-    border-radius: 30px;
+    border-radius: 3vw;
     outline:  ${(props) => props.theme.divOutLineColor};
     height: 25px;
     text-align: center;
@@ -37,7 +37,7 @@ export const GlobalStyles = createGlobalStyle`
             outline:  #ced4da solid 1px;
         }
     border: 0;
-    border-radius: 30px;
+    border-radius: 3vw;
     outline: ${(props) => props.theme.divOutLineColor};
     height: 25px;
     text-align: center;
