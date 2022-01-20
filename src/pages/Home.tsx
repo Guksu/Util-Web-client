@@ -4,15 +4,37 @@ const HomeDiv = styled.div`
   width: 1fr;
   height: 1000px;
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    :nth-child(3) {
+      flex-direction: column-reverse;
+    }
+    :nth-child(5) {
+      flex-direction: column-reverse;
+    }
+  }
 `;
 
 const HomeImg = styled.img`
   margin: auto;
+  width: auto;
+  @media (max-width: 1204px) {
+    width: auto;
+    height: 55vh;
+  }
+  @media (max-width: 767px) {
+    width: 100vw;
+    height: auto;
+  }
 `;
 
 const TextDiv = styled.div`
   font-size: 30px;
   margin: auto;
+  @media (max-width: 1204px) {
+    font-size: 20px;
+  }
 `;
 function Home() {
   return (
