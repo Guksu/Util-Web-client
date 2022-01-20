@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import styled from "styled-components";
 import {
   isFleaContentAtom,
   isFleaNoAtom,
@@ -17,8 +18,13 @@ import {
   ReviewInfoDiv,
   TitleDiv,
 } from "../FoodPages/FoodReview";
-import { CreateBtnDiv } from "../FoodPages/FoodReviewCreate";
 
+const ChatBtnDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15%;
+  margin-right: 5%;
+`;
 function FleaMarketProduct() {
   const isFleaNo = useRecoilValue(isFleaNoAtom);
   const isFleaTitle = useSetRecoilState<any>(isFleaTitleAtom);
@@ -90,7 +96,7 @@ function FleaMarketProduct() {
           />
           {marketData?.getMarket.market.content}
         </ContentDiv>
-        <CreateBtnDiv>
+        <ChatBtnDiv>
           <button
             onClick={() => {
               history.push("/fleaMarket/chatroom");
@@ -99,7 +105,7 @@ function FleaMarketProduct() {
           >
             판매자 대화하기
           </button>
-        </CreateBtnDiv>
+        </ChatBtnDiv>
       </FoodReviewDiv>
     </>
   );

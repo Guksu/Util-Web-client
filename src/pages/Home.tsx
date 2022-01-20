@@ -1,125 +1,60 @@
-import { useHistory } from "react-router-dom";
-import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { isLoginAtom } from "../atom";
 
-const MainDiv = styled.div`
-  font-size: 10vh;
-  text-align: center;
-  margin-top: 10%;
+const HomeDiv = styled.div`
+  width: 1fr;
+  height: 1000px;
+  display: flex;
 `;
 
-const ContentWraper = styled.div`
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(2, 1fr);
-  width: 40%;
-  min-width: 300px;
-  height: 50vh;
+const HomeImg = styled.img`
   margin: auto;
-  border: 1px solid #faf8ff;
-  background-color: ${(props) => props.theme.backgroundColor};
-  border-radius: 50px;
 `;
 
-const ContentDiv = styled.div`
-  background-color: ${(props) => props.theme.homeDivColor};
-  border-radius: 80%;
-  border: 0px;
-  width: 5vw;
-  height: 8vh;
-  min-width: 80px;
-  min-height: 80px;
-  text-align: center;
-  cursor: pointer;
-  outline: ${(props) => props.theme.homeOutlineColor};
+const TextDiv = styled.div`
+  font-size: 30px;
   margin: auto;
-  margin-top: 15%;
 `;
-
-const ContentImg = styled.img`
-  height: 6vh;
-  width: 3vw;
-  min-height: 40px;
-  min-width: 40px;
-  padding-top: 10%;
-  margin: 2%;
-`;
-
-const ContentName = styled.div`
-  margin-top: 5%;
-  text-align: center;
-  font-size: 20px;
-`;
-
 function Home() {
-  const isLogin = useRecoilValue(isLoginAtom);
-  const history = useHistory();
-
   return (
     <>
-      {isLogin ? (
-        <>
-          <ContentWraper>
-            <div>
-              <ContentDiv
-                onClick={() => {
-                  history.push("/account");
-                }}
-              >
-                <ContentImg
-                  alt="가계부"
-                  src="https://guksuintengiblemarketuplaodsol6425.s3.ap-northeast-2.amazonaws.com/accounting.png"
-                />
-              </ContentDiv>
-              <ContentName>가계부</ContentName>
-            </div>
-            <div>
-              <ContentDiv
-                onClick={() => {
-                  history.push("/fassion");
-                }}
-              >
-                <ContentImg
-                  alt="스타일"
-                  src="https://guksuintengiblemarketuplaodsol6425.s3.ap-northeast-2.amazonaws.com/accessory.png"
-                />
-              </ContentDiv>
-              <ContentName>스타일</ContentName>
-            </div>
-            <div>
-              <ContentDiv
-                onClick={() => {
-                  history.push("/food");
-                }}
-              >
-                <ContentImg
-                  alt="맛집"
-                  src="https://guksuintengiblemarketuplaodsol6425.s3.ap-northeast-2.amazonaws.com/restaurant.png"
-                />
-              </ContentDiv>
-              <ContentName>맛집</ContentName>
-            </div>
-            <div>
-              <ContentDiv
-                onClick={() => {
-                  history.push("/fleaMarket");
-                }}
-              >
-                <ContentImg
-                  alt="플리마켓"
-                  src="https://guksuintengiblemarketuplaodsol6425.s3.ap-northeast-2.amazonaws.com/market.png"
-                />
-              </ContentDiv>
-              <ContentName>플리마켓</ContentName>
-            </div>
-          </ContentWraper>
-        </>
-      ) : (
-        <>
-          <MainDiv>Login Plz</MainDiv>
-        </>
-      )}
+      <HomeDiv>
+        <HomeImg
+          src="https://user-images.githubusercontent.com/87972252/150262599-4e8177ad-351c-4103-b2d0-18a81a1533b8.png"
+          alt="account"
+        />
+        <TextDiv>간편하게 입력하고 손쉽게 관리하세요</TextDiv>
+      </HomeDiv>
+      <HomeDiv>
+        <TextDiv>그날의 패션을 공유해 보세요</TextDiv>
+        <HomeImg
+          src="https://user-images.githubusercontent.com/87972252/150263161-5f0afaf9-5658-4d9a-ae91-2816d7b55459.png"
+          alt="style"
+        />
+      </HomeDiv>
+      <HomeDiv>
+        <HomeImg
+          src="https://user-images.githubusercontent.com/87972252/150263022-957f1ee6-9339-4b70-9e9a-c9757de78de2.png"
+          alt="food"
+        />
+        <TextDiv>
+          내 주변 맛집을 검색하고
+          <br />
+          <br />
+          사람들과 공유해 보세요
+        </TextDiv>
+      </HomeDiv>
+      <HomeDiv>
+        <TextDiv>
+          중고물품을 등록하고
+          <br />
+          <br />
+          실시간 대화를 통해 거래해 보세요
+        </TextDiv>
+        <HomeImg
+          src="https://user-images.githubusercontent.com/87972252/150262935-d8c0769f-b4d4-4f41-a271-33865c909f38.png"
+          alt="fleamarket"
+        />
+      </HomeDiv>
     </>
   );
 }

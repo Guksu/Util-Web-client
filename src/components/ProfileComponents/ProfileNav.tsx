@@ -8,11 +8,16 @@ import { CursorDiv } from "../../style/GlobalStyle";
 const Div = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-size: 20px;
-  width: 100px;
-  gap: 10px;
-  margin-top: 3%;
-  margin-left: 10%;
+  padding-top: 20%;
+  width: 90px;
+  height: 70px;
+  gap: 20px;
+  margin-top: 7%;
+  background-color: ${(props) => props.theme.bgColor};
+  border: ${(props) => props.theme.divOutLineColor};
+  border-radius: 10px;
 `;
 
 function ProfileNav() {

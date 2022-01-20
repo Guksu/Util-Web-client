@@ -13,10 +13,25 @@ export const ChatDiv = styled.div`
   display: flex;
   justify-content: center;
   height: 60vh;
-  width: 50vw;
+  width: 20vw;
   margin: auto;
   outline: ${(props) => props.theme.divOutLineColor};
-  overflow-y: auto;
+  background-color: ${(props) => props.theme.backgroundColor};
+  border-radius: 20px;
+
+  @media (max-width: 1024px) {
+    width: 30vw;
+  }
+  @media (max-width: 768px) {
+    width: 40vw;
+  }
+  @media (max-width: 425px) {
+    width: 70%;
+  }
+`;
+
+const ChatUl = styled.ul`
+  width: 95%;
 `;
 
 export const MyLi = styled.div`
@@ -24,8 +39,8 @@ export const MyLi = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   align-content: flex-end;
+  align-items: flex-end;
   justify-content: flex-end;
-  width: 45vw;
   margin: 3% 0;
   gap: 10px;
 `;
@@ -36,27 +51,29 @@ export const OtherLi = styled.div`
   flex-wrap: wrap;
   align-content: flex-start;
   justify-content: flex-start;
-  width: 45vw;
   margin: 3% 0;
   gap: 10px;
 `;
 
 export const MessageDiv = styled.div`
+  height: 30px;
   border: 1px solid #868e96;
-  padding: 1%;
+  background-color: ${(props) => props.theme.bgColor};
+  padding: 3% 1% 1% 1%;
+  border-radius: 10px;
 `;
 
 const SendDiv = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 3%;
-  gap: 60px;
+  margin-top: 30px;
+  gap: 40px;
 `;
 
-const SendDiv2 = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+const SendInput = styled.input`
+  @media (max-width: 1024px) {
+    width: 150px;
+  }
 `;
 
 function ChatRoom() {
@@ -116,7 +133,7 @@ function ChatRoom() {
       {socket ? (
         <>
           <ChatDiv>
-            <ul>
+            <ChatUl>
               <ChatLog />
               {messages.map((message) => {
                 if (message.name === name) {
@@ -134,22 +151,20 @@ function ChatRoom() {
                   </OtherLi>
                 );
               })}
-            </ul>
+            </ChatUl>
           </ChatDiv>
           <SendDiv>
-            <SendDiv2>
-              <input
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder="메세지를 입력하세요"
-                onKeyPress={enterKeyEvent}
-              />
-              <button type="button" onClick={() => sendMessage()}>
-                전송
-              </button>
-            </SendDiv2>
-            <ChatLogDelete />
+            <SendInput
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="메세지를 입력하세요"
+              onKeyPress={enterKeyEvent}
+            />
+            <button type="button" onClick={() => sendMessage()}>
+              전송
+            </button>
           </SendDiv>
+          <ChatLogDelete />
         </>
       ) : (
         <div>Loading</div>

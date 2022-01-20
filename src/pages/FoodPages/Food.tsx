@@ -139,8 +139,8 @@ function Food() {
         bounds.extend(placePosition);
 
         // 마커와 검색결과 항목에 mouseover 했을때
-        // 해당 장소에 인포윈도우에 장소명을 표시합니다
-        // mouseout 했을 때는 인포윈도우를 닫습니다
+        // 해당 장소에 인포윈도우에 장소명을 표시
+        // mouseout 했을 때는 인포윈도우를 닫기
         (function (marker, title) {
           kakao.maps.event.addListener(marker, "mouseover", function () {
             displayInfowindow(marker, title);
@@ -162,10 +162,10 @@ function Food() {
         fragment.appendChild(itemEl);
       }
 
-      // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+      // 검색결과 항목들을 검색결과 목록 Elemnet에 추가
       listEl.appendChild(fragment);
 
-      // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+      // 검색된 장소 위치를 기준으로 지도 범위를 재설정
       map.setBounds(bounds);
     }
 
@@ -224,13 +224,13 @@ function Food() {
           image: markerImage,
         });
 
-      marker.setMap(map); // 지도 위에 마커를 표출합니다
-      markers.push(marker); // 배열에 생성된 마커를 추가합니다
+      marker.setMap(map); // 지도 위에 마커를 표출
+      markers.push(marker); // 배열에 생성된 마커를 추가
 
       return marker;
     }
 
-    // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+    // 지도 위에 표시되고 있는 마커를 모두 제거
     function removeMarker() {
       for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
@@ -243,7 +243,7 @@ function Food() {
       const fragment = document.createDocumentFragment();
       let i;
 
-      // 기존에 추가된 페이지번호를 삭제합니다
+      // 기존에 추가된 페이지번호를 삭제
       while (paginationEl.hasChildNodes()) {
         paginationEl.removeChild(paginationEl.lastChild);
       }
@@ -267,8 +267,8 @@ function Food() {
       paginationEl.appendChild(fragment);
     }
 
-    // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
-    // 인포윈도우에 장소명을 표시합니다
+    // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수
+    // 인포윈도우에 장소명을 표시
     function displayInfowindow(marker: any, title: any) {
       const content =
         '<div style="padding:5px;z-index:1;color:#495057">' + title + "</div>";
@@ -277,7 +277,7 @@ function Food() {
       infowindow.open(map, marker);
     }
 
-    // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+    // 검색결과 목록의 자식 Element를 제거하는 함수
     function removeAllChildNods(el: any) {
       while (el.hasChildNodes()) {
         el.removeChild(el.lastChild);

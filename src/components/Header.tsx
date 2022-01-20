@@ -18,19 +18,19 @@ import ProfileNav from "./ProfileComponents/ProfileNav";
 
 const HeaderDiv = styled.div`
   display: flex;
-  width: 60%;
-  height: 200px;
+  height: 100px;
   margin: auto;
   margin-top: 3%;
-  justify-content: space-between;
+  margin-bottom: 3%;
+  justify-content: space-evenly;
   font-size: 22px;
   position: sticky;
+  z-index: 5;
   top: 0;
-  @media (max-width: 1024px) {
-    width: 70%;
-  }
+  background-color: ${(props) => props.theme.bgColor};
+  box-shadow: 0 4px 4px -4px black;
+
   @media (max-width: 768px) {
-    width: 90%;
     font-size: 20px;
   }
 `;

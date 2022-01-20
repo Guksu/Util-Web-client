@@ -35,6 +35,10 @@ export const Img = styled.img`
   width: 400px;
   height: 400px;
   margin-bottom: 2%;
+  @media (max-width: 375px) {
+    width: 200px;
+    height: 300px;
+  }
 `;
 
 export const BtnDiv = styled.div`

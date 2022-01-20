@@ -13,7 +13,7 @@ const LayOuytDiv = styled.div`
     width: 90vw;
   }
   @media (max-width: 375px) {
-    width: 95%;
+    width: 1fr;
   }
 `;
 
