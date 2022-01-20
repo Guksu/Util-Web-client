@@ -16,7 +16,7 @@ const ImgWrapper = styled.div`
   box-shadow: 0 0 5px black;
   padding: 1%;
   outline: ${(props) => props.theme.divOutLineColor};
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.divBackgroundColor};
   @media (max-width: 1024px) {
     width: 50vw;
   }
@@ -50,7 +50,7 @@ const ImgBtn = styled.div`
 `;
 
 const ArrowDiv = styled.div`
-  color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.divBackgroundColor};
   margin: auto;
   padding: 0 1%;
 `;

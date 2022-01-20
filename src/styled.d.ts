@@ -11,7 +11,6 @@ declare module "styled-components" {
     homeOutlineColor: string;
 
     divOutLineColor: string;
-
-    backgroundColor: string;
+    divBackgroundColor: string;
   }
 }

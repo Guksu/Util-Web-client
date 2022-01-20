@@ -13,7 +13,7 @@ export const FoodReviewDiv = styled.div`
   margin: auto;
   margin-bottom: 5%;
   padding: 1%;
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.divBackgroundColor};
   border-radius: 25px;
   height: 70vh;
 `;

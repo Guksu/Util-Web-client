@@ -19,7 +19,7 @@ export const FoodBoardDiv = styled.div`
   width: 80%;
   height: 75vh;
   margin: auto;
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.divBackgroundColor};
   border-radius: 25px;
 `;
 

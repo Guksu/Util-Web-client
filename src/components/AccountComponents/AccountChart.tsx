@@ -21,7 +21,7 @@ const ChartBtn = styled.span`
 `;
 
 const ArrowDiv = styled.div`
-  color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.divBackgroundColor};
   margin: auto;
 `;
 

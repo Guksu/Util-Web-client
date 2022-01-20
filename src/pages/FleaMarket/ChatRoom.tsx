@@ -16,7 +16,7 @@ export const ChatDiv = styled.div`
   width: 20vw;
   margin: auto;
   outline: ${(props) => props.theme.divOutLineColor};
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.divBackgroundColor};
   border-radius: 20px;
 
   @media (max-width: 1024px) {

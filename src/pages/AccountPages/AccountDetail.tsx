@@ -7,7 +7,7 @@ import { GET_ALL_ACCOUNT_LIST } from "../../gql/query";
 import { DeleteAccountIF, GetAccountListIF } from "../../interfaces/AccountIF";
 
 const AccountDetailWrapper = styled.div`
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.divBackgroundColor};
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 50%));
   width: 90vw;

@@ -7,7 +7,7 @@ import { CREATE_ACCOUNT } from "../../gql/mutation";
 import { CreateAccountIF } from "../../interfaces/AccountIF";
 
 const AccountWrapper = styled.div`
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.divBackgroundColor};
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 50%));
   width: 90vw;
@@ -70,18 +70,6 @@ function Account() {
     },
   });
 
-  // 인풋값 콤마 적용
-
-  const changNum: React.FormEventHandler<HTMLInputElement> = (e) => {
-    const i = e.currentTarget;
-    const startPosition = i.value.length - i.selectionEnd!;
-    i.value = i.value
-      .replace(/^0+|\D+/g, "")
-      .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
-    const len = Math.max(i.value.length - startPosition, 0);
-    i.setSelectionRange(len, len);
-  };
-
   const onClick: React.MouseEventHandler<HTMLButtonElement> = async () => {
     try {
       const { data } = await createAccount();
@@ -94,6 +82,17 @@ function Account() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  // 인풋값 콤마 적용
+  const changNum: React.FormEventHandler<HTMLInputElement> = (e) => {
+    const i = e.currentTarget;
+    const startPosition = i.value.length - i.selectionEnd!;
+    i.value = i.value
+      .replace(/^0+|\D+/g, "")
+      .replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
+    const len = Math.max(i.value.length - startPosition, 0);
+    i.setSelectionRange(len, len);
   };
 
   return (

@@ -13,7 +13,7 @@ export const FassionUploadWrapper = styled.div`
   width: 30vw;
   height: 20vh;
   min-width: 300px;
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.divBackgroundColor};
   border-radius: 20px;
 `;
 

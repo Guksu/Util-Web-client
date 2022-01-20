@@ -36,7 +36,7 @@ const ContentDiv = styled.div`
   display: flex;
   justify-content: space-between;
   border-radius: 25px;
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.divBackgroundColor};
   @media (max-width: 425px) {
     width: 300px;
   }
