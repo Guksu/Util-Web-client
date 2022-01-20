@@ -48,6 +48,7 @@
   <img src="https://user-images.githubusercontent.com/87972252/150284807-f3269523-16eb-4cc4-a099-e0dad6217ba5.png" width={50%}>
 
 - `Theme작성 코드`
+
   <img src="https://user-images.githubusercontent.com/87972252/150285923-6fb9d0f8-3c2d-414a-b883-5edd13aeb03b.png" width={50%}>
 
 2. **가계부기능**
@@ -68,10 +69,12 @@
  <img src="https://user-images.githubusercontent.com/87972252/150289616-8277382a-40ec-498e-8ef0-e132124ea25c.png" width={50%}>
 
 - `온도확인 후 코디추천 코드`
+
   <img src="https://user-images.githubusercontent.com/87972252/150290101-5c8a6165-57cd-44b1-8da0-5b33f1b51239.png" width={50%}>
   <img src="https://user-images.githubusercontent.com/87972252/150290109-5ae4d626-2f83-4f7f-a993-efbdb60312f7.png" width={50%}>
 
 - `게시판 업로드 코드`
+
   <img src="https://user-images.githubusercontent.com/87972252/150291004-983426e2-ef42-4442-b71b-0090dbd130ba.png" width={50%}>
   <img src="https://user-images.githubusercontent.com/87972252/150291008-03bbfb53-e6af-456f-9404-429aa190a311.png" width={50%}>
 
@@ -93,5 +96,16 @@
  <img src="https://user-images.githubusercontent.com/87972252/150292818-68ad4b8b-e6cb-4398-b038-4114b6fdc00c.png" width={50%}>
 
 - `채팅기능 코드`
+
   <img src="https://user-images.githubusercontent.com/87972252/150293369-69f24e04-dabe-492b-aea5-03d081516ff6.png" width={50%}>
   <img src="https://user-images.githubusercontent.com/87972252/150293379-ca54b8ec-856b-48bc-ab0a-8fb246656048.png" width={50%}>
+
+## **프로젝트 진행 후 느낀 점 / 개선할 점**
+
+- React를 어느 정도 잘 활용한다 생각했지만 아직 Hooks를 제대로 활용하지 못하는 거 같아 공식 문서를 통한 공부가 필요함을 느꼈습니다. 또한 재사용 가능한 Components의 중요성을 느꼈으며 Components의 설계를 더 꼼꼼히 해야 함을 배웠습니다.
+
+- 이번 프로젝트를 진행하면서 공식 문서의 중요함을 다시 깨닫게 되었습니다. 실례로 좋아요 기능을 구현하면서 유저가 좋아요 버튼을 클릭하면 바로 렌더링이 될 수 있게 구현함에 있어서 useEffect를 사용해야 하나 고민했지만 Apollo-client의 공식 문서를 찾아보니 refetch 가 존재하는 것을 발견하고 이러한 고민은 쉽게 해결되었습니다. 이 경험을 통해 Apollo-clinet뿐만 아니라 다른 공식 문서도 꼼꼼히 보도록 노력하고 있습니다.
+
+- Graphql과 NestJS를 공부한 뒤 처음으로 프로젝트에 적용시켜봤는데 처음인 만큼 여러 가지 우여곡절이 많았지만 재미있었습니다. Graphql은 REST API에 비하여 비교적 간단하고 편하다고 느껴졌지만 아직 익숙하지 않아 더 공부를 해야 할 필요성을 느꼈습니다. 또한 NestJS를 통하여 Backend의 구조를 더 공부할 수 있었습니다.
+
+- Socket.io를 통하여 실시간 대화를 구현했지만
