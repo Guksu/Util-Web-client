@@ -28,10 +28,16 @@
 
 ## **프로젝트 구조**
 
-**ERD**
+# **ERD**
 
 <img src="https://user-images.githubusercontent.com/87972252/150096948-4231039d-444e-44c2-a5ce-bceb2484a639.png" width={80%}>
 
 # **기능설계도**
 
 <img src="https://user-images.githubusercontent.com/87972252/150099426-3d9a5c2e-6325-4966-8ac8-70ed4b99432e.png" width={80%}>
+
+## **주요기능**
+
+**다크모드/라이트모드**
+<img src="https://user-images.githubusercontent.com/87972252/150284739-98bc0994-f010-4a82-b478-a5a5c63b049a.png" width={50%}>
+<img src="https://user-images.githubusercontent.com/87972252/150284807-f3269523-16eb-4cc4-a099-e0dad6217ba5.png" width={50%}>
