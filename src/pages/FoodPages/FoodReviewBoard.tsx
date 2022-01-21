@@ -133,6 +133,7 @@ function FoodReviewBoard() {
   const firstIndex = lastIndex - listPerPage;
   const currentList = list?.slice(firstIndex, lastIndex);
 
+  //게시판 리스트 가져오기
   const content = currentList?.map((item) => {
     return (
       <>
@@ -162,6 +163,7 @@ function FoodReviewBoard() {
           <ContentSpan>{item.date}</ContentSpan>
           <ContentSpan>{item.view}</ContentSpan>
         </ContentDiv>
+        {/* 모바일버전 */}
         <MobileContentWrapper key={item.FoodBoardNo * -1}>
           <ContentSpan
             onClick={async () => {

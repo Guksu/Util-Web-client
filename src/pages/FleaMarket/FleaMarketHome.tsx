@@ -76,6 +76,7 @@ function FleaMarketHome() {
           <ContentSpan>{item.date}</ContentSpan>
           <ContentSpan>{item.view}</ContentSpan>
         </ContentDiv>
+        {/* 모바일버전 */}
         <MobileContentWrapper key={item.FleaMarketNo * -1}>
           <ContentSpan
             onClick={async () => {

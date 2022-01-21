@@ -57,6 +57,7 @@ function OthersStyle() {
                 style={{ borderRadius: "10px" }}
               />
             </ImgDiv>
+            {/* 좋아요 기능 */}
             {likeList?.likeCheck.like?.includes(item.fassionNo) ? (
               <div style={{ marginTop: "2%" }}>
                 <span
