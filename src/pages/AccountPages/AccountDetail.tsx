@@ -58,13 +58,17 @@ function AccountDetail() {
     useQuery<GetAccountListIF>(GET_ALL_ACCOUNT_LIST);
   const [deleteAccount] = useMutation<DeleteAccountIF>(DELETE_ACCOUNT);
 
+  //수익리스트
   const profit = getList?.getAccountList.account?.filter(
     (item) => item.type === "profit"
   );
+
+  //지출리스트
   const expense = getList?.getAccountList.account?.filter(
     (item) => item.type === "expense"
   );
 
+  //수익내역
   const profitList = profit?.map((item) => {
     return (
       <ul key={item.accountNo}>
@@ -103,6 +107,7 @@ function AccountDetail() {
     );
   });
 
+  //지출내역
   const expenseList = expense?.map((item) => {
     return (
       <ListDiv key={item.accountNo}>

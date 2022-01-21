@@ -16,6 +16,8 @@ function OthersStyle() {
     useQuery<GetAllFassionListIF>(GET_ALL_FASSION_LIST);
   const { data: likeList, refetch: likeRefetch } =
     useQuery<LikeCheckIF>(LIKE_CHECK);
+
+  //좋아요기능
   const [likeUpdate] = useMutation<LikeUpdateIF>(LIKE_UPDATE);
   const [likeRemove] = useMutation<LikeUpdateIF>(LIKE_REMOVE);
 
@@ -33,6 +35,7 @@ function OthersStyle() {
     lastIndex
   );
 
+  //이미지 리스트 가져오기
   const content = currentImg?.map((item) => {
     return (
       <ul key={item.fassionNo}>

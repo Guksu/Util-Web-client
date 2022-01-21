@@ -90,6 +90,7 @@ function MyStyle() {
     refetch();
   }, [fassionList]);
 
+  // 이미지 리스트 가져오기
   const content = currentImg?.map((item) => {
     return (
       <ul key={item.fassionNo}>
