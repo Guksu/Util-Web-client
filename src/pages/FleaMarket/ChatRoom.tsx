@@ -16,6 +16,7 @@ export const ChatDiv = styled.div`
   width: 20vw;
   margin: auto;
   outline: ${(props) => props.theme.divOutLineColor};
+  overflow-y: auto;
   background-color: ${(props) => props.theme.divBackgroundColor};
   border-radius: 20px;
 

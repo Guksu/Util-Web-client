@@ -1,11 +1,10 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useHistory, useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { isFleaOwnerAtom } from "../../atom";
 import { DELETE_CHAT } from "../../gql/mutation";
+import { GET_MARKET } from "../../gql/query";
 import { IDarams } from "../../interfaces/CommonIF";
-import { DeleteChatIF } from "../../interfaces/FleaMarket";
+import { DeleteChatIF, GetMarketIF } from "../../interfaces/FleaMarket";
 
 const ChatResetDiv = styled.div`
   display: flex;
@@ -20,11 +19,14 @@ const ChatResetBtn = styled.button`
 
 function ChatLogDelete() {
   const params = useParams<IDarams>();
-  const isFleaOwner = useRecoilValue(isFleaOwnerAtom);
   const history = useHistory();
-  const room = params.id;
+  const room = Number(params.id);
   const [deleteChat] = useMutation<DeleteChatIF>(DELETE_CHAT, {
     variables: { deleteChatLogInput: { room } },
+  });
+
+  const { data: marketData } = useQuery<GetMarketIF>(GET_MARKET, {
+    variables: { getMarketInput: { FleaMarketNo: Number(params.id) } },
   });
 
   const onClick: React.MouseEventHandler<HTMLButtonElement> = async () => {
@@ -39,7 +41,7 @@ function ChatLogDelete() {
 
   return (
     <>
-      {isFleaOwner === localStorage.getItem("id") && (
+      {marketData?.getMarket.market.userName === localStorage.getItem("id") && (
         <ChatResetDiv>
           <ChatResetBtn onClick={onClick}>대화 초기화</ChatResetBtn>
         </ChatResetDiv>
