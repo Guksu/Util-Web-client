@@ -49,7 +49,7 @@
 
 - `Theme작성 코드`
 
-  <img src="https://user-images.githubusercontent.com/87972252/150285923-6fb9d0f8-3c2d-414a-b883-5edd13aeb03b.png" width={50%}>
+  <img src="https://user-images.githubusercontent.com/87972252/150460049-5a4a1569-7301-4724-9e32-3dceb8494647.png" width={50%}>
 
 2. **가계부기능**
 
