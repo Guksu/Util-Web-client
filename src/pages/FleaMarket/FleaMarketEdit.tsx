@@ -1,9 +1,14 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
-import { useRecoilValue } from "recoil";
-import { isFleaContentAtom, isFleaNoAtom, isFleaTitleAtom } from "../../atom";
+import { useParams } from "react-router-dom";
 import { DELETE_MARKET, EDIT_MARKET } from "../../gql/mutation";
-import { DeleteMarketIF, EditMarketIF } from "../../interfaces/FleaMarket";
+import { GET_MARKET } from "../../gql/query";
+import { IDarams } from "../../interfaces/CommonIF";
+import {
+  DeleteMarketIF,
+  EditMarketIF,
+  GetMarketIF,
+} from "../../interfaces/FleaMarket";
 import {
   Btn,
   BtnDiv,
@@ -13,18 +18,22 @@ import {
 } from "../FoodPages/FoodReviewEdit";
 
 function FleaMarketEdit() {
-  const isFleaNo = useRecoilValue(isFleaNoAtom);
-  const isFleaTitle = useRecoilValue(isFleaTitleAtom);
-  const isFleaContent = useRecoilValue(isFleaContentAtom);
+  const params = useParams<IDarams>();
   const [date] = useState(new Date().toISOString().slice(0, 10));
   const [content, setContent] = useState("");
 
+  const { data: marketData } = useQuery<GetMarketIF>(GET_MARKET, {
+    variables: { getMarketInput: { FleaMarketNo: Number(params.id) } },
+  });
+
   const [editMarket] = useMutation<EditMarketIF>(EDIT_MARKET, {
-    variables: { editMarketInput: { FleaMarketNo: isFleaNo, date, content } },
+    variables: {
+      editMarketInput: { FleaMarketNo: Number(params.id), date, content },
+    },
   });
 
   const [deleteMarket] = useMutation<DeleteMarketIF>(DELETE_MARKET, {
-    variables: { deleteMarketInput: { FleaMarketNo: isFleaNo } },
+    variables: { deleteMarketInput: { FleaMarketNo: Number(params.id) } },
   });
 
   const onEditClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
@@ -54,10 +63,10 @@ function FleaMarketEdit() {
   return (
     <>
       <ReviewEditWrapper>
-        <EditTitle>{isFleaTitle}</EditTitle>
+        <EditTitle>{marketData?.getMarket.market.title}</EditTitle>
         <EditContent
           maxLength={2000}
-          defaultValue={isFleaContent}
+          defaultValue={marketData?.getMarket.market.content}
           onChange={(e) => {
             setContent(e.currentTarget.value);
           }}

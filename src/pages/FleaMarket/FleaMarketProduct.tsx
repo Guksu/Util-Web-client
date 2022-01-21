@@ -1,15 +1,9 @@
 import { useQuery } from "@apollo/client";
-import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
-import {
-  isFleaContentAtom,
-  isFleaNoAtom,
-  isFleaOwnerAtom,
-  isFleaTitleAtom,
-} from "../../atom";
+
 import { GET_MARKET } from "../../gql/query";
+import { IDarams } from "../../interfaces/CommonIF";
 import { GetMarketIF } from "../../interfaces/FleaMarket";
 import {
   ContentDiv,
@@ -26,20 +20,10 @@ const ChatBtnDiv = styled.div`
   margin-right: 5%;
 `;
 function FleaMarketProduct() {
-  const isFleaNo = useRecoilValue(isFleaNoAtom);
-  const isFleaTitle = useSetRecoilState<any>(isFleaTitleAtom);
-  const isFlaeContent = useSetRecoilState<any>(isFleaContentAtom);
-  const isFleaOwner = useSetRecoilState<any>(isFleaOwnerAtom);
-
+  const params = useParams<IDarams>();
   const history = useHistory();
   const { data: marketData } = useQuery<GetMarketIF>(GET_MARKET, {
-    variables: { getMarketInput: { FleaMarketNo: isFleaNo } },
-  });
-
-  useEffect(() => {
-    isFleaTitle(marketData?.getMarket.market?.title);
-    isFlaeContent(marketData?.getMarket.market.content);
-    isFleaOwner(marketData?.getMarket.market.userName);
+    variables: { getMarketInput: { FleaMarketNo: Number(params.id) } },
   });
 
   return (
@@ -73,7 +57,7 @@ function FleaMarketProduct() {
               marketData?.getMarket.market.userName && (
               <EditBtn
                 onClick={() => {
-                  history.push("/fleamarket/edit");
+                  history.push(`/fleamarket/edit/${params.id}`);
                 }}
               >
                 수정하기
@@ -99,7 +83,7 @@ function FleaMarketProduct() {
         <ChatBtnDiv>
           <button
             onClick={() => {
-              history.push("/fleaMarket/chatroom");
+              history.push(`/fleaMarket/chatroom/${params.id}`);
             }}
             style={{ width: "70px", height: "50px", fontSize: "15px" }}
           >

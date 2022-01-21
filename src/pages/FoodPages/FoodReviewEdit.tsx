@@ -1,10 +1,15 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { isFoodContentAtom, isFoodNoAtom, isFoodTitleAtom } from "../../atom";
 import { DELETE_REVIEW, EDIT_REVIEW } from "../../gql/mutation";
-import { DeleteReviewIF, EditReviewIF } from "../../interfaces/FoodIF";
+import { GET_REVIEW } from "../../gql/query";
+import { IDarams } from "../../interfaces/CommonIF";
+import {
+  DeleteReviewIF,
+  EditReviewIF,
+  GetReviewIF,
+} from "../../interfaces/FoodIF";
 
 export const ReviewEditWrapper = styled.div`
   display: flex;
@@ -43,18 +48,22 @@ export const Btn = styled.button`
   font-size: 18px;
 `;
 function FoodReviewEdit() {
-  const isFoodNo = useRecoilValue(isFoodNoAtom);
-  const isFoodTitle = useRecoilValue(isFoodTitleAtom);
-  const isFoodContent = useRecoilValue(isFoodContentAtom);
+  const params = useParams<IDarams>();
   const [date] = useState(new Date().toISOString().slice(0, 10));
   const [content, setContent] = useState("");
 
+  const { data: reviewData } = useQuery<GetReviewIF>(GET_REVIEW, {
+    variables: { getReviewInput: { FoodBoardNo: Number(params.id) } },
+  });
+
   const [editReview] = useMutation<EditReviewIF>(EDIT_REVIEW, {
-    variables: { editReviewInput: { FoodBoardNo: isFoodNo, date, content } },
+    variables: {
+      editReviewInput: { FoodBoardNo: Number(params.id), date, content },
+    },
   });
 
   const [deleteReview] = useMutation<DeleteReviewIF>(DELETE_REVIEW, {
-    variables: { deleteReviewInput: { FoodBoardNo: isFoodNo } },
+    variables: { deleteReviewInput: { FoodBoardNo: Number(params.id) } },
   });
 
   const onEditClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
@@ -84,10 +93,10 @@ function FoodReviewEdit() {
   return (
     <>
       <ReviewEditWrapper>
-        <EditTitle>{isFoodTitle}</EditTitle>
+        <EditTitle>{reviewData?.getReview.review?.title}</EditTitle>
         <EditContent
           maxLength={2000}
-          defaultValue={isFoodContent}
+          defaultValue={reviewData?.getReview.review?.content}
           onChange={(e) => {
             setContent(e.currentTarget.value);
           }}

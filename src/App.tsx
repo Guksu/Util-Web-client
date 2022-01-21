@@ -53,8 +53,12 @@ function App() {
           <Route exact path={"/food"} component={Food} />
           <Route exact path={"/food/reviewList"} component={FoodReviewBoard} />
           <Route exact path={"/food/create"} component={FoodReviewCreate} />
-          <Route exact path={"/food/review"} component={FoodReview} />
-          <Route exact path={"/food/review/edit"} component={FoodReviewEdit} />
+          <Route exact path={"/food/review/:id"} component={FoodReview} />
+          <Route
+            exact
+            path={"/food/review/edit/:id"}
+            component={FoodReviewEdit}
+          />
           <Route exact path={"/fleaMarket"} component={FleaMarketHome} />
           <Route
             exact
@@ -63,11 +67,15 @@ function App() {
           />
           <Route
             exact
-            path={"/fleaMarket/product"}
+            path={"/fleaMarket/product/:id"}
             component={FleaMarketProduct}
           />
-          <Route exact path={"/fleaMarket/edit"} component={FleaMarketEdit} />
-          <Route exact path={"/fleaMarket/chatroom"} component={ChatRoom} />
+          <Route
+            exact
+            path={"/fleaMarket/edit/:id"}
+            component={FleaMarketEdit}
+          />
+          <Route exact path={"/fleaMarket/chatroom/:id"} component={ChatRoom} />
         </Switch>
       </BrowserRouter>
       <GlobalStyles />

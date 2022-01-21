@@ -25,36 +25,6 @@ export const isLonAtom = atom({
   default: 0,
 });
 
-export const isFoodNoAtom = atom({
-  key: "isFoodNo",
-  default: 0,
-});
-
-export const isFoodTitleAtom = atom({
-  key: "isFoodTitle",
-  default: "",
-});
-
-export const isFoodContentAtom = atom({
-  key: "isFoodContent",
-  default: "",
-});
-
-export const isFleaNoAtom = atom({
-  key: "isFleaNo",
-  default: 0,
-});
-
-export const isFleaTitleAtom = atom({
-  key: "isFleaTitle",
-  default: "",
-});
-
-export const isFleaContentAtom = atom({
-  key: "isFleaContent",
-  default: "",
-});
-
 export const isFleaOwnerAtom = atom({
   key: "isFleaOwner",
   default: "",

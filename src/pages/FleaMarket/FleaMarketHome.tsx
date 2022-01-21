@@ -1,8 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { isFleaNoAtom } from "../../atom";
 import FoodBoardLayOut from "../../components/FoodComponents/FoodBoardLayOut";
 import Pagination from "../../components/Pagination";
 import { MARKET_VIEW_UPDATE } from "../../gql/mutation";
@@ -27,7 +25,6 @@ import {
 function FleaMarketHome() {
   const history = useHistory();
   const [category, setCategory] = useState("");
-  const isFleaNo = useSetRecoilState(isFleaNoAtom);
   const { data: marketList } = useQuery<GetMarketListIF>(GET_MARKET_LIST);
   const [marketViewUpdate] =
     useMutation<MarketViewUpdateIF>(MARKET_VIEW_UPDATE);
@@ -64,8 +61,7 @@ function FleaMarketHome() {
                   },
                 });
                 if (viewUpdateCheck?.marketViewUpdate.ok) {
-                  isFleaNo(item.FleaMarketNo);
-                  history.push("/fleaMarket/product");
+                  history.push(`/fleaMarket/product/${item.FleaMarketNo}`);
                 } else {
                   alert(viewUpdateCheck?.marketViewUpdate.error);
                 }
@@ -90,8 +86,7 @@ function FleaMarketHome() {
                   },
                 });
                 if (viewUpdateCheck?.marketViewUpdate.ok) {
-                  isFleaNo(item.FleaMarketNo);
-                  history.push("/fleaMarket/product");
+                  history.push(`/fleaMarket/product/${item.FleaMarketNo}`);
                 } else {
                   alert(viewUpdateCheck?.marketViewUpdate.error);
                 }

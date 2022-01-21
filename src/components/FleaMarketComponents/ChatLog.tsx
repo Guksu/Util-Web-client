@@ -1,13 +1,14 @@
 import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
-import { useRecoilValue } from "recoil";
-import { isFleaNoAtom } from "../../atom";
+import { useParams } from "react-router-dom";
 import { GET_CHAT } from "../../gql/query";
+import { IDarams } from "../../interfaces/CommonIF";
 import { GetChatIF } from "../../interfaces/FleaMarket";
 import { MessageDiv, MyLi, OtherLi } from "../../pages/FleaMarket/ChatRoom";
 
 function ChatLog() {
-  const room = useRecoilValue(isFleaNoAtom);
+  const params = useParams<IDarams>();
+  const room = Number(params.id);
   const id = localStorage.getItem("id");
   const { data: chatData, refetch } = useQuery<GetChatIF>(GET_CHAT, {
     variables: {

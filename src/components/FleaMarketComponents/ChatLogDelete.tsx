@@ -1,9 +1,10 @@
 import { useMutation } from "@apollo/client";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { isFleaNoAtom, isFleaOwnerAtom } from "../../atom";
+import { isFleaOwnerAtom } from "../../atom";
 import { DELETE_CHAT } from "../../gql/mutation";
+import { IDarams } from "../../interfaces/CommonIF";
 import { DeleteChatIF } from "../../interfaces/FleaMarket";
 
 const ChatResetDiv = styled.div`
@@ -18,9 +19,10 @@ const ChatResetBtn = styled.button`
 `;
 
 function ChatLogDelete() {
+  const params = useParams<IDarams>();
   const isFleaOwner = useRecoilValue(isFleaOwnerAtom);
   const history = useHistory();
-  const room = useRecoilValue(isFleaNoAtom);
+  const room = params.id;
   const [deleteChat] = useMutation<DeleteChatIF>(DELETE_CHAT, {
     variables: { deleteChatLogInput: { room } },
   });

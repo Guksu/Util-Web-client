@@ -1,10 +1,8 @@
 import { useQuery } from "@apollo/client";
-import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { isFoodContentAtom, isFoodNoAtom, isFoodTitleAtom } from "../../atom";
 import { GET_REVIEW } from "../../gql/query";
+import { IDarams } from "../../interfaces/CommonIF";
 import { GetReviewIF } from "../../interfaces/FoodIF";
 
 export const FoodReviewDiv = styled.div`
@@ -68,19 +66,12 @@ export const EditBtn = styled.button`
 `;
 
 function FoodReview() {
-  const isFoodNo = useRecoilValue(isFoodNoAtom);
-  const isFoodTitle = useSetRecoilState<any>(isFoodTitleAtom);
-  const isFoodContent = useSetRecoilState<any>(isFoodContentAtom);
-
+  const params = useParams<IDarams>();
   const history = useHistory();
   const { data: reviewData } = useQuery<GetReviewIF>(GET_REVIEW, {
-    variables: { getReviewInput: { FoodBoardNo: isFoodNo } },
+    variables: { getReviewInput: { FoodBoardNo: Number(params.id) } },
   });
 
-  useEffect(() => {
-    isFoodTitle(reviewData?.getReview.review?.title);
-    isFoodContent(reviewData?.getReview.review?.content);
-  });
   return (
     <>
       <FoodReviewDiv>
@@ -112,7 +103,7 @@ function FoodReview() {
               reviewData?.getReview.review?.userName && (
               <EditBtn
                 onClick={() => {
-                  history.push("/food/review/edit");
+                  history.push(`/food/review/edit/${params.id}`);
                 }}
               >
                 수정하기

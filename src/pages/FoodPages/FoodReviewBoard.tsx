@@ -1,9 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { isFoodNoAtom } from "../../atom";
 import FoodBoardLayOut from "../../components/FoodComponents/FoodBoardLayOut";
 import Pagination from "../../components/Pagination";
 import { VIEW_UPDATE } from "../../gql/mutation";
@@ -110,7 +108,6 @@ export const MobileContentSpan = styled.span`
 function FoodReviewBoard() {
   const [category, setCategory] = useState("");
   const history = useHistory();
-  const isFoodNo = useSetRecoilState(isFoodNoAtom);
 
   //getFoodReviewList
   const { data: reviewList, refetch } =
@@ -150,8 +147,7 @@ function FoodReviewBoard() {
                   },
                 });
                 if (viewUpdateCheck?.viewUpdate.ok) {
-                  isFoodNo(item.FoodBoardNo);
-                  history.push("/food/review");
+                  history.push(`/food/review/${item.FoodBoardNo}`);
                 } else {
                   alert(viewUpdateCheck?.viewUpdate.error);
                 }
@@ -176,8 +172,7 @@ function FoodReviewBoard() {
                   },
                 });
                 if (viewUpdateCheck?.viewUpdate.ok) {
-                  isFoodNo(item.FoodBoardNo);
-                  history.push("/food/review");
+                  history.push(`/food/review/${item.FoodBoardNo}`);
                 } else {
                   alert(viewUpdateCheck?.viewUpdate.error);
                 }

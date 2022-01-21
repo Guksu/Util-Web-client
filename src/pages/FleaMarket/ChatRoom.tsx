@@ -1,12 +1,12 @@
 import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
-import { isFleaNoAtom } from "../../atom";
 import ChatLog from "../../components/FleaMarketComponents/ChatLog";
 import ChatLogDelete from "../../components/FleaMarketComponents/ChatLogDelete";
 import { SAVE_CHAT } from "../../gql/mutation";
+import { IDarams } from "../../interfaces/CommonIF";
 import { Message, Payload, SaveChatIF } from "../../interfaces/FleaMarket";
 
 export const ChatDiv = styled.div`
@@ -77,7 +77,8 @@ const SendInput = styled.input`
 `;
 
 function ChatRoom() {
-  const room = useRecoilValue(isFleaNoAtom).toString();
+  const params = useParams<IDarams>();
+  const room = params.id;
   const [socket, setSocket] = useState<any>(io());
   const [name] = useState<any>(localStorage.getItem("id"));
   const [text, setText] = useState("");
