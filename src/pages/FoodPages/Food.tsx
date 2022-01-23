@@ -11,9 +11,9 @@ const MapDiv = styled.div`
   width: 50%;
   height: 1fr;
   margin: auto;
-  position: relative;
   background-color: ${(props) => props.theme.divBackgroundColor};
   border-radius: 20px;
+  position: relative;
   box-shadow: 0 0 5px black;
   @media (max-width: 1024px) {
     width: 90%;
@@ -35,8 +35,8 @@ const Map = styled.div`
   overflow: hidden;
   border-radius: 50px;
   @media (max-width: 1024px) {
-    width: 70%;
-    height: 90%;
+    width: 60vw;
+    height: 30vh;
   }
 `;
 
