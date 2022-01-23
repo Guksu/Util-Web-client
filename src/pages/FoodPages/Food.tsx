@@ -11,6 +11,7 @@ const MapDiv = styled.div`
   width: 50%;
   height: 1fr;
   margin: auto;
+  position: relative;
   background-color: ${(props) => props.theme.divBackgroundColor};
   border-radius: 20px;
   box-shadow: 0 0 5px black;

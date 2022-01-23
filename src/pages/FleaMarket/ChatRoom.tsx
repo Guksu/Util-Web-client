@@ -91,7 +91,6 @@ function ChatRoom() {
   }, []);
 
   useEffect(() => {
-    socket.emit("joinRoom", room);
     const receivedMessage = (message: Payload) => {
       const newMessage: Message = {
         id: Date.now().toString(),
@@ -105,6 +104,7 @@ function ChatRoom() {
   }, [messages, name, text]);
 
   const sendMessage = async () => {
+    socket.emit("joinRoom", room);
     const message: Payload = {
       name,
       text,
